@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+2017 Spring Tamu csce606
 
-Things you may want to cover:
+Spurs
 
-* Ruby version
+CSCE-606 Project: Clients_to_Horse
 
-* System dependencies
+To everyone
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Please make sure that master branch is always runable before submitting your changes
