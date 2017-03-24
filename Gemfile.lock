@@ -91,6 +91,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (1.0.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -183,6 +187,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.6.1)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     minitest-reporters (1.1.9)
@@ -305,6 +310,7 @@ DEPENDENCIES
   bcrypt (= 3.1.11)
   bootstrap-sass (= 3.3.6)
   byebug (= 9.0.0)
+  carrierwave
   coffee-rails (= 4.2.1)
   cucumber-rails
   cucumber-rails-training-wheels
@@ -314,6 +320,7 @@ DEPENDENCIES
   jbuilder (= 2.4.1)
   jquery-rails (= 4.1.1)
   listen (= 3.0.8)
+  mini_magick
   minitest-reporters (= 1.1.9)
   pg (= 0.18.4)
   puma (= 3.4.0)
