@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin.git
-  revision: 7461a55e8c367cb6546c96ed7bfb90c952da2eb5
+  revision: fc08c0faff09d8257860c80fd81ee4278fc186be
   specs:
     activeadmin (1.0.0.pre5)
-      arbre (~> 1.0, >= 1.0.2)
+      arbre (>= 1.1.1)
       bourbon
       coffee-rails
       formtastic (~> 3.1)
@@ -73,7 +73,7 @@ GEM
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (7.1.4)
-    autoprefixer-rails (6.7.7)
+    autoprefixer-rails (6.7.7.1)
       execjs
     bcrypt (3.1.11)
     bootstrap-sass (3.3.6)
@@ -194,7 +194,7 @@ GEM
     multi_test (0.1.2)
     nenv (0.3.0)
     nio4r (1.2.1)
-    nokogiri (1.7.0.1)
+    nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -330,4 +330,4 @@ DEPENDENCIES
   web-console (= 3.1.1)
 
 BUNDLED WITH
-   1.14.5
+   1.14.6
