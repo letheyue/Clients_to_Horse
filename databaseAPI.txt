@@ -1,0 +1,37 @@
+Ｈorse:
+	name :string
+	age :string
+	sex :string
+	breed :string
+	owner_id : integer
+	
+Owner:
+	name :string
+	address :text
+	phone_number :text
+	fax_number :text
+	email :text
+	comments :text
+	*balance :integer
+	
+Activity:
+	name :text
+	price :integer
+	period :integer
+	
+Procedure:
+	name :text
+	
+Chain:
+	procedure_id :integer
+	activity_id :integer
+	order :integer
+
+Horse_Activity:
+	horse_id :integer
+	activity_id :integer
+	start_date :datetime
+	end_date :datetime
+	status :integer /1 => done, 2 => not done /
+	
+	
