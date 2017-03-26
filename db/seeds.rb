@@ -14,5 +14,3 @@ horse2 = owner2.horses.create( {:name => 'Larry', :age => "1.5", :sex => 'M', :b
 
 owner3 = Owner.create({:name => 'Dianna Prince', :address => 'Amazon', :phone_number => '702-858-0268', :fax_number =>  '702-858-0268', :email => 'wonderwoman@gmail.com', :comments => 'I am the daughter of amazon'})                            
 horse3 = owner3.horses.create({:name => 'Barry', :age => "1", :sex => 'M', :breed => 'Alien'})
-
-user = User.create({:name => 'admin', :email => 'test@sample.com', :password => '123456'})
