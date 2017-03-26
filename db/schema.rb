@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170326193542) do
     t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["owner_id"], name: "index_horses_on_owner_id"
+    t.index ["owners_id"], name: "index_horses_on_owner_id"
   end
 
 
