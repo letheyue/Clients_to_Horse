@@ -1,0 +1,17 @@
+<% # edit.html.haml using partial %>
+<h1>Edit Owner</h1>
+<%= form_tag owner_path(@owner), :method => :put do %>
+  <%= label :owner, :name, 'Name' %>
+  <%= text_field :owner, 'name' %>
+  <%= label :owner, :email, 'Email' %>
+  <%= text_field :owner, 'email' %>
+  <%= label :owner, :phone_number, 'Phone_number' %>
+  <%= text_field :owner, 'phone_number' %>
+  <%= label :owner, :fax_number, 'Fax_number' %>
+  <%= text_field :owner, 'fax_number' %>
+  <%= label :owner, :address, 'Address' %>
+  <%= text_field :owner, 'address' %>
+  <%= label :owner, :comments, 'Comments' %>
+  <%= text_field :owner, 'comments' %>
+  <%= submit_tag 'Update Owner Info' %>
+<% end %>

@@ -1,0 +1,26 @@
+<% # in app/views/movies/show.html.haml %>
+<h2>Details about Horse</h2>
+<tbody>
+  <tl>
+    Name
+    <li>
+      <%= @horse.name %>
+    </li>
+    Age
+    <li>
+      <%= @horse.age %>
+    </li>
+    Sex
+    <li>
+      <%= @horse.sex %>
+    </li>
+    Breed
+    <li>
+      <%= @horse.breed %>
+    </li>
+    Owner
+      <li>
+        <%= link_to "#{@owner.name}", owner_path(@owner) %>
+      </li>   
+  </tl>
+</tbody>

@@ -11,6 +11,29 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20170326193542) do
+ActiveRecord::Schema.define(version: 20170326182915) do
+
+  create_table "horses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "age"
+    t.string   "sex"
+    t.string   "breed"
+    t.integer  "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_horses_on_owner_id"
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.string   "name"
+    t.text     "address"
+    t.text     "phone_number"
+    t.text     "fax_number"
+    t.text     "email"
+    t.text     "comments"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "photos", force: :cascade do |t|
     t.integer  "product_id"

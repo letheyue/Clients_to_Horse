@@ -1,0 +1,40 @@
+<h1>Horses</h1>
+<table id="horses">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Sex</th>
+      <th>Breed</th>
+      <th>Owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @horses.each do |horse| %>
+      <tr>
+        <td>
+          <%= horse.name  %>
+        </td>
+        <td>
+          <%= horse.age %>
+        </td>
+        <td>
+          <%= horse.sex %>
+        </td>
+        <td>
+          <%= horse.breed %>
+        </td>
+        <td>
+          <%= @owners.find(horse.owner_id).name %>
+        </td>
+        <td>
+          <%= button_to "Edit #{horse.name}", edit_horse_path(horse, @owner), :method => :get %>
+        </td>
+        <td>
+          <%= button_to "Delete #{horse.name}", horse_path(horse), :method => :delete,:data =>{:confirm => 'Are you sure?'} %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= button_to 'New Horse', new_horse_path, :method => :get %>
