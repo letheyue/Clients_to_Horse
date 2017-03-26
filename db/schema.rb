@@ -12,6 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20170326193542) do
 
+  create_table "owners", force: :cascade do |t|
+    t.string   "name"
+    t.text     "address"
+    t.text     "phone_number"
+    t.text     "fax_number"
+    t.text     "email"
+    t.text     "comments"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "horses", force: :cascade do |t|
     t.string   "name"
     t.string   "age"
@@ -23,16 +34,6 @@ ActiveRecord::Schema.define(version: 20170326193542) do
     t.index ["owner_id"], name: "index_horses_on_owner_id"
   end
 
-  create_table "owners", force: :cascade do |t|
-    t.string   "name"
-    t.text     "address"
-    t.text     "phone_number"
-    t.text     "fax_number"
-    t.text     "email"
-    t.text     "comments"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
 
   create_table "photos", force: :cascade do |t|
     t.integer  "product_id"
