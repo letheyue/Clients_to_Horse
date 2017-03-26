@@ -1,0 +1,36 @@
+<% # in app/views/movies/show.html.haml %>
+<h2>Details about Client</h2>
+<tbody>
+  <tl>
+    Name
+    <li>
+      <%= @owner.name %>
+    </li>
+    Phone Number
+    <li>
+      <%= @owner.phone_number %>
+    </li>
+    Fax Number
+    <li>
+      <%= @owner.fax_number %>
+    </li>
+    Address
+    <li>
+      <%= @owner.address %>
+    </li>
+    Email Address
+    <li>
+      <%= @owner.email %>
+    </li>
+    Comments
+    <li>
+      <%= @owner.comments %>
+    </li>
+    Own Horses
+    <% @horses.each do |horse| %>
+      <li>
+        <%= link_to "#{horse.name}", horse_path(horse) %>
+      </li>
+    <% end %>
+  </tl>
+</tbody>

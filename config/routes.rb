@@ -14,8 +14,6 @@ Rails.application.routes.draw do
 
   get '/contact', to: 'static_pages#contact'
 
-  get '/horse', to: 'static_pages#horse'
-
   get '/signup', to: 'users#new'
 
   post '/signup', to: 'users#create'
@@ -26,7 +24,9 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users
+  resources :users, :horses, :owners
+  
+  
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,20 @@
+%h1 Create New Horse
+
+= form_tag horses_path do
+
+  = label :horse, :name, 'Name'
+  = text_field :horse, 'name'
+
+  = label :horse, :age, 'Age'
+  = text_field :horse, 'age'
+  
+  = label :horse, :sex, 'Sex'
+  = text_field :horse, 'sex'
+  
+  = label :horse, :breed, 'Breed'
+  = text_field :horse, 'breed'
+   
+  = label :horse, :owner_id, 'Owner'
+  = text_field :horse, 'owner_id'
+  
+  = submit_tag 'Save'

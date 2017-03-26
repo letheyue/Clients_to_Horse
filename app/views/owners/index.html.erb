@@ -1,0 +1,49 @@
+<%= link_to "Horses Information", horses_path %>
+<h1>Customers information</h1>
+<table id="owners">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>phone</th>
+      <th>address</th>
+      <th>fax</th>
+      <th>email</th>
+      <th>comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @owners.each do |owner| %>
+      <tr>
+        <td>
+          <%= owner.id %>
+        </td>
+        <td>
+          <%= link_to "#{owner.name}", owner_path(owner) %>
+        </td>
+        <td>
+          <%= owner.phone_number %>
+        </td>
+        <td>
+          <%= owner.address %>
+        </td>
+        <td>
+          <%= owner.fax_number %>
+        </td>
+        <td>
+          <%= owner.email %>
+        </td>
+        <td>
+          <%= owner.comments %>
+        </td>
+        <td>
+          <%= button_to "Edit", edit_owner_path(owner), :method => :get %>
+        </td>
+        <td>
+          <%= button_to "Delete", owner_path(owner), :method => :delete, :data =>{:confirm => 'Are you sure'} %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= button_to 'New Owner', new_owner_path, :method => :get %>
