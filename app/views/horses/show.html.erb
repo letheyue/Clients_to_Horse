@@ -22,5 +22,14 @@
       <li>
         <%= link_to "#{@owner.name}", owner_path(@owner) %>
       </li>   
+    Activities
+        <% @horse_activities.each do |activity| %>
+          <li>
+            <%= @activities.find(activity.activity_id).name %>
+            <%= activity.start_date %>
+            <%= activity.end_date %>
+            <%= activity.status %>
+          </li>
+        <% end %>
   </tl>
 </tbody>

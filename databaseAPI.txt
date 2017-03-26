@@ -32,6 +32,6 @@ Horse_Activity:
 	activity_id :integer
 	start_date :datetime
 	end_date :datetime
-	status :integer /1 => done, 2 => not done /
+	status :integer /1 => not done, 2 => done /
 	
 	

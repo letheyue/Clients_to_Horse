@@ -16,3 +16,11 @@ owner3 = Owner.create({:name => 'Dianna Prince', :address => 'Amazon', :phone_nu
 horse3 = owner3.horses.create({:name => 'Barry', :age => "1", :sex => 'M', :breed => 'Alien'})
 
 user = User.create({:name => 'admin', :email => 'test@sample.com', :password => '123456'})
+
+activity1 = Activity.create({:name => 'act1', :period => 1, :price => 150})
+activity2 = Activity.create( {:name => 'act2', :period => 1, :price => 100})
+activity3 = Activity.create({:name => 'act3', :period => 1, :price => 120})
+
+horse1_activities = HorseActivity.create([{:activity_id => activity1.id, :horse_id => horse1.id, :start_date => DateTime.new(2015, 6, 22), :end_date => DateTime.new(2015, 6, 23), :status => 1}, {:activity_id => activity2.id, :horse_id => horse1.id, :start_date => DateTime.new(2015, 7, 22), :end_date => DateTime.new(2015, 7, 23), :status => 1}])
+horse2_activities = HorseActivity.create([{:activity_id => activity2.id, :horse_id => horse2.id, :start_date => DateTime.new(2015, 6, 22), :end_date => DateTime.new(2015, 6, 23), :status => 2}, {:activity_id => activity3.id, :horse_id => horse2.id, :start_date => DateTime.new(2015, 7, 22), :end_date => DateTime.new(2015, 7, 23), :status => 1}])
+horse3_activities = HorseActivity.create([{:activity_id => activity1.id, :horse_id => horse3.id, :start_date => DateTime.new(2015, 6, 22), :end_date => DateTime.new(2015, 6, 23), :status => 2}, {:activity_id => activity3.id, :horse_id => horse3.id, :start_date => DateTime.new(2015, 7, 22), :end_date => DateTime.new(2015, 7, 23), :status => 2}])

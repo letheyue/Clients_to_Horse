@@ -9,6 +9,14 @@ class OwnersController < ApplicationController
     @owner = Owner.find(id) # look up movie by unique ID
     @horses = Horse.where(:owner_id => @owner.id)
     # will render app/views/movies/show.<extension> by default
+    sum = 0
+    @horses.each do |horse|
+        @activities = HorseActivity.where(:horse_id => horse.id)
+        @activities.each do |activity|
+            sum = sum + Activity.find(activity.activity_id).price
+        end
+    end
+    @sum = sum
   end
 
   def index

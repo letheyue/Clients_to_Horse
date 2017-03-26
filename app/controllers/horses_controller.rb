@@ -8,6 +8,8 @@ class HorsesController < ApplicationController
     id = params[:id] # retrieve movie ID from URI route
     @horse = Horse.find(id) # look up movie by unique ID
     @owner = Owner.find(@horse.owner_id)
+    @horse_activities = HorseActivity.where(:horse_id => id)
+    @activities = Activity.all
     # will render app/views/movies/show.<extension> by default
   end
 

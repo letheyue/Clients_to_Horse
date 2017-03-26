@@ -10,8 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326193542) do
-ActiveRecord::Schema.define(version: 20170326182915) do
+ActiveRecord::Schema.define(version: 20170326214216) do
+
+  create_table "activities", force: :cascade do |t|
+    t.text     "name"
+    t.integer  "price"
+    t.string   "period"
+    t.string   "integer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "horse_activities", force: :cascade do |t|
+    t.integer  "horse_id"
+    t.integer  "activity_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["activity_id"], name: "index_horse_activities_on_activity_id"
+    t.index ["horse_id"], name: "index_horse_activities_on_horse_id"
+  end
 
   create_table "horses", force: :cascade do |t|
     t.string   "name"
@@ -58,6 +78,5 @@ ActiveRecord::Schema.define(version: 20170326182915) do
     t.string   "remember_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
-end
 
 end
