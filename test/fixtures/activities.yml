@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  price: 1
+  period: MyString
+  integer: MyString
+
+two:
+  name: MyText
+  price: 1
+  period: MyString
+  integer: MyString

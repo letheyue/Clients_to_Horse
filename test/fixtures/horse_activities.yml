@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  horse: one
+  activity: one
+  start_date: 2017-03-26 21:42:16
+  end_date: 2017-03-26 21:42:16
+  status: 1
+
+two:
+  horse: two
+  activity: two
+  start_date: 2017-03-26 21:42:16
+  end_date: 2017-03-26 21:42:16
+  status: 1
