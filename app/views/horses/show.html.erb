@@ -1,5 +1,3 @@
--# in app/views/movies/show.html.haml
-
 <% # in app/views/movies/show.html.haml %>
 <h2>Details about Horse</h2>
 <tbody>
@@ -21,18 +19,8 @@
       <%= @horse.breed %>
     </li>
     Owner
-    <li>
-      <%= link_to '#{@owners.find(@horse.owner_id).name}' %>
-    </li>
-    Comments
-    <li>
-      <%= @owner.comments %>
-    </li>
-    Own Horses
-    <% @horses.each do |horse| %>
       <li>
-        <%= link_to "#{horse.name}", horse_path(horse) %>
-      </li>
-    <% end %>
+        <%= link_to "#{@owner.name}", owner_path(@owner) %>
+      </li>   
   </tl>
 </tbody>

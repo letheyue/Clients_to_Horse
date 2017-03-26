@@ -7,6 +7,7 @@ class HorsesController < ApplicationController
   def show
     id = params[:id] # retrieve movie ID from URI route
     @horse = Horse.find(id) # look up movie by unique ID
+    @owner = Owner.find(@horse.owner_id)
     # will render app/views/movies/show.<extension> by default
   end
 
