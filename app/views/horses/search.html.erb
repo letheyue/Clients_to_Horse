@@ -12,7 +12,13 @@
         <div class='horse'>
           <strong> <%= horse.name %> </strong>
         </div>
+        <div>
+          <%= link_to "Horse's information", horse_path(horse) %>
+        </div>
+        <div>
         <%= link_to 'Edit', edit_horse_path(horse, @owner) %>
+        </div>
+        <%= link_to "Delete #{horse.name}", horse_path(horse), :method => :delete,:data =>{:confirm => 'Are you sure?'} %>
     <% end %>
   </tr>
   </tbody>

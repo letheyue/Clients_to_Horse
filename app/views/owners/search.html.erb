@@ -12,7 +12,14 @@
         <div class='owner'>
           <strong> <%= owner.name %> </strong>
         </div>
+        <div>
+          <%= link_to "Owner's information", owner_path(owner) %>
+        </div>
+        <div>
         <%= link_to 'Edit', edit_owner_path(owner) %>
+        </div>
+        <%= link_to "Delete", owner_path(owner), :method => :delete, :data =>{:confirm => 'Warning! Deleting customer may also remove customer\'s horses from database Sure to delete?'} %>
+        </td>
     <% end %>
   </tr>
   </tbody>
