@@ -51,4 +51,12 @@ class HorsesController < ApplicationController
     redirect_to horses_path
   end
 
+  def search
+    @horses = Horse.all
+    if params[:search]
+      @horses = Horse.search(params[:search]).order("created_at DESC")
+    else
+      @horses = Horse.all.order("created_at DESC")
+    end
+  end
 end

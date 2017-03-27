@@ -1,0 +1,19 @@
+<h1>Search</h1>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <% for horse in @horses %>
+        <div class='horse'>
+          <strong> <%= horse.name %> </strong>
+        </div>
+        <%= link_to 'Edit', edit_horse_path(horse, @owner) %>
+    <% end %>
+  </tr>
+  </tbody>
+</table>

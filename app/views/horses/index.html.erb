@@ -10,6 +10,13 @@
     </tr>
   </thead>
   <tbody>
+
+
+  <%= form_tag(search_horses_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search horse's name" %>
+      <%= submit_tag "Search", :name => nil %>
+  <% end %>
+
     <% @horses.each do |horse| %>
       <tr>
         <td>

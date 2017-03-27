@@ -1,0 +1,19 @@
+<h1>Search</h1>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <% for owner in @owners %>
+        <div class='owner'>
+          <strong> <%= owner.name %> </strong>
+        </div>
+        <%= link_to 'Edit', edit_owner_path(owner) %>
+    <% end %>
+  </tr>
+  </tbody>
+</table>

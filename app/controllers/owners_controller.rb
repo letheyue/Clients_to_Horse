@@ -59,4 +59,12 @@ class OwnersController < ApplicationController
     redirect_to owners_path
   end
 
+  def search
+    @oners = Owner.all
+    if params[:search]
+      @owners = Owner.search(params[:search]).order("created_at DESC")
+    else
+      @owners = Owner.all.order("created_at DESC")
+    end
+  end
 end
