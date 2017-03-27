@@ -1,3 +1,3 @@
 class Owner < ApplicationRecord
-    has_many :horses
+    has_many :horses, :dependent => :destroy
 end

@@ -14,13 +14,14 @@ class HorsesController < ApplicationController
   end
 
   def index
-    @owners = Owner.all
     @horses = Horse.all
+    @owners = Owner.all
   end
   
   
   def new
     # default: render 'new' template
+    @owners = Owner.all
   end
 
   def create
@@ -32,6 +33,7 @@ class HorsesController < ApplicationController
 
   def edit
     @horse = Horse.find params[:id]
+    @owners = Owner.all
   end
 
   def update

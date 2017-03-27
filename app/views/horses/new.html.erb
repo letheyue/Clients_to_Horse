@@ -9,6 +9,6 @@
   <%= label :horse, :breed, 'Breed' %>
   <%= text_field :horse, 'breed' %>
   <%= label :horse, :owner_id, 'Owner' %>
-  <%= text_field :horse, 'owner_id' %>
+  <%= collection_select(:horse, :owner_id, Owner.all, :id, :name) %>
   <%= submit_tag 'Save' %>
 <% end %>

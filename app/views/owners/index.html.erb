@@ -39,7 +39,7 @@
           <%= button_to "Edit", edit_owner_path(owner), :method => :get %>
         </td>
         <td>
-          <%= button_to "Delete", owner_path(owner), :method => :delete, :data =>{:confirm => 'Are you sure'} %>
+          <%= button_to "Delete", owner_path(owner), :method => :delete, :data =>{:confirm => 'Warning! Deleting customer may also remove customer\'s horses from database Sure to delete?'} %>
         </td>
       </tr>
     <% end %>

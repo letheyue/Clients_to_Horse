@@ -25,7 +25,7 @@
           <%= horse.breed %>
         </td>
         <td>
-          <%= @owners.find(horse.owner_id).name %>
+          <%= link_to  "#{@owners.find(horse.owner_id).name}", owner_path(@owners.find(horse.owner_id)) %>
         </td>
         <td>
           <%= button_to "Edit #{horse.name}", edit_horse_path(horse, @owner), :method => :get %>
