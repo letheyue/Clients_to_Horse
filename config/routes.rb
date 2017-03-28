@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, :horses, :owners
+  resources :users, :horses, :owners, :horse_activities
 
   resource :calendar, only: [:show], controller: :calendar
   

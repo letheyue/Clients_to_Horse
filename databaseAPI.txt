@@ -12,7 +12,7 @@ Owner:
 	fax_number :text
 	email :text
 	comments :text
-	*balance :integer
+	balance :integer
 	
 Activity:
 	name :text
@@ -25,7 +25,6 @@ Procedure:
 Chain:
 	procedure_id :integer
 	activity_id :integer
-	order :integer
 
 Horse_Activity:
 	horse_id :integer

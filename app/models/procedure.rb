@@ -1,0 +1,2 @@
+class Procedure < ApplicationRecord
+end
