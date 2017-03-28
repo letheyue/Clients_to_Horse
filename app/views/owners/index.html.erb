@@ -1,5 +1,5 @@
 <h1>Customers information</h1>
-<table id="owners">
+<table id="horses">
   <thead>
     <tr>
       <th>ID</th>
@@ -14,7 +14,7 @@
   <tbody>
 
 
-  <%= form_tag(search_owners_path, :method => "get", id: "search-form") do %>
+  <%= form_tag(owners_path, :method => "get", id: "search-form") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search owner's name or address or email or comments" %>
       <%= submit_tag "Search", :name => nil %>
   <% end %>

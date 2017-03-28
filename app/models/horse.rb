@@ -6,3 +6,4 @@ class Horse < ApplicationRecord
     where("name LIKE ?  OR age LIKE ? OR sex LIKE ? OR breed LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%","%#{search}%")
   end
 end 
+ 

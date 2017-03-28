@@ -20,8 +20,13 @@ class OwnersController < ApplicationController
   end
 
   def index
-    @owners = Owner.all
+    @owners = Owner.all.order("created_at DESC")
     @horses = Horse.all
+    if params[:search]
+      @owners = Owner.search(params[:search]).order("created_at DESC")
+    else
+      @owners = Owner.all.order("created_at DESC")
+    end
   end
   
   

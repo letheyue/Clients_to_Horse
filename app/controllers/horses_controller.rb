@@ -14,8 +14,13 @@ class HorsesController < ApplicationController
   end
 
   def index
-    @horses = Horse.all
+    @horses = Horse.all.order("created_at DESC")
     @owners = Owner.all
+    if params[:search]
+      @horses = Horse.search(params[:search]).order("created_at DESC")
+    else
+      @horses = Horse.all.order("created_at DESC")
+    end
   end
   
   
