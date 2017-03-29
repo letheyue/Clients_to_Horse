@@ -3,7 +3,7 @@ class Horse < ApplicationRecord
   has_many :activities, through: :horse_activities
 
   def self.search(search)
-    search = search.downcase.gsub(/\-/, '')
+    search = search.gsub(/\-/, '')
     where("name LIKE ?  OR age LIKE ? OR sex LIKE ? OR breed LIKE ?", "%#{search}%" , "%#{search}%", "%#{search}%","%#{search}%")
   end
 end 
