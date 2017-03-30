@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
+
   resources :horses do
     collection do
       get :search
@@ -36,6 +37,10 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+  end
+
+  resources :owners do
+    get :mail
   end
 
   resources :users, :horses, :owners, :horse_activities

@@ -5,12 +5,12 @@ class HorsesController < ApplicationController
   end
   
   def show
-    id = params[:id] # retrieve movie ID from URI route
-    @horse = Horse.find(id) # look up movie by unique ID
+    id = params[:id] # retrieve horse ID from URI route
+    @horse = Horse.find(id) # look up horse by unique ID
     @owner = Owner.find(@horse.owner_id)
     @horse_activities = HorseActivity.where(:horse_id => id)
     @activities = Activity.all
-    # will render app/views/movies/show.<extension> by default
+    # will render app/views/horses/show.<extension> by default
   end
 
   def index

@@ -5,10 +5,10 @@ class OwnersController < ApplicationController
   end
   
   def show
-    id = params[:id] # retrieve movie ID from URI route
-    @owner = Owner.find(id) # look up movie by unique ID
+    id = params[:id] # retrieve owner ID from URI route
+    @owner = Owner.find(id) # look up owner by unique ID
     @horses = Horse.where(:owner_id => @owner.id)
-    # will render app/views/movies/show.<extension> by default
+    # will render app/views/owners/show.<extension> by default
     sum = 0
     @horses.each do |horse|
         @activities = HorseActivity.where(:horse_id => horse.id)
@@ -65,11 +65,17 @@ class OwnersController < ApplicationController
   end
 
   def search
-    @oners = Owner.all
+    @owners = Owner.all
     if params[:search]
       @owners = Owner.search(params[:search]).order("created_at DESC")
     else
       @owners = Owner.all.order("created_at DESC")
     end
+  end
+
+  def mail
+    @owner = Owner.find(params[:owner_id])
+    UserMailer.test_mail(@owner).deliver
+    redirect_to owner_path(@owner)
   end
 end

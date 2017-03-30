@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserMailer.registration_confirmation(@user).deliver
       log_in @user
       flash[:success] = "Welcome to the Clients to Horse App!"
       redirect_to @user
