@@ -1,0 +1,5 @@
+<h1>Create New Activities</h1>
+<%= form_tag horse_activities_path do %>
+  <%= collection_select(:horse_activities, :procedure_id, Procedure.all, :id, :name) %>
+  <%= submit_tag 'Save' %>
+<% end %>
