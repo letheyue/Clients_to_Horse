@@ -24,14 +24,14 @@ activity1 = Activity.create({:name => 'act1', :price => 150, :comment => "per ho
 activity2 = Activity.create({:name => 'act2', :price => 100, :comment => "per sperm"})
 activity3 = Activity.create({:name => 'act3', :price => 120, :comment => "doesn't matter"})
 
-horse1_activities = HorseActivity.create([{:activity_id => activity1.id, :horse_id => horse1.id, :date => DateTime.new(2015, 6, 22), :status => 1, :comment => "member to check embryo"}, {:activity_id => activity2.id, :horse_id => horse1.id, :date => DateTime.new(2015, 7, 22), :status => 1}])
-horse2_activities = HorseActivity.create([{:activity_id => activity2.id, :horse_id => horse2.id, :date => DateTime.new(2015, 6, 22), :status => 2}, {:activity_id => activity3.id, :horse_id => horse2.id, :date => DateTime.new(2015, 7, 22), :status => 1, :comment => "keep cold"}])
-horse3_activities = HorseActivity.create([{:activity_id => activity1.id, :horse_id => horse3.id, :date => DateTime.new(2015, 6, 22), :status => 2}, {:activity_id => activity3.id, :horse_id => horse3.id, :date => DateTime.new(2015, 7, 22), :status => 2}])
+horse1_activities = HorseActivity.create([{:activity_id => activity1.id, :horse_id => horse1.id, :date => DateTime.new(2015, 6, 22), :status => 1, :price => 100,  :comment => "member to check embryo"}, {:activity_id => activity2.id, :horse_id => horse1.id, :date => DateTime.new(2015, 7, 22), :status => 1, :price => 50}])
+horse2_activities = HorseActivity.create([{:activity_id => activity2.id, :horse_id => horse2.id, :date => DateTime.new(2015, 6, 22), :status => 2, :price => 120}, {:activity_id => activity3.id, :horse_id => horse2.id, :date => DateTime.new(2015, 7, 22), :status => 1, :comment => "keep cold", :price => 100}])
+horse3_activities = HorseActivity.create([{:activity_id => activity1.id, :horse_id => horse3.id, :date => DateTime.new(2015, 6, 22), :status => 2, :price => 50}, {:activity_id => activity3.id, :horse_id => horse3.id, :date => DateTime.new(2015, 7, 22), :status => 2, :price => 120}])
 
 procedure_1 = Procedure.create({:name => 'procedure1'})
 procedure_2 = Procedure.create({:name => 'procedure2'})
 procedure_3 = Procedure.create({:name => 'procedure3'})
 
-chain_1 = Chain.create([{:procedure_id => procedure_1.id, :activity_id => activity1.id, :activity_order => 0}, {:procedure_id => procedure_1.id, :activity_id => activity2.id, :activity_order => 1}])
-chain_2 = Chain.create([{:procedure_id => procedure_2.id, :activity_id => activity1.id, :activity_order => 0}, {:procedure_id => procedure_2.id, :activity_id => activity3.id, :activity_order => 2}])
-chain_3 = Chain.create([{:procedure_id => procedure_3.id, :activity_id => activity2.id, :activity_order => 0}, {:procedure_id => procedure_3.id, :activity_id => activity3.id, :activity_order => 3}])
+chain_1 = Chain.create([{:procedure_id => procedure_1.id, :activity_id => activity1.id, :order => 0}, {:procedure_id => procedure_1.id, :activity_id => activity2.id, :order => 1}])
+chain_2 = Chain.create([{:procedure_id => procedure_2.id, :activity_id => activity1.id, :order => 0}, {:procedure_id => procedure_2.id, :activity_id => activity3.id, :order => 2}])
+chain_3 = Chain.create([{:procedure_id => procedure_3.id, :activity_id => activity2.id, :order => 0}, {:procedure_id => procedure_3.id, :activity_id => activity3.id, :order => 3}])

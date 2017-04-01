@@ -35,7 +35,7 @@
           <%= link_to  "#{@owners.find(horse.owner_id).name}", owner_path(@owners.find(horse.owner_id)) %>
         </td>
         <td>
-          <%= button_to "Edit #{horse.name}", edit_horse_path(horse, @owner), :method => :get %>
+          <%= button_to "Edit #{horse.name}", edit_horse_path(horse), :method => :get %>
         </td>
         <td>
           <%= button_to "Delete #{horse.name}", horse_path(horse), :method => :delete,:data =>{:confirm => 'Are you sure?'} %>

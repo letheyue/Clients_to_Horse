@@ -1,7 +1,14 @@
 class HorseActivitiesController < ApplicationController  
+    def procedure_menu
+        @procedures = Procedure.all
+        @horse = Horse.find params[:horse_id]
+    end
+    def activity_menu
+        @procedure = Procedure.find params[:procedure_id]
+        @horse = Horse.find params[:horse_id]
+        @activities = Chain.where(:procedure_id => @procedure.id).order("order ASC")
+    end
     def new
-        @horse = Horse.find(params[:horse_id])
-        flash[:notice] = "horse is #{@horse.name}"
     end
     def edit
         @horse_activity = HorseActivity.find params[:id]

@@ -39,7 +39,7 @@
             <%= button_to "Update", edit_horse_activity_path(activity), :method => :get %>
           </li>
         <% end %>
-        <%= button_to "Add Procedure", new_horse_activity_path(:horse_id =>1),:method => :get %>
+        <%= link_to "Add Procedure", procedure_menu_path(:horse_id => @horse.id) %>
 
   </tl>
 </tbody>

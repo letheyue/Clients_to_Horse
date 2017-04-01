@@ -24,6 +24,10 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
 
   post '/login', to: 'sessions#create'
+  
+  get 'procedure_menu', to: 'horse_activities#procedure_menu'
+  
+  get 'activity_menu', to:'horse_activities#activity_menu'
 
   delete '/logout', to: 'sessions#destroy'
   
