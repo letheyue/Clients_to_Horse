@@ -31,12 +31,14 @@
             <%if activity.status == 1%>
                 <%= "not done" %>
                 <%= check_box_tag(:done) %>
-                <%= label_tag(:done, "done") %>
+                <%= label_tag(:done, 1) %>
             <% else %>
                 <%= "done" %>
             <% end %>
             <%= button_to "Update", edit_horse_activity_path(activity), :method => :get %>
           </li>
         <% end %>
+        <%= button_to "Add Procedure", new_horse_activity_path(:horse_id =>1),:method => :get %>
+
   </tl>
 </tbody>

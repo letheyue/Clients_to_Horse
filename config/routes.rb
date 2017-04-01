@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+    resources :users, :horses, :owners, :horse_activities
   get 'calendar/show'
 
   get 'sessions/new'
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
 
   delete '/logout', to: 'sessions#destroy'
+  
 
 
   resources :horses do
@@ -39,11 +41,14 @@ Rails.application.routes.draw do
     end
   end
 
+<<<<<<< Updated upstream
   resources :owners do
     get :mail
   end
 
   resources :users, :horses, :owners, :horse_activities
+=======
+>>>>>>> Stashed changes
 
   resource :calendar, only: [:show], controller: :calendar
   
