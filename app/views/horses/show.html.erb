@@ -26,8 +26,9 @@
         <% @horse_activities.each do |activity| %>
           <li>
             <%= @activities.find(activity.activity_id).name %>
-            <%= activity.start_date %>
-            <%= activity.end_date %>
+            <%= activity.date %>
+            <%= activity.price %>
+            <%= activity.comment %>
             <%if activity.status == 1%>
                 <%= "not done" %>
                 <%= check_box_tag(:done) %>
