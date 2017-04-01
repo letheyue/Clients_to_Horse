@@ -10,21 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329163219) do
+ActiveRecord::Schema.define(version: 20170401220247) do
 
   create_table "activities", force: :cascade do |t|
     t.text     "name"
     t.integer  "price"
-    t.integer  "period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "comment"
   end
 
   create_table "chains", force: :cascade do |t|
     t.integer  "activity_id"
     t.integer  "procedure_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "activity_order"
     t.index ["activity_id"], name: "index_chains_on_activity_id"
     t.index ["procedure_id"], name: "index_chains_on_procedure_id"
   end
@@ -32,11 +33,12 @@ ActiveRecord::Schema.define(version: 20170329163219) do
   create_table "horse_activities", force: :cascade do |t|
     t.integer  "horse_id"
     t.integer  "activity_id"
-    t.datetime "start_date"
-    t.datetime "end_date"
     t.integer  "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.datetime "date"
+    t.integer  "price"
+    t.text     "comment"
     t.index ["activity_id"], name: "index_horse_activities_on_activity_id"
     t.index ["horse_id"], name: "index_horse_activities_on_horse_id"
   end

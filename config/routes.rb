@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   
 
-
   resources :horses do
     collection do
       get :search
@@ -41,19 +40,10 @@ Rails.application.routes.draw do
     end
   end
 
-<<<<<<< Updated upstream
-  resources :owners do
-    get :mail
-  end
-
-  resources :users, :horses, :owners, :horse_activities
-=======
->>>>>>> Stashed changes
 
   resource :calendar, only: [:show], controller: :calendar
   
   
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #root 'application#hello'
