@@ -16,7 +16,7 @@ owner3 = Owner.create({:name => 'Dianna Prince', :address => 'Amazon', :phone_nu
 horse3 = owner3.horses.create({:name => 'Barry', :age => "1", :sex => 'M', :breed => 'Alien'})
 
 owner4 = Owner.create({:name => 'test1', :address => 'College Station', :phone_number => '702-858-5598', :fax_number =>  '702-858-5598', :email => 'letheyuetemp@gmail.com', :comments => 'test owner'})
-horse4 = owner3.horses.create({:name => 'Curry', :age => "0.5", :sex => 'F', :breed => 'Red'})
+horse4 = owner4.horses.create({:name => 'Curry', :age => "0.5", :sex => 'F', :breed => 'Red'})
 
 user = User.create({:name => 'admin', :email => 'test@sample.com', :password => '123456'})
 
