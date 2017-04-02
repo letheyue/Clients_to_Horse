@@ -1,0 +1,31 @@
+<h1>Procedure</h1>
+<table id="procedures">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+
+  </tr>
+  </thead>
+  <tbody>
+
+
+  <% @procedures.each do |procedure| %>
+      <tr>
+        <td>
+          <%= procedure.id%>
+        </td>>
+        <td>
+          <%= link_to "#{@procedures.name}", chain_path(procedure) %>
+        </td>
+        <td>
+          <%= button_to "Edit", edit_chain_path(procedure), :method => :get %>
+        </td>
+        <td>
+          <%= button_to "Delete", procedure_path(procedure), :method => :delete, :data =>{:confirm => 'Warning! Deleting customer may also remove customer\'s horses from database Sure to delete?'} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= button_to 'New procedures', new_chain_path, :method => :get %>

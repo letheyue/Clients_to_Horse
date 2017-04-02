@@ -1,22 +1,22 @@
-// Place all the styles related to the owners controller here.
+// Place all the styles related to the procedure controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-table#owners {
+table#procedures {
   margin: 10px;
   border-collapse: collapse;
   width: 100%;
   border-bottom: 2px solid black;
 }
-table#owners th {
+table#procedures th {
   border: 2px solid white;
   font-weight: bold;
   background-color: wheat;
 }
-table#owners th, table#horses td {
+table#procedures th, table#procedures td {
   padding: 4px;
   text-align: left;
 }
-table#owners th.hilite{
+table#procedures th.hilite{
   background-color: yellow;
 }
 #notice #warning {

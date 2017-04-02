@@ -1,0 +1,72 @@
+<html>
+<head>
+  <title>Add name</title>
+</head>
+<body>
+
+<%= form_tag procedures_path do %>
+    <%= label :procedure, :name, 'Name' %>
+    <%= text_field :procedure, 'name' %>
+<% end %>
+
+<%= form_tag chains_path do %>
+    <%= label :activity, :activity_id, 'activity' %>
+    <select name="category[]" id="activity_id" size = '5' multiple>
+      <% @activities.each do |activity| %>
+          <option value = i++> <%= activity.name %> <%= activity.id %> </option>option>
+    <% end %>
+    </select>
+    <%= submit_tag 'Add' %>
+<% end %>
+
+</head>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>select</title>
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script>
+      $(function(){
+          $("#activity_list").dblclick(function(){
+              var s_val = this.value;
+              if(s_val == '') return;
+              $(this).children("option[value='"+s_val+"']").remove();
+              $("#activity").append('<option value="'+s_val+'">'+s_val+'</option>');
+              //以下代码作用是 将选择到的值备份到一个id为car_type_val的input中，可以进行传值
+              $("#activity_val").val($("#activity_val").val()+s_val+"@");
+              alert($("#activity_val").val())
+          });
+
+          $("#activity_type").dblclick(function(){
+              var s_val = this.value;
+              if(s_val == '') return;
+              $(this).children("option[value='"+s_val+"']").remove();
+              $("#activity_list").append('<option value="'+s_val+'">'+s_val+'</option>');
+
+              var now_val = $("#activity_val").val();
+              now_val = now_val.replace(s_val+"@","");
+              $("#activity_val").val(now_val);
+              alert($("#activity_val").val())
+          });
+
+      })
+  </script>
+</head>
+
+<body>
+<input type="hidden" name="activity" value="" id="activity_val" /><br/>
+<%= form_tag chains_path do %>
+    <%= label :activity, :activity_id, 'activity' %>
+<select multiple="multiple" style="min-width:200px; min-height:80px;" id="activity">
+</select><>
+<select multiple="multiple" style="min-width:200px; min-height:80px;" id="activity_list">
+        <% @activities.each do |activity| %>
+            <option value = <%= activity.name %>> <%= activity.name %> <%= activity.id %> </option>option>
+        <% end %>
+      <%= submit_tag 'Add' %>
+</select>
+<% end %>
+</body>
+
+</body>
+</html>

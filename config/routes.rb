@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    resources :users, :horses, :owners, :horse_activities
+
   get 'calendar/show'
 
   get 'sessions/new'
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, :horses, :owners, :horse_activities, :chains, :procedures
 
   resource :calendar, only: [:show], controller: :calendar
   
