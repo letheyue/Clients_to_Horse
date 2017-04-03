@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20170401220247) do
   create_table "chains", force: :cascade do |t|
     t.integer  "activity_id"
     t.integer  "procedure_id"
-    t.integer  "order"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "activity_order"

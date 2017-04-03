@@ -1,0 +1,31 @@
+<html>
+<h1>Edit Chain</h1>
+<body>
+
+<%= form_tag procedure_path(@procedure) do %>
+    <%= label :procedure, :name, "Procedure's name" %>
+    <%= @procedure.name %>
+
+
+<% end %>
+
+<%= form_tag chain_path(@procedure), :method => :put do  %>
+
+
+    <%= label :chain, :order, 'Order' %>
+    <%= text_field :order, 'order' %>
+
+
+    <%= label :chain, :procedure_id, 'Procedure' %>
+    <%= @procedure.id %>
+
+    <%= label :chain, :activity_id, 'Activity' %>
+    <%= collection_select(:chain, :activity_id, Activity.all, :id, :name) %>
+
+
+    <%= submit_tag 'Add' %>
+<% end %>
+
+
+</body>
+</html>

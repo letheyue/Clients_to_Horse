@@ -16,7 +16,7 @@
           <%= procedure.id%>
         </td>>
         <td>
-          <%= link_to "#{@procedures.name}", chain_path(procedure) %>
+          <%= link_to "#{procedure.name}", procedure_path(procedure) %>
         </td>
         <td>
           <%= button_to "Edit", edit_chain_path(procedure), :method => :get %>
@@ -28,4 +28,4 @@
   <% end %>
   </tbody>
 </table>
-<%= button_to 'New procedures', new_chain_path, :method => :get %>
+<%= button_to 'New procedures', new_procedure_path, :method => :get %>

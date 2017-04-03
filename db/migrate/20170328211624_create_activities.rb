@@ -4,7 +4,6 @@ class CreateActivities < ActiveRecord::Migration[5.0]
       t.text :name
       t.integer :price
       t.integer :period
-      t.text :comment
 
       t.timestamps
     end
