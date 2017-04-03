@@ -20,7 +20,7 @@ class ChainsController < ApplicationController
     @chain = Chain.find params[:id]
     @chain.update_attributes!(chain_params)
     flash[:notice] = "#{@procedure.name} was successfully updated."
-    redirect_to procedure_path(@procedure)
+    redirect_to edit_chain_path(@procedure)
   end
 
   def new
