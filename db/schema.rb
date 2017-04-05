@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401220247) do
+ActiveRecord::Schema.define(version: 20170405040232) do
 
   create_table "activities", force: :cascade do |t|
     t.text     "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170401220247) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "activity_order"
+    t.text     "comment"
     t.index ["activity_id"], name: "index_chains_on_activity_id"
     t.index ["procedure_id"], name: "index_chains_on_procedure_id"
   end

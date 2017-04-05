@@ -25,7 +25,8 @@ Procedure:
 Chain:
 	procedure_id :integer
 	activity_id :integer
-	order :integer //for example, day0 then 0, day 2 then 2
+	activity_order :integer //for example, day0 then 0, day 2 then 2
+	comment :text
 
 Horse_Activity:
 	horse_id :integer

@@ -26,7 +26,7 @@
         <% @horse_activities.each do |activity| %>
           <li>
             <%= @activities.find(activity.activity_id).name %>
-            <%= activity.date %>
+            <%= activity.date.to_date %>
             <%= activity.price %>
             <%= activity.comment %>
             <%if activity.status == 1%>

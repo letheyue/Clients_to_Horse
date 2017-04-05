@@ -32,6 +32,6 @@ procedure_1 = Procedure.create({:name => 'procedure1'})
 procedure_2 = Procedure.create({:name => 'procedure2'})
 procedure_3 = Procedure.create({:name => 'procedure3'})
 
-chain_1 = Chain.create([{:procedure_id => procedure_1.id, :activity_id => activity1.id, :activity_order => 0}, {:procedure_id => procedure_1.id, :activity_id => activity2.id, :activity_order => 1}])
+chain_1 = Chain.create([{:procedure_id => procedure_1.id, :activity_id => activity1.id, :activity_order => 0, :comment =>"120 per horse"}, {:procedure_id => procedure_1.id, :activity_id => activity2.id, :activity_order => 1, :comment =>"100 per activity"}])
 chain_2 = Chain.create([{:procedure_id => procedure_2.id, :activity_id => activity1.id, :activity_order => 0}, {:procedure_id => procedure_2.id, :activity_id => activity3.id, :activity_order => 2}])
 chain_3 = Chain.create([{:procedure_id => procedure_3.id, :activity_id => activity2.id, :activity_order => 0}, {:procedure_id => procedure_3.id, :activity_id => activity3.id, :activity_order => 3}])
