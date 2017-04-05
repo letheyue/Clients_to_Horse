@@ -1,0 +1,42 @@
+<table>
+  <%= form_tag(controller: "horse_activities", method: "get",) do %>
+      <%= select_date %>
+      <thead>
+    <tr>
+      <th>Name</th>
+      <th>Order</th>
+      <th>Price</th>
+      <th>Comment</th>
+    </tr>
+      </thead>
+      <tbody>
+        <% @count = 0 %>
+        <% @activities.each do |activity| %>
+          <tr>
+            <td>
+              <%= @activity_names.find(activity.activity_id).name %>
+            </td>
+            <td>
+              <%= activity.activity_order %>
+            </td>
+            <td>
+              <%= text_field_tag "activity[id_#{@count}][price]" %>
+            </td>
+            <td>
+              <%= text_field_tag "activity[id_#{@count}][comment]" %>
+            </td>
+            <td>
+              <%= activity.comment %>
+            </td>
+          </tr>
+            <%= hidden_field_tag "activity[id_#{@count}][activity_id]", activity.activity_id %>
+            <%= hidden_field_tag "activity[id_#{@count}][procedure_id]", @procedure.id %>
+            <%= hidden_field_tag "activity[id_#{@count}][order]", activity.activity_order %>
+          <% @count= @count+1 %>  
+        <% end %>
+        <%= hidden_field_tag "horse_id", @horse.id %>
+        <%= hidden_field_tag "count", @count %>
+      </tbody>
+      <%= submit_tag("Add Procedure") %>
+    <% end %>
+</table>
