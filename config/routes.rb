@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   
   post '/update_activities', to:'horse_activities#update_activities'
+  
+  get '/destroy_from_horse', to:'horse_activities#destroy_from_horse'
 
   resources :horses do
     collection do

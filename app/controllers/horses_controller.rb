@@ -8,7 +8,8 @@ class HorsesController < ApplicationController
     id = params[:id] # retrieve horse ID from URI route
     @horse = Horse.find(id) # look up horse by unique ID
     @owner = Owner.find(@horse.owner_id)
-    @horse_activities = HorseActivity.where(:horse_id => id)
+    @horse_activities = HorseActivity.where(:horse_id => id, :status => 1).order("date ASC")
+    @procedures = Procedure.all
     @activities = Activity.all
     # will render app/views/horses/show.<extension> by default
   end
@@ -55,6 +56,7 @@ class HorsesController < ApplicationController
     flash[:notice] = "Horse '#{@horse.name}' deleted."
     redirect_to horses_path
   end
+  
 
   def search
     @horses = Horse.all

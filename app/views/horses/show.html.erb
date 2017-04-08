@@ -27,21 +27,23 @@
       <%= form_tag('/update_activities') do %>
         <% @horse_activities.each do |activity| %>
           <li>
+            <%= @procedures.find(activity.procedure_id).name %>
             <%= @activities.find(activity.activity_id).name %>
             <%= activity.date.to_date %>
             <%= activity.price %>
             <%= activity.comment %>
+            <%= link_to "delete", destroy_from_horse_path( :horse_id => @horse.id, :activity_id => activity.id), :method => :get, :data =>{:confirm => 'Delete this activity will also lead to deleting its following activities.
+            Are you sure?'}  %>
             <%if activity.status == 1%>
                 <%= check_box("done", "id", {:multiple => true}, activity.id, nil) %>
-            <% elsif  activity.status == 2%>
-                <%= check_box("undone", "id", {:multiple => true, :checked => true}, activity.id, nil ) %>
             <% end %>
-            <%= check_box("delete", "id", {:multiple => true}, activity.id, nil) %>
+
           </li>
         <% end %>
         <%= hidden_field_tag "horse_id", @horse.id %>
         <%= submit_tag("Update") %>
       <% end %>
       <%= link_to "Add Procedure", procedure_menu_path(:horse_id => @horse.id) %>
+      <%= link_to "Completed Activities", horse_activities_path(:horse_id => @horse.id) %>
   </tl>
 </tbody>

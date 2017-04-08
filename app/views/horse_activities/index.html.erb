@@ -1,0 +1,9 @@
+ <% @done_activities.each do |activity| %>
+          <li>
+            <%= @procedures.find(activity.procedure_id).name %>
+            <%= @activities.find(activity.activity_id).name %>
+            <%= activity.date.to_date %>
+            <%= activity.price %>
+            <%= activity.comment %>
+          </li>
+        <% end %>

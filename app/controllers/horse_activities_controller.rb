@@ -1,4 +1,10 @@
 class HorseActivitiesController < ApplicationController  
+    def index
+        @horse = Horse.find params[:horse_id]
+        @done_activities = HorseActivity.where(:horse_id => @horse.id, :status => 2).order("procedure_id ASC, date DESC")
+        @procedures = Procedure.all
+        @activities = Activity.all
+    end
     def procedure_menu
         @procedures = Procedure.all
         @horse = Horse.find params[:horse_id]
@@ -43,7 +49,19 @@ class HorseActivitiesController < ApplicationController
             @activity.destroy
         end
     end
-    flash[:notice] = "activities was successfully updated."
+    flash[:notice] = "activities were successfully updated."
     redirect_to horse_path(@horse)
    end
+    def destroy_from_horse
+        @horse = Horse.find params[:horse_id]
+        @activity = HorseActivity.find params[:activity_id]
+        @other_activities = HorseActivity.where(:procedure_id => @activity.procedure_id, :status => 1)
+        @activity.destroy
+        @other_activities.each do |other_activity|
+            other_activity.destroy
+        end    
+        flash[:notice] = "activities were successfully deleted."
+        redirect_to horse_path(@horse)
+        
+    end
 end
