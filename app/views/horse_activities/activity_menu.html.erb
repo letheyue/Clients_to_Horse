@@ -30,12 +30,12 @@
             </td>
           </tr>
             <%= hidden_field_tag "activity[id_#{@count}][activity_id]", activity.activity_id %>
-            <%= hidden_field_tag "activity[id_#{@count}][procedure_id]", @procedure.id %>
             <%= hidden_field_tag "activity[id_#{@count}][order]", activity.activity_order %>
           <% @count= @count+1 %>  
         <% end %>
         <%= hidden_field_tag "horse_id", @horse.id %>
         <%= hidden_field_tag "count", @count %>
+        <%= hidden_field_tag "procedure_id", @procedure.id %>
       </tbody>
       <%= submit_tag("Add Procedure") %>
     <% end %>

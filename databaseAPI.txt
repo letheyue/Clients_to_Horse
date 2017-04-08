@@ -31,6 +31,7 @@ Chain:
 Horse_Activity:
 	horse_id :integer
 	activity_id :integer
+	procedure_id :integer
 	date :datetime
 	price :integer /total price for this activity 
 	status :integer /1 => not done, 2 => done /

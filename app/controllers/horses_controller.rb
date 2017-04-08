@@ -63,5 +63,5 @@ class HorsesController < ApplicationController
     else
       @horses = Horse.all.order("created_at DESC")
     end
-  end
+  end    
 end

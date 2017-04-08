@@ -23,6 +23,8 @@
         <%= link_to "#{@owner.name}", owner_path(@owner) %>
       </li>   
     Activities
+    <tbody>
+      <%= form_tag('/update_activities') do %>
         <% @horse_activities.each do |activity| %>
           <li>
             <%= @activities.find(activity.activity_id).name %>
@@ -30,16 +32,16 @@
             <%= activity.price %>
             <%= activity.comment %>
             <%if activity.status == 1%>
-                <%= "not done" %>
-                <%= check_box_tag(:done) %>
-                <%= label_tag(:done, 1) %>
-            <% else %>
-                <%= "done" %>
+                <%= check_box("done", "id", {:multiple => true}, activity.id, nil) %>
+            <% elsif  activity.status == 2%>
+                <%= check_box("undone", "id", {:multiple => true, :checked => true}, activity.id, nil ) %>
             <% end %>
-            <%= button_to "Update", edit_horse_activity_path(activity), :method => :get %>
+            <%= check_box("delete", "id", {:multiple => true}, activity.id, nil) %>
           </li>
         <% end %>
-        <%= link_to "Add Procedure", procedure_menu_path(:horse_id => @horse.id) %>
-
+        <%= hidden_field_tag "horse_id", @horse.id %>
+        <%= submit_tag("Update") %>
+      <% end %>
+      <%= link_to "Add Procedure", procedure_menu_path(:horse_id => @horse.id) %>
   </tl>
 </tbody>

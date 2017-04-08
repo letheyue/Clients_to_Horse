@@ -14,28 +14,35 @@ class HorseActivitiesController < ApplicationController
         @stringex = ""
         @horse_id = params[:horse_id]
         params[:activity].each do |i|
-            @pid = params[:activity][i][:procedure_id]
+            @pid = params[:procedure_id]
             @aid = params[:activity][i][:activity_id]
             @oid = params[:activity][i][:order]
             @price = params[:activity][i][:price]
             @comment = params[:activity][i][:comment]
             @temp = "procedure #{@pid}, activity #{@aid}, order #{@oid}, price #{@price}"
             @stringex = @stringex + @temp
-            HorseActivity.create(horse_id: @horse_id, status: 1, activity_id: @aid, date: @start_date + @oid.to_i.days, price: @price, comment: @comment)
+            HorseActivity.create(horse_id: @horse_id, status: 1, activity_id: @aid, procedure_id: @pid, date: @start_date + @oid.to_i.days, price: @price, comment: @comment)
         end
 
         flash[:notice] = @stringex
-        redirect_to horses_path
+        redirect_to horse_path(Horse.find(@horse_id))
     end
-    def edit
-        @horse_activity = HorseActivity.find params[:id]
-        @horse = Horse.find(@horse_activity.horse_id)
-        if params[:done]==1
-            @horse_activity.update_attribute(:status, 2)
-            flash[:notice] = "activities was successfully updated."
-        else
-            flash[:notice] = "does not change "
+
+  def update_activities
+    @horse =  Horse.find params[:horse_id]
+    if !params[:done].blank? then
+      params[:done][:id].each do |id|
+        @activity = HorseActivity.find id.to_i
+        @activity.update_attribute(:status, 2)
+      end
+    end
+    if !params[:delete].blank? then
+        params[:delete][:id].each do |id|
+            @activity = HorseActivity.find id.to_i
+            @activity.destroy
         end
-        redirect_to horse_path(@horse)
     end
+    flash[:notice] = "activities was successfully updated."
+    redirect_to horse_path(@horse)
+   end
 end
