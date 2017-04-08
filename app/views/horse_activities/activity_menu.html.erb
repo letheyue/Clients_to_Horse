@@ -5,7 +5,8 @@
     <tr>
       <th>Name</th>
       <th>Order</th>
-      <th>Price</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
       <th>Comment</th>
     </tr>
       </thead>
@@ -20,7 +21,10 @@
               <%= activity.activity_order %>
             </td>
             <td>
-              <%= text_field_tag "activity[id_#{@count}][price]" %>
+              <%= text_field_tag "activity[id_#{@count}][price]", @activity_names.find(activity.activity_id).price %>
+            </td>
+            <td>
+              <%= text_field_tag "activity[id_#{@count}][quantity]", 1 %>
             </td>
             <td>
               <%= text_field_tag "activity[id_#{@count}][comment]" %>
