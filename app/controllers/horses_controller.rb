@@ -53,7 +53,7 @@ class HorsesController < ApplicationController
   def destroy
     @horse = Horse.find(params[:id])
     @horse.destroy
-    flash[:notice] = "Horse '#{@horse.name}' deleted."
+    flash[:notice] = "Horse #{@horse.name} deleted."
     redirect_to horses_path
   end
   

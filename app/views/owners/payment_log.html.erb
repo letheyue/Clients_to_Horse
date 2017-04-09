@@ -1,0 +1,8 @@
+<h1>Customer Payment History</h1>
+ <% @log.each do |log| %>
+          <li>
+            <%= log.created_at.to_date %>
+            <%= log.amount %>
+            <%= log.comment %>
+          </li>
+        <% end %>

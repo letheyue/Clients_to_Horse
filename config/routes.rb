@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   
   post '/make_payment', to:'owners#make_payment'
   
+  get 'payment_log', to:'owners#payment_log'
+  
   resources :horses do
     collection do
       get :search

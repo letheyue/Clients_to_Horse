@@ -88,4 +88,9 @@ class OwnersController < ApplicationController
     OwnerPayment.create(owner_id: @owner.id, amount: params[:amount].to_i, comment: params[:comment] )
     redirect_to owner_path(@owner)
   end
+  
+  def payment_log
+    @owner = Owner.find params[:id]
+    @log = OwnerPayment.where(:owner_id => @owner.id)
+  end
 end

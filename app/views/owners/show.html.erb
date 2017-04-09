@@ -33,7 +33,7 @@
     <% end %>
     Balance
         <li>
-            <%= @owner.balance %>
+            <%=link_to "#{@owner.balance}", payment_log_path(:id => @owner.id) %>
         </li>
     New Payment 
       <%= form_tag('/make_payment')  do %>
