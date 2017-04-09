@@ -7,7 +7,7 @@
           <%= procedure.name %>
         </td>        
         <td>
-          <%= link_to "Add", activity_menu_path(:procedure_id => procedure.id, :horse_id => @horse.id) %>
+          <%= link_to "Add", activity_menu_path(:procedure_id => procedure.id, :horse_id => @horse.id), class: "btn btn-default" %>
         </td>
         </li>
       </tr>
