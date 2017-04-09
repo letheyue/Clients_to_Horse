@@ -1,4 +1,4 @@
-<h2>Details about Client</h2>
+<h2>Details about Customer</h2>
 <tbody>
   <tl>
     Name
@@ -33,10 +33,18 @@
     <% end %>
     Balance
         <li>
-            <%= @sum %>
+            <%= @owner.balance %>
         </li>
+    New Payment 
+      <%= form_tag('/make_payment')  do %>
+      amount
+      <%= text_field_tag "amount"%>
+      comment
+      <%= text_field_tag "comment" %>
+      <%= submit_tag "Make Payment"%>
+      <%= hidden_field_tag "owner_id", @owner.id  %>
+      <%end%>
 
     <input type="button" value="send mail" onClick="window.open('http://www.gmail.com')">
-
   </tl>
 </tbody>

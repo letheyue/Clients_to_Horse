@@ -1,7 +1,7 @@
 class OwnersController < ApplicationController
   
   def owner_params
-    params.require(:owner).permit(:name, :email, :phone_number, :fax_number, :address, :comments)
+    params.require(:owner).permit(:name, :email, :phone_number, :fax_number, :address, :comments, :balance)
   end
   
   def show
@@ -36,6 +36,7 @@ class OwnersController < ApplicationController
 
   def create
     @owner = Owner.create!(owner_params)
+    @owner.update_attribute(:balance, 0)
     flash[:notice] = "#{@owner.name} was successfully created."
     redirect_to owners_path
 
@@ -76,6 +77,15 @@ class OwnersController < ApplicationController
   def mail
     @owner = Owner.find(params[:owner_id])
     UserMailer.test_mail(@owner).deliver
+    redirect_to owner_path(@owner)
+  end
+  
+  def make_payment
+    @owner = Owner.find(params[:owner_id])
+    @current_balance = @owner.balance
+    @paid = @current_balance.to_i - params[:amount].to_i 
+    @owner.update_attribute(:balance, @paid)
+    OwnerPayment.create(owner_id: @owner.id, amount: params[:amount].to_i, comment: params[:comment] )
     redirect_to owner_path(@owner)
   end
 end

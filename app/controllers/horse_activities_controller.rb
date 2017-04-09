@@ -37,10 +37,17 @@ class HorseActivitiesController < ApplicationController
 
   def update_activities
     @horse =  Horse.find params[:horse_id]
+    @owner = Owner.find @horse.owner_id
     if !params[:done].blank? then
       params[:done][:id].each do |id|
         @activity = HorseActivity.find id.to_i
+        @activityname = Activity.find(@activity.activity_id).name
+        @procedurename = Procedure.find(@activity.procedure_id).name
         @activity.update_attribute(:status, 2)
+        OwnerPayment.create(owner_id: @owner.id, amount: @activity.price, comment: "charged for #{@procedurename} , #{@activityname} completed")
+        @balance = @owner.balance
+        @new_balance = @balance.to_i + @activity.price.to_i
+        @owner.update_attribute(:balance, @new_balance)
       end
     end
     if !params[:delete].blank? then

@@ -1,4 +1,4 @@
-Ｈorse:
+Horse:
 	name :string
 	age :string
 	sex :string
@@ -12,7 +12,11 @@ Owner:
 	fax_number :text
 	email :text
 	comments :text
-	balance :integer
+	
+Owner_Payment:
+	owner_id :integer
+	amount :integer
+	comment :text
 	
 Activity:
 	name :text

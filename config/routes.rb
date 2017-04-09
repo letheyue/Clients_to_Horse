@@ -34,7 +34,9 @@ Rails.application.routes.draw do
   post '/update_activities', to:'horse_activities#update_activities'
   
   get '/destroy_from_horse', to:'horse_activities#destroy_from_horse'
-
+  
+  post '/make_payment', to:'owners#make_payment'
+  
   resources :horses do
     collection do
       get :search

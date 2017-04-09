@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408202644) do
+ActiveRecord::Schema.define(version: 20170409002327) do
 
   create_table "activities", force: :cascade do |t|
     t.text     "name"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 20170408202644) do
     t.index ["owner_id"], name: "index_horses_on_owner_id"
   end
 
+  create_table "owner_payments", force: :cascade do |t|
+    t.integer  "owner_id"
+    t.integer  "amount"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_owner_payments_on_owner_id"
+  end
+
   create_table "owners", force: :cascade do |t|
     t.string   "name"
     t.text     "address"
@@ -66,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170408202644) do
     t.text     "comments"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "balance"
   end
 
   create_table "photos", force: :cascade do |t|
