@@ -4,13 +4,12 @@
 table#horse_activities {
   margin: 10px;
   border-collapse: collapse;
-  width: 100%;
-  border-bottom: 2px solid black;
+  width: 80%;
 }
 table#horse_activities th {
   border: 2px solid white;
   font-weight: bold;
-  background-color: wheat;
+  background-color: white;
 }
 table#horse_activities th, table#horse_activities td {
   padding: 4px;
@@ -29,5 +28,7 @@ form label {
   line-height: 25px;
   font-weight: bold;
   color: black;
-
+}
+#horse_activities_text{
+  width: 100px;
 }
