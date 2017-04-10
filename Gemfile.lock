@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin.git
-  revision: b362775aa85df4ca542c136be79e1ac1240167af
+  revision: 5c0a82b437c3b60a7dd3798b79a258bf3ce2d594
   specs:
     activeadmin (1.0.0.pre5)
       arbre (>= 1.1.1)
@@ -12,7 +12,7 @@ GIT
       jquery-rails
       jquery-ui-rails
       kaminari (>= 0.15, < 2.0)
-      railties (>= 4.0, < 5.1)
+      railties (>= 4.2, < 5.1)
       ransack (~> 1.3)
       sass-rails
       sprockets (< 4.1)
@@ -84,6 +84,8 @@ GEM
       thor (~> 0.19)
     builder (3.2.3)
     byebug (9.0.0)
+    calendar_helper (0.2.3)
+      open4
     capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
@@ -205,6 +207,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    open4 (1.3.4)
     pg (0.18.4)
     polyamorous (1.3.1)
       activerecord (>= 3.0)
@@ -311,6 +314,7 @@ DEPENDENCIES
   bcrypt (= 3.1.11)
   bootstrap-sass (= 3.3.6)
   byebug (= 9.0.0)
+  calendar_helper (= 0.2.3)
   carrierwave
   coffee-rails (= 4.2.1)
   cucumber-rails

@@ -40,6 +40,8 @@ gem 'jbuilder', '2.4.1'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'calendar_helper', '0.2.3'
+
 group :development, :test do
   gem 'sqlite3', '1.3.12'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
