@@ -40,6 +40,9 @@
         <%= hidden_field_tag "horse_id", @horse.id %>
         <%= hidden_field_tag "procedure_id", @procedure.id %>
       </tbody>
-    <%= button_to "Add Procedure", horse_activities_path() %>
   </table>
+  <div>
+    <div style="display: inline-block">
+      <%= button_to "Add Procedure", horse_activities_path(), class:"btn btn-default" %>
+  </div>
 <% end %>

@@ -23,7 +23,6 @@
         <%= link_to "#{@owner.name}", owner_path(@owner) %>
       </li>   
     Activities
-    <tbody>
       <%= form_tag('/update_activities') do %>
         <% @horse_activities.each do |activity| %>
           <li>
@@ -37,15 +36,15 @@
             <%if activity.status == 1%>
                 <%= check_box("done", "id", {:multiple => true}, activity.id, nil) %>
             <% end %>
-
           </li>
         <% end %>
         <%= hidden_field_tag "horse_id", @horse.id %>
-        <%= submit_tag("Update", class: "btn btn-default") %>
+        <div>
+          <div style="display: inline-block">
+            <%= submit_tag("Update", class: "btn btn-default") %>
+        </div>  
       <% end %>
+    <%= link_to "Add Procedure", procedure_menu_path(:horse_id => @horse.id), class: "btn btn-default" %>
+    <%= link_to "Completed Activities", horse_activities_path(:horse_id => @horse.id) %>
   </tl>
-  <%= link_to "Add Procedure", procedure_menu_path(:horse_id => @horse.id), class: "btn btn-default" %>
-  <li>
-      <%= link_to "Completed Activities", horse_activities_path(:horse_id => @horse.id) %>
-  </li>
 </tbody>
