@@ -1,6 +1,6 @@
 class ChainsController < ApplicationController
   def chain_params
-    params.require(:chain).permit(:activity_order, :procedure_id, :activity_id)
+    params.require(:chain).permit(:activity_order, :procedure_id, :activity_id, :comment)
   end
 
   def index
@@ -11,6 +11,7 @@ class ChainsController < ApplicationController
 
   def edit
     @procedure = Procedure.find params[:id]
+    @activities = Chain.where(:procedure_id => @procedure.id)
     @chain = Chain.find params[:id]
     @chains = Chain.all
   end
@@ -30,10 +31,13 @@ class ChainsController < ApplicationController
   end
 
   def create
+    @procedure = Procedure.find params[:procedure_id]
+    @chain = Chain.find params[:chain_id]
     @chain = Chain.create!(chain_params)
     # flash[:notice] = "#{Procedure.find(@chain.procedure_id).name} was successfully created."
-    redirect_to procedures_path
+    redirect_to edit_chain_path(@procedure)
   end
+
 
   def show
     id = params[:id] # retrieve chain ID from URI route

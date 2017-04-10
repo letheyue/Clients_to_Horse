@@ -1,35 +1,57 @@
 <html>
 <h1>Edit Chain</h1>
-<body>
-
+<tl>
 <%= form_tag procedure_path(@procedure) do %>
     <%= label :procedure, :name, "Procedure's name" %>
     <%= @procedure.name %>
+    <%= @procedure.id %>
 
 
 <% end %>
 
-<%= form_tag chain_path(@procedure), :method => :put do  %>
+<%= form_tag chains_path(:procedure_id => @procedure.id, :chain_id => @chain.id)do  %>
 
-
-    <%= label :chain, :order, 'Order' %>
-    <%= text_field :order, 'order' %>
-
-
-    <%= label :chain, :procedure_id, 'Procedure' %>
-    <%= @procedure.id %>
 
     <%= label :chain, :activity_id, 'Activity' %>
     <%= collection_select(:chain, :activity_id, Activity.all, :id, :name) %>
+
+    <%= label :chain, :procedure_id, 'Procedure' %>
+    <%= collection_select(:chain, :procedure_id, Procedure.all, :id, :name) %>
+
+    <%= label :chain, :activity_order, 'Order' %>
+      <%= text_field :chain, 'activity_order' %>
+
+    <%= label :chain, :comment, 'Comment' %>
+    <%= text_field :chain, 'comment' %>
 
 
     <%= submit_tag 'Add' %>
 <% end %>
 
-Chain's activity_id
-<li>
-  <%= @chain.activity_id %>
-</li>
+<table id="chains">
+  <thead>
+    <tr>
+      <th>Activity name</th>
+      <th>Activity order</th>
+      <th>comment</th>
+    </tr>
+  </thead>
+  <tbody>
 
-</body>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td>
+          <%= activity.activity_id%>
+        </td>
+        <td>
+          <%= activity.activity_order %>
+        </td>
+        <td>
+          <%= activity.comment %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</tl>
 </html>
