@@ -91,6 +91,6 @@ class OwnersController < ApplicationController
   
   def payment_log
     @owner = Owner.find params[:id]
-    @log = OwnerPayment.where(:owner_id => @owner.id)
+    @log = OwnerPayment.where(:owner_id => @owner.id).order("created_at DESC")
   end
 end

@@ -12,6 +12,7 @@ class ChainsController < ApplicationController
   def edit
     @procedure = Procedure.find params[:id]
     @activities = Chain.where(:procedure_id => @procedure.id)
+    @activity_names = Activity.all
     @chain = Chain.find params[:id]
     @chains = Chain.all
   end
@@ -34,6 +35,7 @@ class ChainsController < ApplicationController
     @procedure = Procedure.find params[:procedure_id]
     @chain = Chain.find params[:chain_id]
     @chain = Chain.create!(chain_params)
+    @chain.update_attribute(:procedure_id, params[:procedure_id].to_i)
     flash[:notice] = "#{Activity.find(@chain.activity_id).name} was successfully created."
     redirect_to edit_chain_path(@procedure)
   end
