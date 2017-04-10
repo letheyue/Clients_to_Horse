@@ -1,22 +1,22 @@
 // Place all the styles related to the owners controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-table#horses {
+table#owners {
   margin: 10px;
   border-collapse: collapse;
   width: 100%;
   border-bottom: 2px solid black;
 }
-table#horses th {
+table#owners th {
   border: 2px solid white;
   font-weight: bold;
   background-color: wheat;
 }
-table#horses th, table#horses td {
+table#owners th, table#owners td {
   padding: 4px;
   text-align: left;
 }
-table#horses th.hilite{
+table#owners th.hilite{
   background-color: yellow;
 }
 #notice #warning {

@@ -21,28 +21,58 @@
     Owner
       <li>
         <%= link_to "#{@owner.name}", owner_path(@owner) %>
-      </li>   
+      </li>
     Activities
+
+    <table id="horse_activities">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Procedure Name</th>
+        <th>Activity Name</th>
+        <th>Price</th>
+        <th>Comment</th>
+        <th>Delete</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+
     <tbody>
       <%= form_tag('/update_activities') do %>
         <% @horse_activities.each do |activity| %>
-          <li>
-            <%= activity.date.to_date %>
-            <%= @procedures.find(activity.procedure_id).name %>
-            <%= @activities.find(activity.activity_id).name %>
-            <%= activity.price %>
-            <%= activity.comment %>
-            <%= link_to "delete", destroy_from_horse_path( :horse_id => @horse.id, :activity_id => activity.id), :method => :get, :data =>{:confirm => 'Delete this activity will also lead to deleting its following activities.
+          <tr>
+            <td>
+              <%= activity.date.to_date %>
+            </td>
+            <td>
+              <%= @procedures.find(activity.procedure_id).name %>
+            </td>
+            <td>
+              <%= @activities.find(activity.activity_id).name %>
+            </td>
+            <td>
+              <%= activity.price %>
+            </td>
+            <td>
+              <%= activity.comment %>
+            </td>
+            <td>
+              <%= link_to "delete", destroy_from_horse_path( :horse_id => @horse.id, :activity_id => activity.id), :method => :get, :data =>{:confirm => 'Delete this activity will also lead to deleting its following activities.
             Are you sure?'},class: "btn btn-default"%>
-            <%if activity.status == 1%>
+            </td>
+            <td>
+              <%if activity.status == 1%>
                 <%= check_box("done", "id", {:multiple => true}, activity.id, nil) %>
-            <% end %>
-
-          </li>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
         <%= hidden_field_tag "horse_id", @horse.id %>
         <%= submit_tag("Update", class: "btn btn-default") %>
       <% end %>
+    </tbody>
+    </table>
   </tl>
   <%= link_to "Add Procedure", procedure_menu_path(:horse_id => @horse.id), class: "btn btn-default" %>
   <li>

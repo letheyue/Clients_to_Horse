@@ -1,8 +1,25 @@
 <h1>Customer Payment History</h1>
- <% @log.each do |log| %>
-          <li>
-            <%= log.created_at.to_date %>
-            <%= log.amount %>
-            <%= log.comment %>
-          </li>
-        <% end %>
+<table id="owners">
+  <thead>
+  <tr>
+    <th>Payment Date</th>
+    <th>Payment amount</th>
+    <th>Comment</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @log.each do |log| %>
+      <tr>
+        <td>
+          <%= log.created_at.to_date %>
+        </td>
+        <td>
+          <%= log.amount %>
+        </td>
+        <td>
+          <%= log.comment %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
