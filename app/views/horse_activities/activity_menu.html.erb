@@ -1,5 +1,5 @@
-<table>
-  <%= form_tag(controller: "horse_activities", method: "get",) do %>
+<%= form_tag(controller: "horse_activities", method: "get",) do %>
+  <table>
       <%= select_date %>
       <thead>
     <tr>
@@ -38,9 +38,8 @@
           <% @count= @count+1 %>  
         <% end %>
         <%= hidden_field_tag "horse_id", @horse.id %>
-        <%= hidden_field_tag "count", @count %>
         <%= hidden_field_tag "procedure_id", @procedure.id %>
       </tbody>
-      <%= submit_tag("Add Procedure") %>
-    <% end %>
-</table>
+    <%= button_to "Add Procedure", horse_activities_path() %>
+  </table>
+<% end %>

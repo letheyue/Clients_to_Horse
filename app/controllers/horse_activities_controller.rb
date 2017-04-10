@@ -21,7 +21,6 @@ class HorseActivitiesController < ApplicationController
     
     def create
         @start_date = Date.civil(params[:date][:year].to_i, params[:date][:month].to_i, params[:date][:day].to_i)
-        @stringex = ""
         @horse_id = params[:horse_id]
         params[:activity].each do |i|
             @pid = params[:procedure_id]
@@ -30,11 +29,8 @@ class HorseActivitiesController < ApplicationController
             @price = params[:activity][i][:price]
             @quantity = params[:activity][i][:quantity]
             @comment = params[:activity][i][:comment]
-            @temp = "procedure #{@pid}, activity #{@aid}, order #{@oid}, price #{@price}"
-            @stringex = @stringex + @temp
             HorseActivity.create(horse_id: @horse_id, status: 1, activity_id: @aid, procedure_id: @pid, date: @start_date + @oid.to_i.days, price: @price.to_i*@quantity.to_i, comment: @comment)
         end
-        flash[:notice] = @stringex
         redirect_to horse_path(Horse.find(@horse_id))
     end
 
