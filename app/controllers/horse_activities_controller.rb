@@ -15,7 +15,7 @@ class HorseActivitiesController < ApplicationController
     def activity_menu
         @procedure = Procedure.find params[:procedure_id]
         @horse = Horse.find params[:horse_id]
-        @activities = Chain.where(:procedure_id => @procedure.id)
+        @activities = Chain.where(:procedure_id => @procedure.id).order('activity_order')
         @activity_names = Activity.all
     end
     

@@ -22,7 +22,7 @@
           <%= button_to "Edit", edit_chain_path(procedure), :method => :get %>
         </td>
         <td>
-          <%= button_to "Delete", procedure_path(procedure), :method => :delete, :data =>{:confirm => 'Warning! Deleting customer may also remove customer\'s horses from database Sure to delete?'} %>
+          <%= button_to "Delete", procedure_path(procedure), :method => :delete, :data =>{:confirm => 'Warning! There may be horses still under this procedure, and would cause errors if deleted.Are you sure?'} %>
         </td>
       </tr>
   <% end %>

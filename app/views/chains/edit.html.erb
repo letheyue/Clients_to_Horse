@@ -42,6 +42,9 @@
         <td>
           <%= activity.comment %>
         </td>
+        <td>
+          <%= link_to "delete", chain_path(activity, :procedure_id => @procedure.id), :method => :delete, class: "btn btn-default" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

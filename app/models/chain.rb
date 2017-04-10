@@ -1,4 +1,4 @@
 class Chain < ApplicationRecord
   belongs_to :activity
-  belongs_to :procedures
+  belongs_to :procedure
 end

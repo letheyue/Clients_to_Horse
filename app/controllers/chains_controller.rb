@@ -11,7 +11,7 @@ class ChainsController < ApplicationController
 
   def edit
     @procedure = Procedure.find params[:id]
-    @activities = Chain.where(:procedure_id => @procedure.id)
+    @activities = Chain.where(:procedure_id => @procedure.id).order('activity_order')
     @activity_names = Activity.all
     @chain = Chain.find params[:id]
     @chains = Chain.all
@@ -40,6 +40,12 @@ class ChainsController < ApplicationController
     redirect_to edit_chain_path(@procedure)
   end
 
+  def destroy
+    @procedure = Procedure.find params[:procedure_id]
+    @chain = Chain.find(params[:id])
+    @chain.destroy
+    redirect_to edit_chain_path(@procedure)
+  end
 
   def show
     id = params[:id] # retrieve chain ID from URI route
