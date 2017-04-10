@@ -1,22 +1,39 @@
-<h2>Details about Chain</h2>
-<tbody>
+<html>
+<h1>Details about Chain</h1>
 <tl>
-  Chain's order
-    <li>
-    <%= @chain.activity_order %>
-  </li>
-  Chain's procedure_id
-  <li>
-    <%= @procedure.id %>
-  </li>
-  Chain's procedure's name
-  <li>
-    <%= @procedure.name %>
-  </li>
-  Chain's activity_id
-  <li>
-    <%= @chain.activity_id %>
-  </li>
 
+  <table id="procedures">
+    <thead>
+    <tr>
+      <th>Chain's procedure_id</th>
+      <th>Chain's procedure's name</th>
+      <th>Activity name</th>
+      <th>Activity order</th>
+      <th>comment</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% @activities.each do |activity| %>
+        <tr>
+          <td>
+            <%= @procedure.id %>
+          </td>
+          <td>
+            <%= @procedure.name %>
+          </td>
+          <td>
+            <%= activity.activity_id%>
+          </td>
+          <td>
+            <%= activity.activity_order %>
+          </td>
+          <td>
+            <%= activity.comment %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
 </tl>
-</tbody>
+</html>

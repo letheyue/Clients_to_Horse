@@ -19,16 +19,17 @@ class ProceduresController < ApplicationController
   end
 
   def destroy
-    @procedure = procedure.find(params[:id])
+    @procedure = Procedure.find(params[:id])
     @procedure.destroy
     flash[:notice] = "Procedure '#{@procedure.name}' deleted."
     redirect_to procedures_path
   end
 
   def show
-    id = params[:id] # retrieve chain ID from URI route
-    @procedure = Procedure.find(id) # look up horse by unique ID
-    @chain = Chain.find(id)
+    @procedure = Procedure.find params[:id]
+    @activities = Chain.where(:procedure_id => @procedure.id)
+    @chain = Chain.find params[:id]
+    @chains = Chain.all
 
   end
 end

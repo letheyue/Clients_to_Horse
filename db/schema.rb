@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170409002327) do
     t.integer  "procedure_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.integer  "activity_order"
+    t.string   "activity_order"
     t.text     "comment"
     t.index ["activity_id"], name: "index_chains_on_activity_id"
     t.index ["procedure_id"], name: "index_chains_on_procedure_id"
