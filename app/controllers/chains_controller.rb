@@ -34,7 +34,7 @@ class ChainsController < ApplicationController
     @procedure = Procedure.find params[:procedure_id]
     @chain = Chain.find params[:chain_id]
     @chain = Chain.create!(chain_params)
-    # flash[:notice] = "#{Procedure.find(@chain.procedure_id).name} was successfully created."
+    flash[:notice] = "#{Activity.find(@chain.activity_id).name} was successfully created."
     redirect_to edit_chain_path(@procedure)
   end
 
