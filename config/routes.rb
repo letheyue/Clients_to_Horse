@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'calendar/show'
+  get 'calendars/show'
 
   get 'sessions/new'
 
@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
   resources :users, :horses, :owners, :horse_activities, :chains, :procedures
 
-  resource :calendar, only: [:show], controller: :calendar
+  resource :calendars, only: [:show], controller: :calendars
   
   
 

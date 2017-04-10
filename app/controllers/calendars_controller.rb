@@ -1,4 +1,4 @@
-class CalendarController < ApplicationController
+class CalendarsController < ApplicationController
 
   def show
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
