@@ -22,7 +22,7 @@
       <li>
         <%= link_to "#{@owner.name}", owner_path(@owner) %>
       </li>
-    Activities
+    List to do
 
     <table id="horse_activities">
       <thead>
@@ -69,7 +69,11 @@
           </tr>
         <% end %>
         <%= hidden_field_tag "horse_id", @horse.id %>
-        <%= submit_tag("Update", class: "btn btn-default") %>
+        <div>
+          <div style="width: 120px">
+          <%= submit_tag("Update", class: "btn btn-default") %>
+          </div>
+        </div>
       <% end %>
     </tbody>
     </table>
