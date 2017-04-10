@@ -45,5 +45,7 @@
       <% end %>
   </tl>
   <%= link_to "Add Procedure", procedure_menu_path(:horse_id => @horse.id), class: "btn btn-default" %>
-  <%= link_to "Completed Activities", horse_activities_path(:horse_id => @horse.id) %>
+  <li>
+      <%= link_to "Completed Activities", horse_activities_path(:horse_id => @horse.id) %>
+  </li>
 </tbody>

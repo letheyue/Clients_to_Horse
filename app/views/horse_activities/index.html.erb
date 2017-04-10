@@ -1,9 +1,38 @@
- <% @done_activities.each do |activity| %>
-          <li>
-            <%= @procedures.find(activity.procedure_id).name %>
-            <%= @activities.find(activity.activity_id).name %>
-            <%= activity.date.to_date %>
-            <%= activity.price %>
-            <%= activity.comment %>
-          </li>
-        <% end %>
+<html>
+ <h1>Completed activities</h1>
+ <tl>
+   <table id="horse_activities">
+    <thead>
+    <tr>
+      <th>Procedure name</th>
+      <th>Activity name</th>
+      <th>Date</th>
+      <th>Price</th>
+      <th>Comment</th>
+    </tr>
+    </thead>
+     <tbody>
+
+      <% @done_activities.each do |activity| %>
+       <tr>
+         <td>
+           <%= @procedures.find(activity.procedure_id).name %>
+         </td>
+         <td>
+           <%= @activities.find(activity.activity_id).name %>
+         </td>
+         <td>
+           <%= activity.date.to_date %>
+         </td>
+         <td>
+           <%= activity.price %>
+         </td>
+         <td>
+           <%= activity.comment %>
+         </td>
+       </tr>
+      <% end %>
+     </tbody>
+   </table>
+ </tl>
+ </html>
