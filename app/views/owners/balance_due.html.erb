@@ -1,0 +1,25 @@
+<h1>Customer Payment History</h1>
+<table id="owners">
+  <thead>
+  <tr>
+    <th>Bill generation Date</th>
+    <th>Bill amount</th>
+    <th>Comment</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @balance_due.each do |due| %>
+      <tr>
+        <td>
+          <%= due.created_at.to_date %>
+        </td>
+        <td>
+          <%= due.amount %>
+        </td>
+        <td>
+          <%= due.comment %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

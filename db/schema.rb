@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409002327) do
+ActiveRecord::Schema.define(version: 20170411061134) do
 
   create_table "activities", force: :cascade do |t|
     t.text     "name"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 20170409002327) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "comment"
+  end
+
+  create_table "balance_dues", force: :cascade do |t|
+    t.integer  "owner_id"
+    t.integer  "amount"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_balance_dues_on_owner_id"
   end
 
   create_table "chains", force: :cascade do |t|

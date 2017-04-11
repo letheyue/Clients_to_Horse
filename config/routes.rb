@@ -40,7 +40,10 @@ Rails.application.routes.draw do
   get 'payment_log', to:'owners#payment_log'
 
   get '/everyday_activities', to:'calendars#everyday_activities'
-  
+
+  get 'balance_due', to:'owners#balance_due'
+
+  get '/destroy_balance_due', to:'owners#destroy_balance_due'
   resources :horses do
     collection do
       get :search
