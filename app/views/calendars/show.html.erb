@@ -14,7 +14,57 @@
 <div class="row">
   <div class="col-md-12">
     <%= calendar @date do |date| %>
-        <%= link_to "#{date.day}", everyday_activities_path(:select_date => date, :date => date), method: "get"%>
+        <%= link_to "#{date.day}", calendars_show_path(:select_date => date, :date => date), method: "get"%>
     <% end %>
   </div>
+</div>
+
+<div>
+  <h2><%= "#{@date.year}-#{@date.month}-#{@date.day}"%></h2>
+  <%if !@activities.blank? then%>
+    <table id="calendars">
+      <thead>
+      <tr>
+        <th>Horse name</th>
+        <th>Procedure name</th>
+        <th>Activity name</th>
+        <th>Comment</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+  
+        <%= form_tag('/update_activities') do %>
+            <% @activities.each do |activity|%>
+                <tr>
+                  <td>
+                    <%= @horses.find(activity.horse_id).name %>
+                  </td>
+                  <td>
+                    <%= @procedures.find(activity.procedure_id).name %>
+                  </td>
+                  <td>
+                    <%= @activity_names.find(activity.activity_id).name %>
+                  </td>
+                  <td>
+                    <%= activity.comment%>
+                  </td>
+                  <td>
+                    <%if activity.status == 1%>
+                      <%= check_box("done", "id", {:multiple => true}, activity.id, nil) %>
+                      <%= link_to "delete", destroy_from_horse_path( :horse_id => @horses.find(activity.horse_id).id, :activity_id => activity.id, :date => @date), :method => :get, :data =>{:confirm => 'Delete this activity will also lead to deleting its following activities.Are you sure?'},class: "btn btn-default"%>
+                    <%else%>
+                      done
+                    <% end %>
+                  </td>
+                </tr>
+                   <% end %>
+            <%= hidden_field_tag "date", @date %>
+            <%= submit_tag("Update", class: "btn btn-default") %>
+          <% end %>
+        </tbody>
+      </table>
+  <%else%>
+    <h2>Nothing to do</h2>
+  <%end%>
 </div>

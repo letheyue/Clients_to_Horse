@@ -1,25 +1,25 @@
-<h1>Customer Payment History</h1>
-<table id="owners">
-  <thead>
-  <tr>
-    <th>Payment Date</th>
-    <th>Payment amount</th>
-    <th>Comment</th>
-  </tr>
-  </thead>
-  <tbody>
-    <% @log.each do |log| %>
-      <tr>
-        <td>
-          <%= log.created_at.to_date %>
-        </td>
-        <td>
-          <%= log.amount %>
-        </td>
-        <td>
-          <%= log.comment %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h1>Billing History</h1>
+<div>
+    <%= link_to "All History", payment_log_path(:id => @owner.id, :type => 0), class:"btn btn-default"%>
+    <%= link_to "Charged Activities", payment_log_path(:id => @owner.id, :type => 1), class:"btn btn-default"%>
+    <%= link_to "Customer Payments", payment_log_path(:id => @owner.id, :type => 2), class:"btn btn-default"%>
+</div> 
+<table id="horse_activities">
+     <thead>
+         <tr>
+             <th>Date</th>
+             <th>Amount</th>
+             <th>Balance</th>
+        </tr>     
+    </thead>
+    <tbody>
+        <% @log.each do |log| %>
+            <tr>
+                <td><%= log.created_at.to_date %></td>
+                <td><%= log.amount %></td>
+                <td><%= log.balance %></td>
+                <td><%= log.comment %></td>
+            </tr>
+        <% end %>
+    </tbody>    
+</table>        

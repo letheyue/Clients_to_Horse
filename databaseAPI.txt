@@ -17,6 +17,8 @@ Owner_Payment:
 	owner_id :integer
 	amount :integer
 	comment :text
+	balance :integer
+	billing_type :integer // 1 for charged activities, 2 for customer payments
 	
 Activity:
 	name :text

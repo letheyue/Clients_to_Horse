@@ -43,9 +43,9 @@ class HorseActivitiesController < ApplicationController
                 @activityname = Activity.find(@activity.activity_id).name
                 @procedurename = Procedure.find(@activity.procedure_id).name
                 @activity.update_attribute(:status, 2)
-                BalanceDue.create(owner_id: @owner.id, amount: @activity.price, comment: "charged for #{@horse.name} : #{@procedurename} , #{@activityname}  completed")
                 @balance = @owner.balance
                 @new_balance = @balance.to_i + @activity.price.to_i
+                OwnerPayment.create(owner_id: @owner.id, amount: @activity.price,balance: @new_balance, billing_type: 1,  comment: "charged for #{@horse.name} : #{@procedurename} , #{@activityname}  completed")
                 @owner.update_attribute(:balance, @new_balance)
             end
         end

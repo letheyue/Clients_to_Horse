@@ -85,13 +85,20 @@ class OwnersController < ApplicationController
     @current_balance = @owner.balance
     @paid = @current_balance.to_i - params[:amount].to_i 
     @owner.update_attribute(:balance, @paid)
-    OwnerPayment.create(owner_id: @owner.id, amount: params[:amount].to_i, comment: params[:comment] )
+    OwnerPayment.create(owner_id: @owner.id, amount: -params[:amount].to_i, balance: @paid, billing_type: 2, comment: params[:comment] )
     redirect_to owner_path(@owner)
   end
   
   def payment_log
     @owner = Owner.find params[:id]
-    @log = OwnerPayment.where(:owner_id => @owner.id).order("created_at DESC")
+    if params[:type].to_i == 1
+      @log = OwnerPayment.where(:owner_id => @owner.id, :billing_type => 1)
+    elsif params[:type].to_i == 2
+      @log = OwnerPayment.where(:owner_id => @owner.id, :billing_type => 2)
+    else
+      @log = OwnerPayment.where(:owner_id => @owner.id)
+    end
+    @log= @log.order("created_at DESC")
   end
 
   def balance_due

@@ -33,13 +33,12 @@
     <% end %>
     Balance
     <li>
-      <%= "You should pay #{@owner.balance} dollar"%>
-    </li>
-    <li>
-      <%=link_to "Total bill you should pay", balance_due_path(:id => @owner.id) %>
-    </li>
-    <li>
-      <%=link_to "Payment history", payment_log_path(:id => @owner.id) %>
+      <div>
+        <%= "#{@owner.balance} USD"%>
+        <div>
+          <%=link_to "Billing history", payment_log_path(:id => @owner.id) %>
+        </div>
+      <div>
     </li>
     <div>
       New Payment 
@@ -48,7 +47,7 @@
             <%= text_field_tag 'amount', nil, :style => "width:100px" %>
           comment
             <%= text_field_tag 'comment', nil,  :style => "width:200px" %>
-            <%= submit_tag "Make Payment",  :style => "width:150px; float left", :class => "btn btn-default"%>
+            <%= submit_tag "Make a payment",  :style => "width:150px; float left", :class => "btn btn-default"%>
             <%= hidden_field_tag "owner_id", @owner.id  %>
         <%end%>
       <input type="button" value="send mail" onClick="window.open('http://www.gmail.com')" style = "width:150px; float:left">

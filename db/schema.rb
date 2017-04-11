@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411061134) do
+ActiveRecord::Schema.define(version: 20170411210316) do
 
   create_table "activities", force: :cascade do |t|
     t.text     "name"
@@ -70,8 +70,10 @@ ActiveRecord::Schema.define(version: 20170411061134) do
     t.integer  "owner_id"
     t.integer  "amount"
     t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "balance"
+    t.integer  "billing_type"
     t.index ["owner_id"], name: "index_owner_payments_on_owner_id"
   end
 
