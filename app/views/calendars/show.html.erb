@@ -14,7 +14,30 @@
 <div class="row">
   <div class="col-md-12">
     <%= calendar @date do |date| %>
-        <%= link_to "#{date.day}", "#", method: "get"%>
+        <%= link_to "#{date.day}", calendars_show_path(:select_date => date, :date => date), method: "get"%>
     <% end %>
   </div>
+</div>
+<div>
+  <%= form_tag('/update_activities') do %>
+    <%if !@activities.blank? then%>
+      <% @activities.each do |activity|%>
+        <div>
+          <%= @horses.find(activity.horse_id).name %>
+          <%= @procedures.find(activity.procedure_id).name %>
+          <%= @activity_names.find(activity.activity_id).name %>
+          <%= activity.comment%>
+          <%if activity.status == 1%>
+              <%= check_box("done", "id", {:multiple => true}, activity.id, nil) %>
+            <%= link_to "delete", destroy_from_horse_path( :horse_id => @horses.find(activity.horse_id).id, :activity_id => activity.id, :date => @date), :method => :get, :data =>{:confirm => 'Delete this activity will also lead to deleting its following activities.
+              Are you sure?'},class: "btn btn-default"%>
+          <% end %>
+        </div>
+      <% end %>
+    <%else%>
+        Nothing to do
+    <% end %>
+    <%= hidden_field_tag "date", @date %>
+    <%= submit_tag("Update", class: "btn btn-default") %>
+  <%end%>
 </div>

@@ -35,11 +35,11 @@ class HorseActivitiesController < ApplicationController
     end
 
     def update_activities
-        @horse =  Horse.find params[:horse_id]
-        @owner = Owner.find @horse.owner_id
         if !params[:done].blank? then
             params[:done][:id].each do |id|
                 @activity = HorseActivity.find id.to_i
+                @horse =  Horse.find (@activity.horse_id)
+                @owner = Owner.find @horse.owner_id
                 @activityname = Activity.find(@activity.activity_id).name
                 @procedurename = Procedure.find(@activity.procedure_id).name
                 @activity.update_attribute(:status, 2)
@@ -50,7 +50,11 @@ class HorseActivitiesController < ApplicationController
             end
         end
         flash[:notice] = "activities were successfully updated."
-        redirect_to horse_path(@horse)
+        if params[:date].blank?
+            redirect_to horse_path(@horse)
+        else
+            redirect_to calendars_show_path(:select_date => params[:date].to_date)
+        end
     end
     
     def destroy_from_horse
@@ -62,6 +66,10 @@ class HorseActivitiesController < ApplicationController
             other_activity.destroy
         end    
         flash[:notice] = "activities were successfully deleted."
-        redirect_to horse_path(@horse)
+        if params[:date].blank?
+            redirect_to horse_path(@horse)
+        else
+            redirect_to calendars_show_path(:select_date => params[:date].to_date)
+        end
     end
 end
