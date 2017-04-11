@@ -1,0 +1,33 @@
+<h1>Activities</h1>
+<table id="activities">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Comment</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @activities.each do |activity| %>
+      <tr>
+        <td>
+          <%= activity.name %>
+        </td>
+        <td>
+          <%= activity.price %>
+        </td>
+        <td>
+          <%= activity.comment %>
+        </td>
+        <td>
+          <%= button_to "Edit #{activity.name}", edit_activity_path(activity), :method => :get %>
+        </td>
+        <td>
+          <%= button_to "Delete #{activity.name}", activity_path(activity), :method => :delete,:data =>{:confirm => 'Are you sure?'} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= button_to 'New Activity', new_activity_path, :method => :get %>

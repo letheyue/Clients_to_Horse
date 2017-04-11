@@ -1,0 +1,24 @@
+<html>
+<h1>Add Activity</h1>
+<body>
+
+<%= form_tag activities_path do %>
+
+
+    <%= label :activity, :name, 'Name' %>
+    <%= text_field :activity, 'name' %>
+
+    <%= label :activity, :price, 'Price' %>
+    <%= text_field :activity, 'price' %>
+
+    <%= label :activity, :comment, 'Comment' %>
+    <%= text_field :activity, 'comment' %>
+
+
+    <%= submit_tag 'Add' %>
+
+<% end %>
+
+
+</body>
+</html>

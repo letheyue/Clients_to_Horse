@@ -1,0 +1,12 @@
+<% # edit.html.haml using partial %>
+<h1>Edit Activity</h1>
+<%= form_tag activity_path(@activity), :method => :put do %>
+    <%= label :activity, :name, 'Name' %>
+    <%= text_field :activity, 'name' %>
+    <%= label :activity, :age, 'Price' %>
+    <%= text_field :activity, 'price' %>
+    <%= label :activity, :sex, 'Comment' %>
+    <%= text_field :activity, 'comment' %>
+
+    <%= submit_tag 'Update Activity Info' %>
+<% end %>
