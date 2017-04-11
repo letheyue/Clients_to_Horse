@@ -99,10 +99,4 @@ class OwnersController < ApplicationController
     @balance_due = BalanceDue.where(:owner_id => @owner.id).order("created_at DESC")
   end
 
-  def destroy_balance_due
-    @balance_due = BalanceDue.find params[:balance_due_id]
-    @balance_due.destroy
-    flash[:notice] = "This balance due was successfully paid."
-    # redirect_to owner_path(@owner)
-  end
 end

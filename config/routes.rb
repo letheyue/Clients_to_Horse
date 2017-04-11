@@ -43,7 +43,6 @@ Rails.application.routes.draw do
 
   get 'balance_due', to:'owners#balance_due'
 
-  get '/destroy_balance_due', to:'owners#destroy_balance_due'
   resources :horses do
     collection do
       get :search
