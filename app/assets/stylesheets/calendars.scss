@@ -1,0 +1,33 @@
+// Place all the styles related to the Calendar controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+table#calendars {
+  margin: 10px;
+  border-collapse: collapse;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+table#calendars th {
+  border: 2px solid white;
+  font-weight: bold;
+  background-color: wheat;
+}
+table#calendars th, table#calendars td {
+  padding: 4px;
+  text-align: left;
+}
+table#calendars th.hilite{
+  background-color: yellow;
+}
+#notice #warning {
+  background: rosybrown;
+  margin: 1em 0;
+  padding: 4px;
+}
+form label {
+  display: block;
+  line-height: 25px;
+  font-weight: bold;
+  color: black;
+
+}

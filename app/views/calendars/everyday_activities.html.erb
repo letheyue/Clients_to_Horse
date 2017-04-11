@@ -1,0 +1,50 @@
+<h1> Today's activity </h1>
+<h2><%= "#{@date.year}-#{@date.month}-#{@date.day}"%></h2>
+
+<div>
+  <%if !@activities.blank? then%>
+  <table id="calendars">
+    <thead>
+    <tr>
+      <th>Horse name</th>
+      <th>Procedure name</th>
+      <th>Activity name</th>
+      <th>Comment</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+
+      <%= form_tag('/update_activities') do %>
+          <% @activities.each do |activity|%>
+              <tr>
+                <td>
+                  <%= @horses.find(activity.horse_id).name %>
+                </td>
+                <td>
+                  <%= @procedures.find(activity.procedure_id).name %>
+                </td>
+                <td>
+                  <%= @activity_names.find(activity.activity_id).name %>
+                </td>
+                <td>
+                  <%= activity.comment%>
+                </td>
+                <td>
+                  <%if activity.status == 1%>
+                    <%= check_box("done", "id", {:multiple => true}, activity.id, nil) %>
+                    <%= link_to "delete", destroy_from_horse_path( :horse_id => @horses.find(activity.horse_id).id, :activity_id => activity.id, :date => @date), :method => :get, :data =>{:confirm => 'Delete this activity will also lead to deleting its following activities.Are you sure?'},class: "btn btn-default"%>
+                <% end %>
+                </td>
+              </tr>
+                 <% end %>
+
+        <% end %>
+      <%= hidden_field_tag "date", @date %>
+      <%= submit_tag("Update", class: "btn btn-default") %>
+        </tbody>
+        </table>
+  <%else%>
+      <h2>Nothing to do today</h2>
+      <%end%>
+</div>

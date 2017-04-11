@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
   def create

@@ -2,6 +2,11 @@ class CalendarsController < ApplicationController
 
   def show
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
+
+  end
+
+  def everyday_activities
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @horses = Horse.all
     @procedures = Procedure.all
     @activity_names = Activity.all

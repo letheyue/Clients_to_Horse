@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   post '/make_payment', to:'owners#make_payment'
   
   get 'payment_log', to:'owners#payment_log'
+
+  get '/everyday_activities', to:'calendars#everyday_activities'
   
   resources :horses do
     collection do

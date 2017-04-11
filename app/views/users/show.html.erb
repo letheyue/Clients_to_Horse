@@ -11,6 +11,7 @@
     <li><%= link_to "Customers List", owners_path, method: "get" %></li>
     <li><%= link_to "Calendar", calendars_show_path, method: "get"%></li>
     <li><%= link_to "Procedures", procedures_path, method: "get"%></li>
+    <li><%= link_to "Today's activity", everyday_activities_path(:select_date => @date, :date => @date), method: "get"%></li>
     <%= form_tag(search_horses_path, :method => "get", id: "search-form") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search horse's name or age or sex or breed" %>
         <%= submit_tag "Search", :name => nil %>
