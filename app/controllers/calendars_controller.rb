@@ -6,7 +6,7 @@ class CalendarsController < ApplicationController
     @procedures = Procedure.all
     @activity_names = Activity.all
     if !params[:select_date].blank? then
-      @activities = HorseActivity.where("date >= ? AND date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days).order("status ASC")
+      @activities = HorseActivity.where("date >= ? AND date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days).order("status ASC").page params[:page]
     end
   end
 
@@ -16,7 +16,7 @@ class CalendarsController < ApplicationController
     @procedures = Procedure.all
     @activity_names = Activity.all
     if !params[:select_date].blank? then
-      @activities = HorseActivity.where("date >= ? AND date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days)
+      @activities = HorseActivity.where("date >= ? AND date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days).page params[:page]
     end
   end
 

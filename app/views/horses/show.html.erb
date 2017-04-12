@@ -39,7 +39,7 @@
       <tbody>
 
     <tbody>
-      <%= form_tag('/update_activities') do %>
+      <%= form_tag(update_activities_path(:horse_id => @horse.id)) do %>
         <% @horse_activities.each do |activity| %>
           <tr>
             <td>

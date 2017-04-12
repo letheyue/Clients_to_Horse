@@ -59,6 +59,7 @@
                   </td>
                 </tr>
                    <% end %>
+          <div align="center"><%= paginate @activities %></div>
             <%= hidden_field_tag "date", @date %>
             <%= submit_tag("Update", class: "btn btn-default") %>
           <% end %>
