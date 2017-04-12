@@ -7,7 +7,7 @@ class OwnersController < ApplicationController
   def show
     id = params[:id] # retrieve owner ID from URI route
     @owner = Owner.find(id) # look up owner by unique ID
-    @horses = Horse.where(:owner_id => @owner.id)
+    @horses = Horse.where(:owner_id => @owner.id).page params[:page]
     # will render app/views/owners/show.<extension> by default
     sum = 0
     @horses.each do |horse|
@@ -20,12 +20,12 @@ class OwnersController < ApplicationController
   end
 
   def index
-    @owners = Owner.all.order("created_at DESC")
+    @owners = Owner.all.order("created_at DESC").page params[:page]
     @horses = Horse.all
     if params[:search]
-      @owners = Owner.search(params[:search]).order("created_at DESC")
+      @owners = Owner.search(params[:search]).order("created_at DESC").page params[:page]
     else
-      @owners = Owner.all.order("created_at DESC")
+      @owners = Owner.all.order("created_at DESC").page params[:page]
     end
   end
   
@@ -65,15 +65,6 @@ class OwnersController < ApplicationController
     redirect_to owners_path
   end
 
-  def search
-    @owners = Owner.all
-    if params[:search]
-      @owners = Owner.search(params[:search]).order("created_at DESC")
-    else
-      @owners = Owner.all.order("created_at DESC")
-    end
-  end
-
   def mail
     @owner = Owner.find(params[:owner_id])
     UserMailer.test_mail(@owner).deliver
@@ -98,12 +89,12 @@ class OwnersController < ApplicationController
     else
       @log = OwnerPayment.where(:owner_id => @owner.id)
     end
-    @log= @log.order("created_at DESC")
+    @log= @log.order("created_at DESC").page params[:page]
   end
 
   def balance_due
     @owner = Owner.find params[:id]
-    @balance_due = BalanceDue.where(:owner_id => @owner.id).order("created_at DESC")
+    @balance_due = BalanceDue.where(:owner_id => @owner.id).order("created_at DESC").page params[:page]
   end
 
 end

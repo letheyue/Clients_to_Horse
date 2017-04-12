@@ -4,7 +4,7 @@ class ChainsController < ApplicationController
   end
 
   def index
-    @chains = Chain.all.order("created_at DESC")
+    @chains = Chain.all.order("created_at DESC").page params[:page]
     @procedures = Procedure.all
     @activities = Activity.all
   end

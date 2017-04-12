@@ -2,13 +2,13 @@ class HorseActivitiesController < ApplicationController
 
     def index
         @horse = Horse.find params[:horse_id]
-        @done_activities = HorseActivity.where(:horse_id => @horse.id, :status => 2).order("procedure_id ASC, date DESC")
+        @done_activities = HorseActivity.where(:horse_id => @horse.id, :status => 2).order("procedure_id ASC, date DESC").page params[:page]
         @procedures = Procedure.all
         @activities = Activity.all
     end
     
     def procedure_menu
-        @procedures = Procedure.all
+        @procedures = Procedure.all.page params[:page]
         @horse = Horse.find params[:horse_id]
     end
     

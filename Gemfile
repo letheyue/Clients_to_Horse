@@ -42,6 +42,8 @@ gem 'mini_magick'
 
 gem 'calendar_helper', '0.2.3'
 
+gem 'kaminari', '1.0.1'
+
 group :development, :test do
   gem 'sqlite3', '1.3.12'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

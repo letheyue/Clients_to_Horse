@@ -76,6 +76,7 @@
       <% end %>
     </tbody>
     </table>
+    <div align="center"><%= paginate @horse_activities %></div>
   </tl>
   <%= link_to "Add Procedure", procedure_menu_path(:horse_id => @horse.id), class: "btn btn-default" %>
   <li>

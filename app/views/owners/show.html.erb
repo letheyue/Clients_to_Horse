@@ -31,6 +31,7 @@
         <%= link_to "#{horse.name}", horse_path(horse) %>
       </li>
     <% end %>
+    <div align="center"><%= paginate @horses %></div>
     Balance
     <li>
       <div>
@@ -38,7 +39,7 @@
         <div>
           <%=link_to "Billing history", payment_log_path(:id => @owner.id) %>
         </div>
-      <div>
+      </div>
     </li>
     <div>
       New Payment 

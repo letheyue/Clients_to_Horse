@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   end
 
   def index
-    @activities = Activity.all.order("created_at DESC")
+    @activities = Activity.all.order("created_at DESC").page params[:page]
   end
 
   def new
