@@ -51,6 +51,7 @@ class HorseActivitiesController < ApplicationController
         end
         flash[:notice] = "activities were successfully updated."
         if params[:date].blank?
+            @horse = Horse.find params[:horse_id]
             redirect_to horse_path(@horse)
         else
             redirect_to calendars_show_path(:select_date => params[:date].to_date)
