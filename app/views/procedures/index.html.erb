@@ -4,13 +4,10 @@
   <tr>
     <th>ID</th>
     <th>Name</th>
-    <th>Edit</th>
-    <th>Delete</th>
 
   </tr>
   </thead>
   <tbody>
-
 
   <% @procedures.each do |procedure| %>
       <tr>
@@ -30,5 +27,4 @@
   <% end %>
   </tbody>
 </table>
-<div align="center"><%= paginate @procedures %></div>
 <%= button_to 'New procedures', new_procedure_path, :method => :get %>

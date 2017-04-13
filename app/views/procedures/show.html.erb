@@ -1,12 +1,10 @@
 <html>
-<h1>Details about Chain</h1>
+<h2>Details about <%= "#{ @procedure.name}"%></h2>
 <tl>
 
   <table id="procedures">
     <thead>
     <tr>
-      <th>Chain's procedure_id</th>
-      <th>Chain's procedure's name</th>
       <th>Activity name</th>
       <th>Activity order</th>
       <th>comment</th>
@@ -17,13 +15,7 @@
     <% @activities.each do |activity| %>
         <tr>
           <td>
-            <%= @procedure.id %>
-          </td>
-          <td>
-            <%= @procedure.name %>
-          </td>
-          <td>
-            <%= activity.activity_id%>
+            <%= @activity_names.find(activity.activity_id).name%>
           </td>
           <td>
             <%= activity.activity_order %>
@@ -35,6 +27,5 @@
     <% end %>
     </tbody>
   </table>
-  <div align="center"><%= paginate @activities %></div>
 </tl>
 </html>

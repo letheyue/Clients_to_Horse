@@ -35,7 +35,6 @@ class HorseActivitiesController < ApplicationController
     end
 
     def update_activities
-        @horse = Horse.find params[:horse_id]
         if !params[:done].blank? then
             params[:done][:id].each do |id|
                 @activity = HorseActivity.find id.to_i

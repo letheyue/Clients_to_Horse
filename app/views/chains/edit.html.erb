@@ -4,7 +4,7 @@
     <%= label :procedure, :name, "Procedure's name" %>
     <%= @procedure.name %>
 
-<%= form_tag chains_path(:procedure_id => @procedure.id, :chain_id => @chain.id)do  %>
+<%= form_tag chains_path()do  %>
 
 
     <%= label :chain, :activity_id, 'Activity' %>
@@ -26,8 +26,7 @@
     <tr>
       <th>Activity name</th>
       <th>Activity order</th>
-      <th>Comment</th>
-      <th>Delete</th>
+      <th>comment</th>
     </tr>
   </thead>
   <tbody>

@@ -4,7 +4,7 @@ class ChainsController < ApplicationController
   end
 
   def index
-    @chains = Chain.all.order("created_at DESC").page params[:page]
+    @chains = Chain.all.order("created_at DESC")
     @procedures = Procedure.all
     @activities = Activity.all
   end
@@ -13,8 +13,7 @@ class ChainsController < ApplicationController
     @procedure = Procedure.find params[:id]
     @activities = Chain.where(:procedure_id => @procedure.id).order('activity_order')
     @activity_names = Activity.all
-    @chain = Chain.find params[:id]
-    @chains = Chain.all
+
   end
 
   def update
@@ -33,7 +32,6 @@ class ChainsController < ApplicationController
 
   def create
     @procedure = Procedure.find params[:procedure_id]
-    @chain = Chain.find params[:chain_id]
     @chain = Chain.create!(chain_params)
     @chain.update_attribute(:procedure_id, params[:procedure_id].to_i)
     flash[:notice] = "#{Activity.find(@chain.activity_id).name} was successfully created."

@@ -4,7 +4,7 @@ class ProceduresController < ApplicationController
   end
 
   def index
-    @procedures = Procedure.all.order("created_at DESC").page params[:page]
+    @procedures = Procedure.all.order("created_at DESC")
     @chains = Chain.all
   end
 
@@ -14,7 +14,7 @@ class ProceduresController < ApplicationController
 
   def create
       @procedure = Procedure.create!(procedure_params)
-      flash[:notice] = "Procedure '#{@procedure.name}' was successfully created."
+      # flash[:notice] = "#{Procedure.find(@chain.procedure_id).name} was successfully created."
       redirect_to procedures_path
   end
 
@@ -27,9 +27,8 @@ class ProceduresController < ApplicationController
 
   def show
     @procedure = Procedure.find params[:id]
-    @activities = Chain.where(:procedure_id => @procedure.id).page params[:page]
-    @chain = Chain.find params[:id]
-    @chains = Chain.all
+    @activities = Chain.where(:procedure_id => @procedure.id).order("activity_order ASC")
+    @activity_names = Activity.all
 
   end
 end
