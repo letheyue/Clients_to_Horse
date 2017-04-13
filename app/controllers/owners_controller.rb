@@ -11,9 +11,9 @@ class OwnersController < ApplicationController
     # will render app/views/owners/show.<extension> by default
     sum = 0
     @horses.each do |horse|
-        @activities = HorseActivity.where(:horse_id => horse.id)
+        @activities = HorseActivity.includes(:activity).where(:horse_id => horse.id)
         @activities.each do |activity|
-            sum = sum + Activity.find(activity.activity_id).price
+            sum = sum + activity.activity.price
         end
     end
     @sum = sum

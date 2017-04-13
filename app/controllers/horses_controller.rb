@@ -8,19 +8,17 @@ class HorsesController < ApplicationController
     id = params[:id] # retrieve horse ID from URI route
     @horse = Horse.find(id) # look up horse by unique ID
     @owner = Owner.find(@horse.owner_id)
-    @horse_activities = HorseActivity.where(:horse_id => id, :status => 1).order("date ASC").page params[:page]
-    @procedures = Procedure.all
-    @activities = Activity.all
+    @horse_activities = HorseActivity.includes(:procedure, :activity).where(:horse_id => id, :status => 1).order("date ASC")
     # will render app/views/horses/show.<extension> by default
   end
 
   def index
-    @horses = Horse.all.order("created_at DESC").page params[:page]
+    @horses = Horse.all.order("created_at DESC")
     @owners = Owner.all
     if params[:search]
-      @horses = Horse.search(params[:search]).order("created_at DESC").page params[:page]
+      @horses = Horse.search(params[:search]).order("created_at DESC")
     else
-      @horses = Horse.all.order("created_at DESC").page params[:page]
+      @horses = Horse.all.order("created_at DESC")
     end
   end
   
@@ -58,5 +56,12 @@ class HorsesController < ApplicationController
   end
   
 
-
+  def search
+    @horses = Horse.all
+    if params[:search]
+      @horses = Horse.search(params[:search]).order("created_at DESC")
+    else
+      @horses = Horse.all.order("created_at DESC")
+    end
+  end    
 end

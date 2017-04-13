@@ -1,3 +1,3 @@
 class Procedure < ApplicationRecord
-  paginates_per 10
+    has_many :horse_activities
 end

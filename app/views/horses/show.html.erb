@@ -45,10 +45,10 @@
               <%= activity.date.to_date %>
             </td>
             <td>
-              <%= @procedures.find(activity.procedure_id).name %>
+              <%= activity.procedure.name %>
             </td>
             <td>
-              <%= @activities.find(activity.activity_id).name %>
+              <%= activity.activity.name %>
             </td>
             <td>
               <%= activity.price %>
@@ -75,7 +75,6 @@
       <% end %>
     </tbody>
     </table>
-    <div align="center"><%= paginate @horse_activities %></div>
   </tl>
   <div>
     <%= link_to "Add Procedure", procedure_menu_path(:horse_id => @horse.id), class: "btn btn-default" %>
