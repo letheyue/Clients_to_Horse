@@ -96,5 +96,18 @@ class OwnersController < ApplicationController
     @owner = Owner.find params[:id]
     @balance_due = BalanceDue.where(:owner_id => @owner.id).order("created_at DESC").page params[:page]
   end
+  
+  def destroy_log 
+    @owner = Owner.find params[:owner_id]
+    @log = OwnerPayment.find params[:id]
+    @amount = @log.amount
+    @otherlogs = OwnerPayment.where("owner_id = ? AND created_at > ?", @owner.id, @log.created_at)
+    @otherlogs.each do |log|
+      log.update_attribute(:balance, log.balance - @amount)
+    end
+    @owner.update_attribute(:balance, @owner.balance - @amount)
+    @log.destroy
+    redirect_to payment_log_path(:id => @owner.id)
+  end 
 
 end

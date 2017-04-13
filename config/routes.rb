@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   
   post '/make_payment', to:'owners#make_payment'
   
+  get 'destroy_log', to:'owners#destroy_log'
+  
   get 'payment_log', to:'owners#payment_log'
 
   get '/everyday_activities', to:'calendars#everyday_activities'

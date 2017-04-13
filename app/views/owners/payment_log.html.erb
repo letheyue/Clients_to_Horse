@@ -1,4 +1,4 @@
-<h1>Billing History</h1>
+<h1>Billing Summary</h1>
 <div>
     <%= link_to "All History", payment_log_path(:id => @owner.id, :type => 0), class:"btn btn-default"%>
     <%= link_to "Charged Activities", payment_log_path(:id => @owner.id, :type => 1), class:"btn btn-default"%>
@@ -10,6 +10,7 @@
              <th>Date</th>
              <th>Amount</th>
              <th>Balance</th>
+             <th>Comment</th>
         </tr>     
     </thead>
     <tbody>
@@ -19,8 +20,9 @@
                 <td><%= log.amount %></td>
                 <td><%= log.balance %></td>
                 <td><%= log.comment %></td>
+                <td><%= link_to "delete", destroy_log_path( :id => log.id, :owner_id => @owner.id), :method => :get, :data =>{:confirm => 'Are you sure?'}, class: "btn btn-default"%></td>
             </tr>
         <% end %>
     </tbody>    
-</table>
-<div align="center"><%= paginate @log %></div>
+</table>     
+<%= link_to "Back to customer detail", owner_path(@owner)%>

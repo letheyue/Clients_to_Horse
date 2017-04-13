@@ -4,8 +4,8 @@
    <table id="horse_activities">
     <thead>
     <tr>
-      <th>Procedure name</th>
-      <th>Activity name</th>
+      <th>Procedure</th>
+      <th>Activity</th>
       <th>Date</th>
       <th>Price</th>
       <th>Comment</th>
@@ -35,5 +35,6 @@
      </tbody>
    </table>
    <div align="center"><%= paginate @done_activities %></div>
+   <%= link_to "Back to horse", horse_path(@horse)%>
  </tl>
  </html>
