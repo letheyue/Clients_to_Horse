@@ -19,6 +19,14 @@ class ActivitiesController < ApplicationController
 
   def destroy
     @activity = Activity.find(params[:id])
+    @activities = HorseActivity.where("activity_id = ?", @activity.id)
+    @activities.each do |activity|
+      activity.destroy
+    end
+    @chains = Chain.where("activity_id = ?", @activity.id)
+    @chains.each do |chain|
+      chain.destroy
+    end
     @activity.destroy
     flash[:notice] = "Activity '#{@activity.name}' deleted."
     redirect_to activities_path
