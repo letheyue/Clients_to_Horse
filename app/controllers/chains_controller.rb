@@ -4,15 +4,13 @@ class ChainsController < ApplicationController
   end
 
   def index
-    @chains = Chain.all.order("created_at DESC")
-    @procedures = Procedure.all
-    @activities = Activity.all
+    @chains = Chain.includes(:procedure, :activity).all.order("created_at DESC")
+
   end
 
   def edit
     @procedure = Procedure.find params[:id]
-    @activities = Chain.where(:procedure_id => @procedure.id).order('activity_order')
-    @activity_names = Activity.all
+    @activities = Chain.includes(:activity).where(:procedure_id => @procedure.id).order('activity_order')
 
   end
 
@@ -34,7 +32,7 @@ class ChainsController < ApplicationController
     @procedure = Procedure.find params[:procedure_id]
     @chain = Chain.create!(chain_params)
     @chain.update_attribute(:procedure_id, params[:procedure_id].to_i)
-    flash[:notice] = "#{Activity.find(@chain.activity_id).name} was successfully created."
+    flash[:notice] = "#{@chain.activity.name} was successfully created."
     redirect_to edit_chain_path(@procedure)
   end
 

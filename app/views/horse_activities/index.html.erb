@@ -16,10 +16,10 @@
       <% @done_activities.each do |activity| %>
        <tr>
          <td>
-           <%= @procedures.find(activity.procedure_id).name %>
+           <%= activity.procedure.name %>
          </td>
          <td>
-           <%= @activities.find(activity.activity_id).name %>
+           <%= activity.activity.name %>
          </td>
          <td>
            <%= activity.date.to_date %>

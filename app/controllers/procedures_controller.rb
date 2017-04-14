@@ -27,8 +27,6 @@ class ProceduresController < ApplicationController
 
   def show
     @procedure = Procedure.find params[:id]
-    @activities = Chain.where(:procedure_id => @procedure.id).order("activity_order ASC")
-    @activity_names = Activity.all
-
+    @activities = Chain.includes(:activity).where(:procedure_id => @procedure.id).order("activity_order ASC")
   end
 end

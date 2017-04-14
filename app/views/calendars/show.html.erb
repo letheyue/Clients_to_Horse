@@ -38,13 +38,13 @@
             <% @activities.each do |activity|%>
                 <tr>
                   <td>
-                    <%= @horses.find(activity.horse_id).name %>
+                    <%= activity.horse.name %>
                   </td>
                   <td>
-                    <%= @procedures.find(activity.procedure_id).name %>
+                    <%= activity.procedure.name %>
                   </td>
                   <td>
-                    <%= @activity_names.find(activity.activity_id).name %>
+                    <%= activity.activity.name %>
                   </td>
                   <td>
                     <%= activity.comment%>
@@ -55,7 +55,7 @@
                       <%= check_box("done", "id", {:multiple => true}, activity.id, nil) %>
                     </div>
                     <td>
-                      <%= link_to "delete", destroy_from_horse_path( :horse_id => @horses.find(activity.horse_id).id, :activity_id => activity.id, :date => @date), :method => :get, :data =>{:confirm => 'Delete this activity will also lead to deleting its following activities.Are you sure?'},class: "btn btn-default"%>
+                      <%= link_to "delete", destroy_from_horse_path( :horse_id => activity.horse.id, :activity_id => activity.id, :date => @date), :method => :get, :data =>{:confirm => 'Delete this activity will also lead to deleting its following activities.Are you sure?'},class: "btn btn-default"%>
                     </td>
                     <%else%>
                       done

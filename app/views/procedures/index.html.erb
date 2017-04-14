@@ -2,18 +2,13 @@
 <table id="procedures">
   <thead>
   <tr>
-    <th>ID</th>
     <th>Name</th>
-
   </tr>
   </thead>
   <tbody>
 
   <% @procedures.each do |procedure| %>
       <tr>
-        <td>
-          <%= procedure.id%>
-        </td>
         <td>
           <%= link_to "#{procedure.name}", procedure_path(procedure) %>
         </td>

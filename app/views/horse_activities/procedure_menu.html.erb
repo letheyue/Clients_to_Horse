@@ -1,15 +1,20 @@
 <h1>Select Procedure</h1>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
   <tbody>
     <% @procedures.each do |procedure| %>
       <tr>
-        <li>
         <td>
           <%= procedure.name %>
         </td>        
         <td>
           <%= link_to "Add", activity_menu_path(:procedure_id => procedure.id, :horse_id => @horse.id), class: "btn btn-default" %>
         </td>
-        </li>
       </tr>
     <% end %>
   </tbody>

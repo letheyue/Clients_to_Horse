@@ -15,7 +15,7 @@
     <% @activities.each do |activity| %>
         <tr>
           <td>
-            <%= @activity_names.find(activity.activity_id).name%>
+            <%= activity.activity.name%>
           </td>
           <td>
             <%= activity.activity_order %>

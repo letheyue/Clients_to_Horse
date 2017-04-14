@@ -2,9 +2,8 @@ class HorseActivitiesController < ApplicationController
 
     def index
         @horse = Horse.find params[:horse_id]
-        @done_activities = HorseActivity.where(:horse_id => @horse.id, :status => 2).order("procedure_id ASC, date DESC").page params[:page]
-        @procedures = Procedure.all
-        @activities = Activity.all
+        @done_activities = HorseActivity.includes(:procedure, :activity).where(:horse_id => @horse.id, :status => 2).order("procedure_id ASC, date DESC").page params[:page]
+
     end
     
     def procedure_menu
@@ -15,8 +14,7 @@ class HorseActivitiesController < ApplicationController
     def activity_menu
         @procedure = Procedure.find params[:procedure_id]
         @horse = Horse.find params[:horse_id]
-        @activities = Chain.where(:procedure_id => @procedure.id).order('activity_order')
-        @activity_names = Activity.all
+        @activities = Chain.includes(:activity).where(:procedure_id => @procedure.id).order('activity_order')
     end
     
     def create

@@ -25,14 +25,14 @@
           <% @activities.each do |activity| %>
             <tr>
               <td>
-                <%= @activity_names.find(activity.activity_id).name %>
+                <%= activity.activity.name %>
               </td>
               <td>
                 <%= activity.activity_order %>
               </td>
               <td>
                 <div id="horse_activities_text">
-                  <%= text_field_tag "activity[id_#{@count}][price]", @activity_names.find(activity.activity_id).price %>
+                  <%= text_field_tag "activity[id_#{@count}][price]", activity.activity.price %>
                 </div>
               </td>
               <td>
