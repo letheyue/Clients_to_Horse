@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411210316) do
+ActiveRecord::Schema.define(version: 20170414200506) do
 
   create_table "activities", force: :cascade do |t|
     t.text     "name"
@@ -107,6 +107,15 @@ ActiveRecord::Schema.define(version: 20170411210316) do
     t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "send_mails", force: :cascade do |t|
+    t.text     "subject"
+    t.text     "comment"
+    t.integer  "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_send_mails_on_owner_id"
   end
 
   create_table "users", force: :cascade do |t|

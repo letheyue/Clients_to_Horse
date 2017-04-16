@@ -45,6 +45,10 @@ Rails.application.routes.draw do
 
   get 'balance_due', to:'owners#balance_due'
 
+  get 'send_mail', to:'mails#send_mail'
+
+  post '/mail', to: 'mails#mail'
+
   resources :horses do
     collection do
       get :search

@@ -1,0 +1,14 @@
+<h1>Send email</h1>
+<%= form_tag mail_path(:owner_id => @owner.id) do%>
+      <%= label :send_mail, :owner_id, "to: Client's name: #{Owner.find(@owner.id).name}, email :#{Owner.find(@owner.id).email}  " %>
+      <%= hidden_field_tag "Owner", @owner.id %>
+
+      <%= label :send_mail, :subject, 'Subject' %>
+      <%= text_field_tag  'subject' %>
+
+      <%= label :send_mail, :comment, 'Comment' %>
+      <%= text_field_tag 'comment' %>
+
+      <%= submit_tag 'Send' %>
+
+<% end %>

@@ -65,12 +65,6 @@ class OwnersController < ApplicationController
     redirect_to owners_path
   end
 
-  def mail
-    @owner = Owner.find(params[:owner_id])
-    UserMailer.test_mail(@owner).deliver
-    redirect_to owner_path(@owner)
-  end
-  
   def make_payment
     @owner = Owner.find(params[:owner_id])
     @current_balance = @owner.balance
@@ -108,6 +102,7 @@ class OwnersController < ApplicationController
     @owner.update_attribute(:balance, @owner.balance - @amount)
     @log.destroy
     redirect_to payment_log_path(:id => @owner.id)
-  end 
+  end
+
 
 end

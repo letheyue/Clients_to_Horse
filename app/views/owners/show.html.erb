@@ -42,7 +42,7 @@
       </div>
     </li>
     <div>
-      New Payment 
+      New Payment
         <%= form_tag('/make_payment')  do %>
           amount
             <%= text_field_tag 'amount', nil, :style => "width:100px" %>
@@ -51,7 +51,8 @@
             <%= submit_tag "Make a payment",  :style => "width:150px; float left", :class => "btn btn-default"%>
             <%= hidden_field_tag "owner_id", @owner.id  %>
         <%end%>
-      <input type="button" value="send mail" onClick="window.open('http://www.gmail.com')" style = "width:150px; float:left">
+      <%= link_to "Send Mail", send_mail_path(:owner_id => @owner.id), :method => :get %>
+      <!--<input type="button" value="send mail" onClick="window.open('http://www.gmail.com')" style = "width:150px; float:left">-->
     </div>
   </tl>
 </tbody>
