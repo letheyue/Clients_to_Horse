@@ -1,4 +1,5 @@
 class HorsesController < ApplicationController
+  before_action :logged_in_user
   
   def horse_params
     params.require(:horse).permit(:name, :age, :sex, :breed, :owner_id)
@@ -63,5 +64,12 @@ class HorsesController < ApplicationController
     else
       @horses = Horse.all.order("created_at DESC")
     end
-  end    
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
 end

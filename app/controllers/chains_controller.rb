@@ -1,4 +1,6 @@
 class ChainsController < ApplicationController
+  before_action :logged_in_user
+
   def chain_params
     params.require(:chain).permit(:activity_order, :procedure_id, :activity_id, :comment)
   end
@@ -48,5 +50,12 @@ class ChainsController < ApplicationController
     @chain = Chain.find(id) # look up horse by unique ID
     @procedure = Procedure.find(@chain.procedure_id)
     @activities = Activity.find(@chain.activity_id)
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
   end
 end

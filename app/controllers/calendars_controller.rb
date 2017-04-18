@@ -1,4 +1,5 @@
 class CalendarsController < ApplicationController
+  before_action :logged_in_user
 
   def show
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
@@ -14,6 +15,13 @@ class CalendarsController < ApplicationController
     @activity_names = Activity.all
     if !params[:select_date].blank? then
       @activities = HorseActivity.where("date >= ? AND date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days).page params[:page]
+    end
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
     end
   end
 

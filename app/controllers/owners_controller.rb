@@ -1,4 +1,5 @@
 class OwnersController < ApplicationController
+  before_action :logged_in_user
   
   def owner_params
     params.require(:owner).permit(:name, :email, :phone_number, :fax_number, :address, :comments, :balance)
@@ -104,5 +105,10 @@ class OwnersController < ApplicationController
     redirect_to payment_log_path(:id => @owner.id)
   end
 
-
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
 end

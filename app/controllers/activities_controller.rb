@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  before_action :logged_in_user
+
   def activity_params
     params.require(:activity).permit(:name, :price, :period, :comment)
   end
@@ -42,6 +44,13 @@ class ActivitiesController < ApplicationController
     flash[:notice] = "#{@activity.name} was successfully updated."
     redirect_to activities_path(@activity)
 
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
   end
 
 end

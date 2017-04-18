@@ -1,4 +1,5 @@
-class HorseActivitiesController < ApplicationController  
+class HorseActivitiesController < ApplicationController
+    before_action :logged_in_user
 
     def index
         @horse = Horse.find params[:horse_id]
@@ -69,6 +70,13 @@ class HorseActivitiesController < ApplicationController
             redirect_to horse_path(@horse)
         else
             redirect_to calendars_show_path(:select_date => params[:date].to_date)
+        end
+    end
+
+    def logged_in_user
+        unless logged_in?
+            flash[:danger] = "Please log in."
+            redirect_to login_url
         end
     end
 end
