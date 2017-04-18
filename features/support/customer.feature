@@ -34,8 +34,15 @@ Scenario: make a payment and check the billing history
   And I could go back to the customer
   
 Scenario: create a new horse 
-  Given I click the "Home" link
+  Given I click the "Profile" link
   And I follow the "Horses List" link
   And I follow the "New Horse" link
   When I fill in the new horse's information
   Then I could see "test_horse was successfully created."
+  
+Scenario: create a new activity 
+  Given I click the "Profile" link
+  And I follow the "Activities" link
+  And I follow the "New Activity" link
+  When I fill in the new activity's information
+  Then I could see "test_activity was successfully created."

@@ -162,3 +162,26 @@ Then (/^I could see "test_horse was successfully created."$/) do
     assert page.has_content?('test_horse was successfully created.')
   end
 end
+
+Given(/^I click the "Profile" link$/) do
+    click_link('Profile')
+end
+Then(/^I follow the "Activities" link$/) do
+    click_link('Activities')
+end
+When(/^I follow the "New Activity" link$/) do 
+    click_button('New Activity')
+end
+When(/^I fill in the new activity's information$/) do 
+    fill_in('Name', :with => "test_activity")
+    fill_in('Price', :with => "1000")
+    fill_in('Comment', :with => "test for cucumber")
+end
+Then (/^I could see "test_activity was successfully created."$/) do 
+  click_button('Add')
+  if page.respond_to? :should
+    page.should have_content('test_activity was successfully created.')
+  else
+    assert page.has_content?('test_activity was successfully created.')
+  end
+end
