@@ -12,12 +12,12 @@
     <li><%= link_to "Calendar", calendars_show_path, method: "get"%></li>
     <li><%= link_to "Procedures", procedures_path, method: "get"%></li>
     <li><%= link_to "Activities", activities_path, method: 'get'%></li>
-    <%= form_tag(search_horses_path, :method => "get", id: "search-form") do %>
+    <%= form_tag(horses_path, :method => "get", id: "search-form") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search horse's name or age or sex or breed" %>
         <%= submit_tag "Search", :name => nil %>
     <% end %>
 
-    <%= form_tag(search_owners_path, :method => "get", id: "search-form") do %>
+    <%= form_tag(owners_path, :method => "get", id: "search-form") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search owner's name or address or email or comments or phone or fax" %>
         <%= submit_tag "Search", :name => nil %>
     <% end %>
