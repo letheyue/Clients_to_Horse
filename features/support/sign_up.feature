@@ -1,13 +1,16 @@
-Feature: sign up and log in 
+Feature: view each horse's information 
 As a user of this app
-So that I can see a sign up bottom in the home page
-I want to create my account and my user name will appear on the user home page
+So that I could enter the horse database through profile page
+I want to view each horse's detail's information
 
-Background: the home page has a sign up bottom and a user database 
-
-Scenario: sign up a new user
-    Given I am in home page of Clients_to_Horse app
-    And I follow "Sign up now!" link
-    When I fill the user's information
-    Then I should see "test1" in profile page
+Background: Sign up before every scenarios 
+  Given I'm on the home page
+  And I follow the "Sign up" link
+  And I fill in the user's information
+  
+Scenario: log in 
+  Given I step back to the home page
+  And I follow the "Log in" link
+  When I fill in user's email and password
+  Then I should see "test1" in the profile page
     
