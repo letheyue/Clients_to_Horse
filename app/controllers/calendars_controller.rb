@@ -6,7 +6,7 @@ class CalendarsController < ApplicationController
     @allactivities = HorseActivity.all
     if !params[:select_date].blank? then
       @activities = HorseActivity.includes(:horse, :procedure, :activity).where("date >= ? AND date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days).order("status ASC").page params[:page]
-      @reminder_activities = HorseActivity.where("reminder_date >= ? AND reminder_date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days).page params[:page]
+      @reminder_activities = (HorseActivity.includes(:horse, :procedure, :activity).where("reminder_date >= ? AND reminder_date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days) - @activities)
 
     end
   end
@@ -19,7 +19,7 @@ class CalendarsController < ApplicationController
     @allactivities = HorseActivity.all
     if !params[:select_date].blank? then
       @activities = HorseActivity.where("date >= ? AND date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days).page params[:page]
-      @reminder_activities = HorseActivity.where("reminder_date >= ? AND reminder_date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days).page params[:page]
+      @reminder_activities = (HorseActivity.includes(:horse, :procedure, :activity).where("reminder_date >= ? AND reminder_date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days) - @activities)
     end
   end
 
