@@ -20,15 +20,6 @@ ActiveRecord::Schema.define(version: 20170419061341) do
     t.text     "comment"
   end
 
-  create_table "balance_dues", force: :cascade do |t|
-    t.integer  "owner_id"
-    t.integer  "amount"
-    t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["owner_id"], name: "index_balance_dues_on_owner_id"
-  end
-
   create_table "chains", force: :cascade do |t|
     t.integer  "activity_id"
     t.integer  "procedure_id"

@@ -98,10 +98,6 @@ class OwnersController < ApplicationController
     @log= @log.order("created_at DESC").page params[:page]
   end
 
-  def balance_due
-    @owner = Owner.find params[:id]
-    @balance_due = BalanceDue.where(:owner_id => @owner.id).order("created_at DESC").page params[:page]
-  end
   
   def destroy_log 
     @owner = Owner.find params[:owner_id]

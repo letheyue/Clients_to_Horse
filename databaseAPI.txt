@@ -12,6 +12,7 @@ Owner:
 	fax_number :text
 	email :text
 	comments :text
+	balances :integer
 	
 Owner_Payment:
 	owner_id :integer
@@ -42,5 +43,18 @@ Horse_Activity:
 	price :integer /total price for this activity 
 	status :integer /1 => not done, 2 => done /
 	comment :text
+	reminder_order :integer
+	reminder_date :datetime
+
+Send_Mail:
+    subject :text
+    comment :text
+    owner_id :integer
+
+User:
+    name :string
+    email :string
+    password_digest :string
+    remember_digest :string
 	
 	
