@@ -3,6 +3,7 @@ class CalendarsController < ApplicationController
 
   def show
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    @allactivities = HorseActivity.all
     if !params[:select_date].blank? then
       @activities = HorseActivity.includes(:horse, :procedure, :activity).where("date >= ? AND date < ?", params[:select_date].to_date, params[:select_date].to_date+1.days).order("status ASC").page params[:page]
     end

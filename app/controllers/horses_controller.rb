@@ -7,8 +7,8 @@ class HorsesController < ApplicationController
   
   def show
     id = params[:id] # retrieve horse ID from URI route
-    @horse = Horse.find(id) # look up horse by unique ID
-    @owner = Owner.find(@horse.owner_id)
+    @horse = Horse.includes(:owner).find(id) # look up horse by unique ID
+    @owner = @horse.owner
     @horse_activities = HorseActivity.includes(:procedure, :activity).where(:horse_id => id, :status => 1).order("date ASC")
     # will render app/views/horses/show.<extension> by default
   end

@@ -32,19 +32,37 @@ class HorseActivitiesController < ApplicationController
         end
         redirect_to horse_path(Horse.find(@horse_id))
     end
+    
+    def edit
+        @activity = HorseActivity.includes(:activity).find params[:id]
+        @date = params[:select_date]
+    end
+
+    def update
+        @horseactivity = HorseActivity.includes(:activity, :horse).find params[:id]
+        @date = Date.civil(params[:date][:year].to_i, params[:date][:month].to_i, params[:date][:day].to_i)
+        @horseactivity.update_attributes(:date => @date, :price => params[:price], :comment => params[:comment ])
+        flash[:notice] = "#{@horseactivity.activity.name} was successfully updated."
+        if params[:select_date].blank?
+            redirect_to horse_path(@horseactivity.horse)
+        else
+            redirect_to calendars_show_path(:select_date => params[:select_date].to_date)
+        end
+    end
 
     def update_activities
         if !params[:done].blank? then
             params[:done][:id].each do |id|
-                @activity = HorseActivity.find id.to_i
-                @horse =  Horse.find (@activity.horse_id)
-                @owner = Owner.find @horse.owner_id
-                @activityname = Activity.find(@activity.activity_id).name
-                @procedurename = Procedure.find(@activity.procedure_id).name
+                @activity = HorseActivity.includes(:horse, :activity, :procedure).find id.to_i
+                @horse =  @activity.horse
+                @owner = @horse.owner
+                @activityname = @activity.activity.name
+                @procedurename = @activity.procedure.name
                 @activity.update_attribute(:status, 2)
                 @balance = @owner.balance
                 @new_balance = @balance.to_i + @activity.price.to_i
-                OwnerPayment.create(owner_id: @owner.id, amount: @activity.price,balance: @new_balance, billing_type: 1,  comment: "charged for #{@horse.name} : #{@procedurename} , #{@activityname}  completed")
+                @new_payment = OwnerPayment.create(owner_id: @owner.id, amount: @activity.price,balance: @new_balance, billing_type: 1,  comment: "charged for #{@horse.name} : #{@procedurename} , #{@activityname}  completed")
+                #@new_payment.update_attribute(:created_at, @activity.date)
                 @owner.update_attribute(:balance, @new_balance)
             end
         end
