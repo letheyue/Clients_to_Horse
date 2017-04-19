@@ -61,6 +61,9 @@
                 <%= check_box("done", "id", {:multiple => true}, activity.id, nil) %>
               <% end %>
             </td>
+            <td>
+              <%= link_to "edit", edit_horse_activity_path(activity), :method => :get, class: "btn btn-default"%>
+            </td>
              <td>
               <%= link_to "delete", destroy_from_horse_path( :horse_id => @horse.id, :activity_id => activity.id), :method => :get, :data =>{:confirm => 'Delete this activity will also lead to deleting its following activities.
             Are you sure?'},class: "btn btn-default"%>

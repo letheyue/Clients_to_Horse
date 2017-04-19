@@ -76,11 +76,22 @@ class OwnersController < ApplicationController
   end
   
   def payment_log
+    if params[:select_time].blank?
+      @time = Time.now.to_date
+    else
+      @time = params[:select_time].to_date
+    end
     @owner = Owner.find params[:id]
     if params[:type].to_i == 1
-      @log = OwnerPayment.where(:owner_id => @owner.id, :billing_type => 1)
+      @log = OwnerPayment.where(:owner_id => @owner.id, :billing_type => 1, :created_at => @time.beginning_of_month..(@time+1.month).beginning_of_month)
     elsif params[:type].to_i == 2
-      @log = OwnerPayment.where(:owner_id => @owner.id, :billing_type => 2)
+      @log = OwnerPayment.where(:owner_id => @owner.id, :billing_type => 2, :created_at => @time.beginning_of_month..(@time+1.month).beginning_of_month)
+    elsif params[:type].to_i == 3
+      @log = OwnerPayment.where(:owner_id => @owner.id, :created_at => @time.beginning_of_month..(@time+1.month).beginning_of_month)
+      @monthlybalance = 0
+      @log.each do |log|
+        @monthlybalance = @monthlybalance + log.amount
+      end
     else
       @log = OwnerPayment.where(:owner_id => @owner.id)
     end

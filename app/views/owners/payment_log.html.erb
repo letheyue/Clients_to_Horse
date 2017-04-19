@@ -1,8 +1,13 @@
 <h1>Billing Summary</h1>
 <div>
+    <div>
+        <%= link_to "<<", payment_log_path(:id => @owner.id, :type => 3, :select_time => @time - 1.months)%>
+        <%= @time.strftime("%B %Y")%>
+        <%= link_to ">>", payment_log_path(:id => @owner.id, :type => 3, :select_time => @time + 1.months)%>
+    </div>
     <%= link_to "All History", payment_log_path(:id => @owner.id, :type => 0), class:"btn btn-default"%>
-    <%= link_to "Charged Activities", payment_log_path(:id => @owner.id, :type => 1), class:"btn btn-default"%>
-    <%= link_to "Customer Payments", payment_log_path(:id => @owner.id, :type => 2), class:"btn btn-default"%>
+    <%= link_to "Charged Activities", payment_log_path(:id => @owner.id, :type => 1, :select_time => @time ), class:"btn btn-default"%>
+    <%= link_to "Customer Payments", payment_log_path(:id => @owner.id, :type => 2, :select_time => @time ), class:"btn btn-default"%>
 </div> 
 <table id="horse_activities">
      <thead>
@@ -24,5 +29,17 @@
             </tr>
         <% end %>
     </tbody>    
-</table>     
+</table> 
+<div>
+    <div>
+         Total Balance:  
+        <%= @owner.balance %>
+    </div>
+    <%if !@monthlybalance.nil?%>
+        <div>
+            Monthly Balance :     
+            <%= @monthlybalance %>
+        </div>
+    <%end%>
+</div>
 <%= link_to "Back to customer detail", owner_path(@owner)%>

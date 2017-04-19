@@ -1,0 +1,37 @@
+<h1>Edit Activity</h1>
+<%= form_tag horse_activity_path(@activity), :method => :put do %>
+  <table id = "horse_activities">
+        <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Comment</th>
+      </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>
+                <%= @activity.activity.name %>
+              </td>
+              <td>  
+                  <div style="display:inline-block; width: 20%;">
+                    <%= select_date(@activity.date) %>
+              </td>
+              <td>
+                <div id="horse_activities_text">
+                  <%= text_field_tag "price", @activity.price %>
+                </div>
+              </td>
+              <td>
+                <div id="horse_activities_text">
+                  <%= text_field_tag "comment", @activity.comment %>
+                </div>  
+              </td>
+            </tr>
+        </tbody>
+    </table>
+    <%= hidden_field_tag "select_date", @date %>
+    <%= submit_tag("Update") %>
+<% end %>
+</div>

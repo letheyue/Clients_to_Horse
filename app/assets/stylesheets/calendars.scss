@@ -1,6 +1,17 @@
 // Place all the styles related to the Calendar controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.undone{
+   background-color: red;
+}
+.done{
+   background-color: green;
+}
+.select{
+   background-color: yellow;
+}
+
 table#calendars {
   margin: 10px;
   border-collapse: collapse;
