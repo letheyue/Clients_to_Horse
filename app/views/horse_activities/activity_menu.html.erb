@@ -18,6 +18,7 @@
         <th>Unit Price</th>
         <th>Quantity</th>
         <th>Comment</th>
+        <th>Reminder_order</th>
       </tr>
         </thead>
         <tbody>
@@ -44,6 +45,11 @@
                 <div id="horse_activities_text">
                   <%= text_field_tag "activity[id_#{@count}][comment]" %>
                 </div>  
+              </td>
+              <td>
+                <div id="horse_activities_text">
+                  <%= text_field_tag "activity[id_#{@count}][reminder_order]" ,0 %>
+                </div>
               </td>
               <td>
                 <%= activity.comment %>

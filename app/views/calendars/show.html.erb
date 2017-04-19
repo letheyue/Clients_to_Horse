@@ -21,7 +21,8 @@
 
 <div>
   <h2><%= "#{@date.year}-#{@date.month}-#{@date.day}"%></h2>
-  <%if !@activities.blank? then%>
+  < Today's activity >
+  <%if !@activities.blank?then%>
     <table id="calendars">
       <thead>
       <tr>
@@ -74,5 +75,54 @@
       </table>
   <%else%>
     <h2>Nothing to do</h2>
+  <%end%>
+  < Reminder Activity>
+  <%if !@reminder_activities.blank?then%>
+      <table id="calendars">
+        <thead>
+        <tr>
+          <th>Horse name</th>
+          <th>Procedure name</th>
+          <th>Activity name</th>
+          <th>Comment</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            <% @reminder_activities.each do |activity|%>
+                <tr>
+                  <td>
+                    <%= activity.horse.name %>
+                  </td>
+                  <td>
+                    <%= activity.procedure.name %>
+                  </td>
+                  <td>
+                    <%= activity.activity.name %>
+                  </td>
+                  <td>
+                    <%= activity.comment%>
+                  </td>
+                  <td>
+                    <%if activity.status == 1%>
+                        <td>
+                          <%= link_to "edit", edit_horse_activity_path( activity, :select_date => @date), :method => :get, class: "btn btn-default"%>
+                        </td>
+                        <td>
+                          <%= link_to "delete", destroy_from_horse_path( :horse_id => activity.horse.id, :activity_id => activity.id, :date => @date), :method => :get, :data =>{:confirm => 'Delete this activity will also lead to deleting its following activities.Are you sure?'},class: "btn btn-default"%>
+                        </td>
+                    <%else%>
+                        done
+                    <% end %>
+                    </td>
+                    </tr>
+            <% end %>
+            <div align="center"><%= paginate @activities %></div>
+            <%= hidden_field_tag "date", @date %>
+        </tbody>
+      </table>
+  <%else%>
+      <h2>Nothing to be reminded</h2>
   <%end%>
 </div>

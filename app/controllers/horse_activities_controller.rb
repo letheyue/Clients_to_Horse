@@ -28,7 +28,8 @@ class HorseActivitiesController < ApplicationController
             @price = params[:activity][i][:price]
             @quantity = params[:activity][i][:quantity]
             @comment = params[:activity][i][:comment]
-            HorseActivity.create(horse_id: @horse_id, status: 1, activity_id: @aid, procedure_id: @pid, date: @start_date + @oid.to_i.days, price: @price.to_i*@quantity.to_i, comment: @comment)
+            @reminder_order = params[:activity][i][:reminder_order]
+            HorseActivity.create(horse_id: @horse_id, status: 1, activity_id: @aid, procedure_id: @pid, date: @start_date + @oid.to_i.days, price: @price.to_i*@quantity.to_i, comment: @comment, reminder_date: @start_date + @oid.to_i.days - @reminder_order.to_i.days)
         end
         redirect_to horse_path(Horse.find(@horse_id))
     end
@@ -41,7 +42,7 @@ class HorseActivitiesController < ApplicationController
     def update
         @horseactivity = HorseActivity.includes(:activity, :horse).find params[:id]
         @date = Date.civil(params[:date][:year].to_i, params[:date][:month].to_i, params[:date][:day].to_i)
-        @horseactivity.update_attributes(:date => @date, :price => params[:price], :comment => params[:comment ])
+        @horseactivity.update_attributes(:date => @date, :price => params[:price], :comment => params[:comment], :reminder_order => params[:reminder_order])
         flash[:notice] = "#{@horseactivity.activity.name} was successfully updated."
         if params[:select_date].blank?
             redirect_to horse_path(@horseactivity.horse)
