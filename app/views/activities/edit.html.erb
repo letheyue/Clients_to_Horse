@@ -3,9 +3,9 @@
 <%= form_tag activity_path(@activity), :method => :put do %>
     <%= label :activity, :name, 'Name' %>
     <%= text_field :activity, 'name' %>
-    <%= label :activity, :age, 'Price' %>
+    <%= label :activity, :price, 'Price' %>
     <%= text_field :activity, 'price' %>
-    <%= label :activity, :sex, 'Comment' %>
+    <%= label :activity, :comment, 'Comment' %>
     <%= text_field :activity, 'comment' %>
 
     <%= submit_tag 'Update Activity Info' %>

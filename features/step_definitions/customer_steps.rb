@@ -1,18 +1,15 @@
 require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
-
-Given(/^I create a new user$/) do
+##################################################################
+# Background
+Given(/^I'm on the profile page$/) do
     visit root_path
-    click_link('Sign up now!')
-    fill_in('Name', :with => "test1")
-    fill_in('Email', :with => "test1@gmail.com")
+    click_link('Log in')
+    fill_in('Email', :with => "test@sample.com")
     fill_in('Password', :with => "123456")
-    fill_in('Confirmation', :with => "123456")
-    click_button('Create my account')
+    click_button('Log in')
 end
 Given(/^I enter the Customer database$/) do
-    click_link('Home')
-    click_link('Profile')
     click_link('Customers List')
 end
 When(/^I create a new owner$/) do 
@@ -25,8 +22,7 @@ When(/^I create a new owner$/) do
     fill_in('Comments', :with => "None")
     click_button('Save')
 end
-
-Then(/^I could see "I could see test_owner was successfully created."$/) do
+Then(/^I could see "test_owner was successfully created."$/) do
   if page.respond_to? :should
     page.should have_content('test_owner was successfully created.')
   else
@@ -35,7 +31,7 @@ Then(/^I could see "I could see test_owner was successfully created."$/) do
 end
 
 When(/^I follow the "Delete" button$/) do
-    click_button('Delete')
+  click_button('Delete', match: :first)
 end
 Then(/^I could see "Customer 'test_owner' deleted."$/) do
   if page.respond_to? :should
@@ -45,100 +41,51 @@ Then(/^I could see "Customer 'test_owner' deleted."$/) do
   end
 end
 
-When(/^I follow the "test_owner" link$/) do
-    click_link('test_owner')
+##################################################################
+# Scenario1
+When(/^I follow the "test1" link$/) do
+    click_link('test1')
 end
-Then(/^I could see his email$/) do
+Then(/^I could see her email$/) do
   if page.respond_to? :should
-    page.should have_content("test_owner@gmail.com")
+    page.should have_content("letheyuetemp@gmail.com")
   else
-    assert page.has_content?("test_owner@gmail.com")
+    assert page.has_content?("letheyuetemp@gmail.com")
   end
 end
-
+##################################################################
+# Scenario2
 Given(/^I'm on the customer page$/) do
     visit owners_path
 end
 When(/^I follow the "Edit" link$/) do
-    click_button('Edit')
+    click_button('Edit', match: :first)
 end
 Then(/^I change the address$/) do
     fill_in('Address', :with =>"111")
     click_button('Update Owner Info')
 end
-Then(/^I could see "test_owner was successfully updated."$/) do
+Then(/^I could see "test1 was successfully updated."$/) do
   if page.respond_to? :should
-    page.should have_content("test_owner was successfully updated.")
+    page.should have_content("test1 was successfully updated.")
   else
-    assert page.has_content?("test_owner was successfully updated.")
+    assert page.has_content?("test1 was successfully updated.")
   end
 end
-
-
-
-Given(/^I enter "test_owner"$/) do
+When(/^I click "delete" of "test1"$/) do
     visit owners_path
-    click_link('test_owner')
+    click_button('Delete', match: :first)
 end
-Then(/^I fill in the "amount" with "100"$/) do
-    fill_in('amount', :with =>"100")
-end
-Then(/^click "Make a payment"$/) do
-    click_button('Make a payment')
-end
-Then(/^I could see "-100 USD"$/) do
+Then (/^I could see "Customer 'test1' deleted."$/) do 
   if page.respond_to? :should
-    page.should have_content("-100 USD")
+    page.should have_content("Customer 'test1' deleted.")
   else
-    assert page.has_content?("-100 USD")
+    assert page.has_content?("Customer 'test1' deleted.")
   end
 end
-Then(/^I follow "Billing Summary" link$/) do
-    click_link('Billing Summary')
-end
-Then(/^I could see the payment$/) do
-  if page.respond_to? :should
-    page.should have_content("Balance")
-  else
-    assert page.has_content?("Balance")
-  end
-  if page.respond_to? :should
-    page.should have_content("-100")
-  else
-    assert page.has_content?("-100")
-  end
-end
-Then(/^I could go back to the customer$/) do 
-    click_link('Back to customer detail')
-    if page.respond_to? :should
-      page.should have_content("Details about Customer")
-    else
-      assert page.has_content?("Details about Customer")
-    end
-end
-
-Given(/^I step back to the home page$/) do
-    visit root_path
-end
-Then(/^I follow the "Log in" link$/) do 
-    click_link('Log out')
-    click_link('Log in')
-end
-When(/^I fill in user's email and password$/) do 
-    fill_in('Email', :with => "test1@gmail.com")
-    fill_in('Password', :with => "123456")
-end
-Then (/^I should see "test1" in the profile page$/) do 
-  click_button('Log in')
-  if page.respond_to? :should
-    page.should have_content('test1')
-  else
-    assert page.has_content?('test1')
-  end
-end
-
-Given(/^I click the "Home" link$/) do
-    click_link('Home')
+##################################################################
+# Scenario3
+Given(/^I'm back to profile page$/) do
     click_link('Profile')
 end
 Then(/^I follow the "Horses List" link$/) do
@@ -152,7 +99,7 @@ When(/^I fill in the new horse's information$/) do
     fill_in('Age', :with => "2")
     fill_in('Sex', :with => "F")
     fill_in('Breed', :with => "Yellow")
-    select('test_owner', :from => 'Owner')
+    select('test1', :from => 'Owner')
 end
 Then (/^I could see "test_horse was successfully created."$/) do 
   click_button('Save')
@@ -162,11 +109,10 @@ Then (/^I could see "test_horse was successfully created."$/) do
     assert page.has_content?('test_horse was successfully created.')
   end
 end
-
-Given(/^I click the "Profile" link$/) do
+##################################################################
+# Scenario4
+Given(/^I enter the activities database$/) do
     click_link('Profile')
-end
-Then(/^I follow the "Activities" link$/) do
     click_link('Activities')
 end
 When(/^I follow the "New Activity" link$/) do 
@@ -177,11 +123,120 @@ When(/^I fill in the new activity's information$/) do
     fill_in('Price', :with => "1000")
     fill_in('Comment', :with => "test for cucumber")
 end
-Then (/^I could see "test_activity was successfully created."$/) do 
+Then (/^I see this new activity$/) do 
   click_button('Add')
   if page.respond_to? :should
-    page.should have_content('test_activity was successfully created.')
+    page.should have_content('test_activity')
   else
-    assert page.has_content?('test_activity was successfully created.')
+    assert page.has_content?('test_activity')
+  end
+end
+When(/^I click the "Edit ICSI"$/) do
+    click_button('Edit ICSI', match: :first)
+  if page.respond_to? :should
+    page.should have_content('Price')
+  else
+    assert page.has_content?('Price')
+  end
+end
+Then(/^I change the comment$/) do
+    fill_in('Price', :with =>"100")
+end
+Then(/^I click "Update Activity Info"$/) do
+    click_button('Update Activity Info')
+end
+Then (/^I see "ICSI was successfully updated."$/) do 
+  if page.respond_to? :should
+    page.should have_content('ICSI was successfully updated.')
+  else
+    assert page.has_content?('ICSI was successfully updated.')
+  end
+end
+When(/^I click the "Delete ICSI"$/) do
+    click_button('Delete ICSI')
+end
+Then(/^I could see "Activity 'ICSI' deleted."$/) do
+  if page.respond_to? :should
+    page.should have_content("Activity 'ICSI' deleted.")
+  else
+    assert page.has_content?("Activity 'ICSI' deleted.")
+  end
+end
+
+##################################################################
+# Scenario5
+Given(/^I follow the "Procedures" link$/) do
+    click_link('Profile')
+    click_link('Procedures')
+end
+Then(/^I follow the "New procedures" link$/) do
+    click_button('New procedures')
+end
+Then(/^I fill in the "Name" with "test_procedure"$/) do
+    fill_in('Name', :with => "test_procedure")
+    click_button('Add')
+    click_link('test_procedure')
+  if page.respond_to? :should
+    page.should have_content('Details about test_procedure')
+  else
+    assert page.has_content?('Details about test_procedure')
+  end
+end
+When(/^I click "Delete" fo the new procedure$/) do
+  visit procedures_path
+  click_button('Delete', match: :first)
+end
+Then(/^I could see "Procedure 'test_procedure' deleted."$/) do
+  if page.respond_to? :should
+    page.should have_content("Procedure 'test_procedure' deleted.")
+  else
+    assert page.has_content?("Procedure 'test_procedure' deleted.")
+  end
+end
+##################################################################
+# Scenario6
+Given(/^I click the "Edit" link of the first procedure$/) do
+    visit procedures_path
+    click_button('Edit', match: :first)
+  if page.respond_to? :should
+    page.should have_content("Procedure's name Shipped Immature Oocytes")
+  else
+    assert page.has_content?("Procedure's name Shipped Immature Oocytes")
+  end
+end
+When(/^I arrange the ICSI into the procedure$/) do
+    select('ICSI', :from =>'Activity')
+    fill_in('Order', :with => "0")
+    fill_in('Comment', :with => "day 0")
+    click_button('Add')
+end
+Then(/^I could see "ICSI was successfully created."$/) do
+  if page.respond_to? :should
+    page.should have_content('ICSI was successfully created.')
+  else
+    assert page.has_content?('ICSI was successfully created.')
+  end
+end
+When(/^I arrange the Maturation into the procedure$/) do
+    select('Maturation', :from =>'Activity')
+    fill_in('Order', :with => "1")
+    fill_in('Comment', :with => "day 1")
+    click_button('Add')
+end
+Then(/^I could see "Maturation was successfully created."$/) do
+  if page.respond_to? :should
+    page.should have_content('Maturation was successfully created.')
+  else
+    assert page.has_content?('Maturation was successfully created.')
+  end
+end
+When(/^I click "delete" of ICSI$/) do
+    click_link('delete', match: :first)
+end
+Then(/^I couldn't see ICSI$/) do
+  if page.respond_to? :should
+    page.should have_no_content('day 0')
+  else
+    assert page.has_no_content?('day 0')
   end
 end
