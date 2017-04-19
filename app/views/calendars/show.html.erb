@@ -110,6 +110,7 @@
                   </td>
                   <td>
                     <%if activity.status == 1%>
+                      Not done
                         <td>
                           <%= link_to "edit", edit_horse_activity_path( activity, :select_date => @date), :method => :get, class: "btn btn-default"%>
                         </td>
@@ -122,7 +123,6 @@
                     </td>
                     </tr>
             <% end %>
-            <div align="center"><%= paginate @activities %></div>
             <%= hidden_field_tag "date", @date %>
         </tbody>
       </table>
