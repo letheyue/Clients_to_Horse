@@ -82,22 +82,8 @@ ActiveRecord::Schema.define(version: 20170419061341) do
     t.integer  "balance"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.integer  "product_id"
-    t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "procedures", force: :cascade do |t|
     t.text     "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.integer  "product_id"
-    t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
