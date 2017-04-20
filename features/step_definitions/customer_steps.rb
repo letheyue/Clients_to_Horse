@@ -83,6 +83,17 @@ Then (/^I could see "Customer 'test1' deleted."$/) do
     assert page.has_content?("Customer 'test1' deleted.")
   end
 end
+When(/^I enter a owner's name$/) do 
+    fill_in("Search owner's name or address or email or comments or phone or fax", :with => "Dianna Prince")
+    click_button('Search')
+end
+Then (/^I could see "wonderwoman@gmail.com"$/) do 
+  if page.respond_to? :should
+    page.should have_content('wonderwoman@gmail.com')
+  else
+    assert page.has_content?('wonderwoman@gmail.com')
+  end
+end
 ##################################################################
 # Scenario3
 Given(/^I'm back to profile page$/) do
@@ -107,6 +118,40 @@ Then (/^I could see "test_horse was successfully created."$/) do
     page.should have_content('test_horse was successfully created.')
   else
     assert page.has_content?('test_horse was successfully created.')
+  end
+end
+When(/^I edit the horse's age to "1"$/) do 
+    click_button('Edit test_horse')
+    fill_in('Age', :with => "1")
+    click_button('Update Horse Info')
+end
+Then (/^I could see "test_horse was successfully updated."$/) do 
+  if page.respond_to? :should
+    page.should have_content('test_horse was successfully updated.')
+  else
+    assert page.has_content?('test_horse was successfully updated.')
+  end
+end
+When(/^I click "Delete test_horse"$/) do
+    click_link('Back to horses list')
+    click_button('Delete test_horse')
+end
+Then (/^I could see "Horse test_horse deleted."$/) do 
+  if page.respond_to? :should
+    page.should have_content('Horse test_horse deleted.')
+  else
+    assert page.has_content?('Horse test_horse deleted.')
+  end
+end
+When(/^I enter a horse's name$/) do 
+    fill_in("Search horse's name or age or sex or breed", :with => "Curry")
+    click_button('Search')
+end
+Then (/^I could see "Red"$/) do 
+  if page.respond_to? :should
+    page.should have_content('Red')
+  else
+    assert page.has_content?('Red')
   end
 end
 ##################################################################
@@ -239,4 +284,72 @@ Then(/^I couldn't see ICSI$/) do
   else
     assert page.has_no_content?('day 0')
   end
+end
+##################################################################
+# Scenario7
+Given(/^I come to the horse database and choose the first horse$/) do
+    click_link('Profile')
+    click_link('Horses List')
+    click_link('Curry')
+end
+Then(/^I follow the link in the Owner field to check its owner$/) do
+    click_link('test1')
+    if page.respond_to? :should
+      page.should have_content('test1')
+    else
+      assert page.has_content?('test1')
+    end
+    click_link('Curry')
+end
+Then(/^I add a procedure for this horse$/) do
+    click_link('Add Procedure')
+    click_link('Add', match: :first)
+    if page.respond_to? :should
+      page.should have_content('Add Procedure')
+    else
+      assert page.has_content?('Add Procedure')
+    end
+end
+
+Then(/^I could see the attached procedure$/) do
+    click_button('Add Procedure')
+    if page.respond_to? :should
+      page.should have_content('In-Vivo Oocytes')
+    else
+      assert page.has_content?('In-Vivo Oocytes')
+    end
+end
+When(/^I delete the first activity$/) do
+    click_button('delete', match: :first)
+    if page.respond_to? :should
+      page.should have_content('activities were successfully deleted.')
+    else
+      assert page.has_content?('activities were successfully deleted.')
+    end
+end
+##################################################################
+# Scenario8
+Given(/^I enter the calendar page$/) do
+    click_link('Calendar')
+end
+When(/^I choose the day of "19th"$/) do
+    click_link('19')
+end
+Then(/^I could see "Nothing to do"$/) do
+    if page.respond_to? :should
+      page.should have_content('Nothing to do')
+    else
+      assert page.has_content?('Nothing to do')
+    end
+end
+When(/^I log out$/) do
+    click_link('Log out')
+end
+Then(/^I could not enter the calendar page$/) do
+    visit calendars_show_path
+    if page.respond_to? :should
+      page.should have_content("Please log in.")
+    else
+      assert page.has_content?("Please log in.")
+    end
 end
