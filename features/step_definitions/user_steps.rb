@@ -47,4 +47,48 @@ Then(/^I could see "Please log in."$/) do
       assert page.has_content?("Please log in.")
     end
 end
+When(/^I want to enter the owner database$/) do
+    visit root_path
+    visit owners_path
+end
+Then(/^I would see "Please log in."$/) do
+    if page.respond_to? :should
+      page.should have_content("Please log in.")
+    else
+      assert page.has_content?("Please log in.")
+    end
+end
+When(/^I want to enter the activity database$/) do
+    visit root_path
+    visit activities_path
+end
+Then(/^I will see "Please log in."$/) do
+    if page.respond_to? :should
+      page.should have_content("Please log in.")
+    else
+      assert page.has_content?("Please log in.")
+    end
+end
+When(/^I want to enter the procedure database$/) do
+    visit root_path
+    visit procedures_path
+end
+Then(/^I am going to see "Please log in."$/) do
+    if page.respond_to? :should
+      page.should have_content("Please log in.")
+    else
+      assert page.has_content?("Please log in.")
+    end
+end
+When(/^I want to use the mail function$/) do
+    visit root_path
+    visit send_mail_path
+end
+Then(/^I'll see "Please log in."$/) do
+    if page.respond_to? :should
+      page.should have_content("Please log in.")
+    else
+      assert page.has_content?("Please log in.")
+    end
+end
 

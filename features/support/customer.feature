@@ -67,17 +67,38 @@ Scenario: add/edit/delete activities to a new procedure
   And I click "delete" of ICSI
   Then I couldn't see ICSI
 # 7 
-Scenario: check each horse's owner and arrange a procedure to it
+Scenario: check each horse's owner and complete activities and pay the bill 
   Given I come to the horse database and choose the first horse
   And I follow the link in the Owner field to check its owner
+  When I click the "Hurry" and make the first activity done
+  Then I could see "activities were successfully updated."
+  Then I follow the "Completed Activities" link and I could see "ICSI"
+  Then I could go back to the horse page
+  Then I could see "100 USD" in its owner billing
+  When the owner pay "100 USD" 
+  Then the billing should be "0 USD"
+  And I could check my month balance in "Billing Summary"
+  When I want to send email
+  Then I would see the owner's email address
+  When I complete the content and send it
+  And I could delete the payment history
   Then I add a procedure for this horse
   Then I could see the attached procedure
   When I delete the first activity
+ 
 # 8 
 Scenario: check daily activities through calendar
   Given I enter the calendar page
   When I choose the day of "19th"
   And I could see "Nothing to do"
+  When I choose the day of "23th"
+  And I could click the first activity
+  Then I could see "done"
+  When I choose the day of "25th"
+  And I click the "edit" and change the comment
+  Then I could see the new comment
+  When I delete today's first activity
+  Then I would see the notice message
   When I log out
   Then I could not enter the calendar page
   
