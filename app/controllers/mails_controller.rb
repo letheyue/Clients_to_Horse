@@ -11,9 +11,10 @@ class MailsController < ApplicationController
 
   def mail
     @owner = Owner.find(params[:owner_id])
-    SendMail.create(owner_id: @owner.id, subject: params[:subject], comment: params[:comment] )
-    @mail = SendMail.last
-    UserMailer.test_mail(@owner,@mail).deliver
+    @content = params[:content]
+    @subject = params[:subject]
+    UserMailer.test_mail(@owner, @subject, @content).deliver
+
     redirect_to owner_path(@owner)
   end
 
