@@ -56,5 +56,9 @@ User:
     email :string
     password_digest :string
     remember_digest :string
+    smtp_mail :text
+    smtp_mail_password :text
+    reset_digest :string
+    reset_sent_at :datetime
 	
 	
