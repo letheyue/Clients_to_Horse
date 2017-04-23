@@ -13,7 +13,8 @@ class MailsController < ApplicationController
     @owner = Owner.find(params[:owner_id])
     @content = params[:content]
     @subject = params[:subject]
-    UserMailer.test_mail(@owner, @subject, @content).deliver
+    @user ||= User.find_by(id: session[:user_id])
+    UserMailer.test_mail(@owner, @subject, @content, @user).deliver
 
     redirect_to owner_path(@owner)
   end

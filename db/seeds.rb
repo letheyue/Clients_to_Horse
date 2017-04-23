@@ -18,7 +18,7 @@ horse3 = owner3.horses.create({:name => 'Barry', :age => "1", :sex => 'M', :bree
 owner4 = Owner.create({:name => 'test1', :address => 'College Station', :phone_number => '702-858-5598', :fax_number =>  '702-858-5598', :email => 'letheyuetemp@gmail.com', :comments => 'test owner', :balance => 0})
 horse4 = owner4.horses.create({:name => 'Curry', :age => "0.5", :sex => 'F', :breed => 'Red'})
 
-user = User.create({:name => 'admin', :email => 'test@sample.com', :password => '123456'})
+user = User.create({:name => 'admin', :email => 'test@sample.com', :password => '123456', :smtp_mail => 'letheyuetemp', :smtp_mail_password => 'zpbwruoaxjavcoes'})
 
 activity1 = Activity.create({:name => 'ICSI', :price => 1250, :comment => ""})
 activity2 = Activity.create({:name => 'Day 5 Cleavage Check', :price => 500, :comment => "500 per embryo"})

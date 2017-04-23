@@ -16,6 +16,12 @@
 
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation, class:'form-control' %>
+        
+        <%= f.label :stmp_mail_password %>
+        <%= f.password_field :stmp_mail_password, class:'form-control' %>
+
+        <%= f.label :stmp_mail_password_confirmation, "Confirmation" %>
+        <%= f.password_field :stmp_mail_password_confirmation, class:'form-control' %>
 
         <%= f.submit "Create my account", class: "btn btn-primary" %> <% end %>
   </div>
