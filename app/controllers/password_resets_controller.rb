@@ -2,7 +2,7 @@ class PasswordResetsController < ApplicationController
   before_action :get_user, only: [:edit, :update]
 
   def new
-    @user = User.new
+    # @user = User.new
   end
 
   def create
@@ -31,6 +31,21 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     end
   end
+
+  def edit_smtp_mail
+    @user = User.find(params[:id])
+  end
+
+  def update_smtp_mail
+    @user = User.find(params[:id])
+    @smtp_mail = params[:smtp_mail]
+    @smtp_mail_password = params[:smtp_mail_password]
+    @user.update_attribute(:smtp_mail , @smtp_mail)
+    @user.update_attribute(:smtp_mail_password , @smtp_mail_password)
+    flash[:success] = "Smtp mail has been reset."
+    redirect_to @user
+  end
+
 
   private
   def user_params

@@ -11,11 +11,8 @@
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.text_field :password_confirmation, class: 'form-control' %>
 
-        <%= f.label  :smtp_mail, "send email address" %>
-        <%= f.text_field :smtp_mail, class: 'form-control' %>
-
-        <%= f.label  :smtp_mail_password, "send email address's password" %>
-        <%= f.text_field :smtp_mail_password, class: 'form-control' %>
+        <%= hidden_field_tag :smtp_mail, @user.smtp_mail %>
+        <%= hidden_field_tag :smtp_mail_password, @user.smtp_mail_password %>
 
 
         <%= f.submit "Update", class: "btn btn-primary" %>

@@ -53,6 +53,13 @@ Rails.application.routes.draw do
 
   post '/mail', to: 'mails#mail'
 
+  post '/update_smtp_mail', to: 'password_resets#update_smtp_mail'
+
+  get '/edit_smtp_mail', to: 'password_resets#edit_smtp_mail'
+
+  patch '/update_smtp_mail', to: 'password_resets#update_smtp_mail'
+
+
   resources :horses do
     collection do
       get :search
@@ -70,8 +77,8 @@ Rails.application.routes.draw do
   resource :calendars, only: [:show], controller: :calendars
 
   resources :password_resets, only: [:new, :create, :edit, :update]
-  
-  
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #root 'application#hello'

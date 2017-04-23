@@ -4,7 +4,8 @@
     <section class="user_info">
     <h1>
       <%= gravatar_for @user %>
-      <%= @user.name %> </h1>
+      <%= @user.name %>
+      <li><%= link_to "change smtp mail address", edit_smtp_mail_path(:id => @user.id) %></li></h1>
     </section>
 
     <li><%= link_to "Horses List", horses_path, method: "get"%></li>
