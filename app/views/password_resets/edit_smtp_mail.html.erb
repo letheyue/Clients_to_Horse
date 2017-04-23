@@ -7,13 +7,11 @@
         <%= hidden_field_tag :password, @user.password %>
         <%= hidden_field_tag :password_confirmation, @user.password_confirmation %>
 
+        <%= label :user, :smtp_mail, "email server account" %>
+        <%= text_field_tag  'smtp_mail', @user.smtp_mail %>
 
-        <%= label :user, :smtp_mail, "send email address" %>
-        <%= text_field_tag  'smtp_mail' %>
-
-        <%= label :user, :smtp_mail_password, "send email address's password" %>
-        <%= text_field_tag  'smtp_mail_password' %>
-
+        <%= label :user, :smtp_mail_password, "email server password" %>
+        <%= text_field_tag  'smtp_mail_password', @user.smtp_mail_password %>
 
         <%= submit_tag "Update", class: "btn btn-primary" %>
     <% end %>

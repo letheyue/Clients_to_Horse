@@ -6,10 +6,10 @@
         <%= hidden_field_tag :email, @user.email %>
 
         <%= f.label :password %>
-        <%= f.text_field :password, class: 'form-control' %>
+        <%= f.password_field :password, class: 'form-control' %>
 
         <%= f.label :password_confirmation, "Confirmation" %>
-        <%= f.text_field :password_confirmation, class: 'form-control' %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
 
         <%= hidden_field_tag :smtp_mail, @user.smtp_mail %>
         <%= hidden_field_tag :smtp_mail_password, @user.smtp_mail_password %>

@@ -7,10 +7,10 @@ class UserMailer < ActionMailer::Base
 
   def test_mail(owner, subject, content, user)
     @content = content
-    delivery_options = { user_name: user.smtp_mail,
-                         password: user.smtp_mail_password
+    delivery_options = { :user_name => user.smtp_mail,
+                         :password => user.smtp_mail_password
                         }
-    mail(:to => owner.email, :subject => subject, :from => user.email)
+    mail(:to => owner.email, :subject => subject, :from => user.email, delivery_method_options: delivery_options)
   end
 
 
