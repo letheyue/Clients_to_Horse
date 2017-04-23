@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   get 'calendars/show'
 
   get 'sessions/new'
@@ -64,6 +68,8 @@ Rails.application.routes.draw do
   resources :users, :horses, :owners, :horse_activities, :chains, :procedures, :activities
 
   resource :calendars, only: [:show], controller: :calendars
+
+  resources :password_resets, only: [:new, :create, :edit, :update]
   
   
 
