@@ -35,6 +35,10 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit_smtp_mail
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
     @user = User.find(params[:id])
   end
 
