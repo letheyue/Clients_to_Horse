@@ -383,13 +383,13 @@ Then(/^I could check my month balance in "Billing Summary"$/) do
 end
 When(/^I want to send email$/) do 
     click_link('Back to customer detail')
-    click_link('Send Mail')
+    click_button('Send Mail')
 end
 Then(/^I would see the owner's email address$/) do
     if page.respond_to? :should
-      page.should have_content("to: Client's name: Bruce Wayne, email :batman@gmail.com")
+      page.should have_content("To: Bruce Wayne <batman@gmail.com>")
     else
-      assert page.has_content?("to: Client's name: Bruce Wayne, email :batman@gmail.com")
+      assert page.has_content?("To: Bruce Wayne <batman@gmail.com>")
     end
 end
 When(/^I complete the content and send it$/) do

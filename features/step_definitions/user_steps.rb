@@ -80,15 +80,5 @@ Then(/^I am going to see "Please log in."$/) do
       assert page.has_content?("Please log in.")
     end
 end
-When(/^I want to use the mail function$/) do
-    visit root_path
-    visit send_mail_path
-end
-Then(/^I'll see "Please log in."$/) do
-    if page.respond_to? :should
-      page.should have_content("Please log in.")
-    else
-      assert page.has_content?("Please log in.")
-    end
-end
+
 

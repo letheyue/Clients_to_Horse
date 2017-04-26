@@ -21,7 +21,5 @@ Scenario: without log in visiting page
    Then I will see "Please log in."
    When I want to enter the procedure database 
    Then I am going to see "Please log in."
-   When I want to use the mail function
-   Then I'll see "Please log in."
-   
+
 
