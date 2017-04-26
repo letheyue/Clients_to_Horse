@@ -2,7 +2,7 @@ class OwnersController < ApplicationController
   before_action :logged_in_user
   
   def owner_params
-    params.require(:owner).permit(:name, :email, :phone_number, :fax_number, :address, :comments, :balance)
+    params.require(:owner).permit(:name, :email, :phone_number, :fax_number, :address, :comments, :balance, :docs)
   end
   
   def show
@@ -118,4 +118,11 @@ class OwnersController < ApplicationController
       redirect_to login_url
     end
   end
+  
+  def add_document
+    @owner = Owner.find(params[:owner_id])
+    @doc = Doc.new()
+    @doc.owner_id = @owner.id;
+  end
+  
 end

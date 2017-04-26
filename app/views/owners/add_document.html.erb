@@ -1,0 +1,20 @@
+<h2>
+    Add Document to <%=@owner.name%>
+</h2>
+
+<%=form_for @doc, :html =>{:multipart => true} do |f|%>
+<%=f.hidden_field :owner_id, value: @owner.id %>
+
+<div id = "upload_file_field_Width">
+    <%=f.file_field :file_name, :multiple => false%><br>
+</div>
+<div id="upload_discription_area_Width">
+    <div>Add Descripttion to Document: </div>
+    <%= f.text_area :description %>
+</div>
+
+<div id = "upload_submit_btn_Width">
+    <%= f.submit "Upload" %> 
+</div>
+
+<%end%>
