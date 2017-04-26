@@ -51,8 +51,51 @@
             <%= submit_tag "Make a payment",  :style => "width:150px; float left", :class => "btn btn-default"%>
             <%= hidden_field_tag "owner_id", @owner.id  %>
         <%end%>
-      <%= link_to "Send Mail", send_mail_path(:owner_id => @owner.id), :method => :get %>
       <!--<input type="button" value="send mail" onClick="window.open('http://www.gmail.com')" style = "width:150px; float:left">-->
     </div>
+
+    <body>
+
+    <div class="container">
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Send mail</button>
+
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Send email</h4>
+            </div>
+            <div class="modal-body">
+              <p>
+                <%= form_tag mail_path(:owner_id => @owner.id) do%>
+                    <%= label :send_mail, :owner_id, "To: #{Owner.find(@owner.id).name} <#{Owner.find(@owner.id).email}>" %>
+                    <%= hidden_field_tag "Owner", @owner.id %>
+
+                    <%= label :send_mail, :subject, 'Subject' %>
+                    <%= text_field_tag  'subject' %>
+
+                    <%= label :send_mail, :content, 'Body' %>
+                    <%= text_area_tag 'content',nil, rows: 15 %>
+
+                    <%= submit_tag 'Send' %>
+
+                <% end %>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    </body>
+    </html>
+
   </tl>
 </tbody>
