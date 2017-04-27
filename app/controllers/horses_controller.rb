@@ -1,6 +1,6 @@
 class HorsesController < ApplicationController
   before_action :logged_in_user
-  
+
   def horse_params
     params.require(:horse).permit(:name, :age, :sex, :breed, :owner_id)
   end
@@ -62,4 +62,14 @@ class HorsesController < ApplicationController
       redirect_to login_url
     end
   end
+  
+  def generate_document
+    horse = Horse.find(params[:horse_id])
+    @horse_of_owner = params[:horse_id].to_i
+    @owner = Owner.find(horse.owner_id)
+    @doc = Doc.new()
+    @doc.owner_id = @owner.id;
+    @doc.owner_horse_id = params[:horse_id].to_i
+  end
+
 end

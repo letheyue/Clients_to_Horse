@@ -35,8 +35,9 @@ ActiveRecord::Schema.define(version: 20170426215518) do
     t.text     "description"
     t.string   "file_name"
     t.string   "short_name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "owner_horse_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "owner_id"
   end
 

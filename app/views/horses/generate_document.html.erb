@@ -1,5 +1,6 @@
+<% horse = @owner.horses.find(@horse_of_owner) %>
 <h2>
-    Add Document to Owner <i> <%= @owner.name %> </i>
+    Add Document to Owner <i> <%= @owner.name %> </i> for Horse: <i><%= horse.name %></i>
 </h2>
 
 <%=form_for @doc, :html =>{:multipart => true} do |f|%>

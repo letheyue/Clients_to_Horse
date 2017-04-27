@@ -5,11 +5,12 @@ class DocsController < ApplicationController
   def create
     doc = Doc.new(doc_params)
     owner = Owner.find doc_params[:owner_id]
-
+    
     if doc_params[:file_name].to_s.empty?
       flash[:notice] = "Invalid name for the document"
     else
         doc.short_name = "#{doc_params[:file_name].original_filename}"
+        doc.owner_horse_id = doc_params[:owner_horse_id].to_i
         if owner.docs.where(short_name: doc.short_name).present?
             flash[:notice] = "A document with the same name is attached to this owner!"
         elsif
@@ -22,11 +23,14 @@ class DocsController < ApplicationController
   end
   
   def download_file
-    @doc = Doc.find_by(params[:id])
-
-    send_file(Doc.find_by(params[:id]).file_name.path,
-        :filename =>File.basename(Doc.find_by(params[:id]).file_name.path),
-        :type => Doc.find_by(params[:id]).file_name.content_type,
+    doc = Doc.find(params[:doc_id])
+    address = doc.file_name.file.path
+    puts("ADDRESS: ")
+    puts(doc.file_name.file.path)
+    
+    send_file(doc.file_name.file.path,
+        :filename =>doc.short_name,
+        :type => doc.file_name.content_type,
         :disposition => 'attachment',
        :url_based_filename => true)
   end
@@ -38,7 +42,10 @@ class DocsController < ApplicationController
   def destroy
     doc = Doc.find(params[:doc_id])
     owner = Owner.find doc.owner_id
+    # remove and destroy the file
     doc.remove_file_name
+    doc.destroy;
+    #clean up the database
     Doc.delete doc
     owner.docs.delete doc
     owner.save 
@@ -51,9 +58,10 @@ class DocsController < ApplicationController
     redirect_to owner_path(owner)
   end
   
+  
   private 
   def doc_params
-  params.require(:doc).permit(:file_name, :owner_id, :description)
+  params.require(:doc).permit(:file_name, :owner_id, :description, :owner_horse_id)
   end
   
 
