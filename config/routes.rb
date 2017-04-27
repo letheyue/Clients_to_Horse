@@ -60,7 +60,9 @@ Rails.application.routes.draw do
 
   patch '/update_smtp_mail', to: 'password_resets#update_smtp_mail'
   
-  get 'download_invoice', to:'downloads#show'
+  get 'download_invoice', to: 'downloads#show'
+  
+  post 'send_invoice', to: 'downloads#mail_pdf'
  
 
   resources :horses do
