@@ -8,7 +8,7 @@ class DownloadsController < ApplicationController
   private
  
   def invoice_pdf
-    owner = (Owner.find params[:id]).name
+    owner = Owner.find params[:id])
     invoice = OwnerPayment.where(:owner_id => params[:id], :billing_type => 1, :created_at => params[:select_time].to_date.beginning_of_month..(params[:select_time].to_date+1.month).beginning_of_month)
     InvoicePdf.new(invoice, owner)
   end

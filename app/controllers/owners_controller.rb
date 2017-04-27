@@ -72,10 +72,10 @@ class OwnersController < ApplicationController
     @paid = @current_balance - params[:amount].to_f 
     @owner.update_attribute(:balance, @paid)
     OwnerPayment.create(owner_id: @owner.id, amount: -params[:amount].to_f, balance: @paid, billing_type: 2, comment: params[:comment] )
-    redirect_to owner_path(@owner)
+    redirect_to payment_log_path(:id => @owner.id)
   end
   
-  def make_credit
+    def make_credit
     @owner = Owner.find(params[:owner_id])
     @current_balance = @owner.balance
     @paid = @current_balance + params[:amount].to_f 
@@ -97,7 +97,7 @@ class OwnersController < ApplicationController
       @log = OwnerPayment.where(:owner_id => @owner.id, :billing_type => 2, :created_at => @time.beginning_of_month..(@time+1.month).beginning_of_month)
     elsif params[:type].to_i == 3
       @log = OwnerPayment.where(:owner_id => @owner.id, :created_at => @time.beginning_of_month..(@time+1.month).beginning_of_month)
-      @monthlybalance = 0
+      @monthlybalance = 0.0
       @log.each do |log|
         @monthlybalance = @monthlybalance + log.amount
       end
@@ -129,7 +129,6 @@ class OwnersController < ApplicationController
   end
   
   def add_document
-    @horse_of_owner = nil;
     @owner = Owner.find(params[:owner_id])
     @doc = Doc.new()
     @doc.owner_id = @owner.id;

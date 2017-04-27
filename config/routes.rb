@@ -90,11 +90,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, :horses, :owners, :horse_activities, :chains, :procedures, :activities, :pdf_generators, :docs
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 96ab02f43ba53dedc377386ba98ae1d380bdb4ff
 
   resource :calendars, only: [:show], controller: :calendars
 
