@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20170426215518) do
 
   create_table "activities", force: :cascade do |t|
     t.text     "name"
-    t.float    "price"
+    t.integer  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "comment"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170426215518) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.datetime "date"
-    t.float    "price"
+    t.integer  "price"
     t.text     "comment"
     t.integer  "procedure_id"
     t.integer  "reminder_order"
@@ -75,11 +75,11 @@ ActiveRecord::Schema.define(version: 20170426215518) do
 
   create_table "owner_payments", force: :cascade do |t|
     t.integer  "owner_id"
-    t.float    "amount"
+    t.integer  "amount"
     t.text     "comment"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.float    "balance"
+    t.integer  "balance"
     t.integer  "billing_type"
     t.text     "horse_name"
     t.text     "procedure_name"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20170426215518) do
     t.text     "comments"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.float    "balance"
+    t.integer  "balance"
   end
 
   create_table "procedures", force: :cascade do |t|
