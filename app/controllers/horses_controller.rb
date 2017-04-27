@@ -55,16 +55,6 @@ class HorsesController < ApplicationController
     flash[:notice] = "Horse #{@horse.name} deleted."
     redirect_to horses_path
   end
-  
-
-  def search
-    @horses = Horse.all
-    if params[:search]
-      @horses = Horse.search(params[:search]).order("created_at DESC")
-    else
-      @horses = Horse.all.order("created_at DESC")
-    end
-  end
 
   def logged_in_user
     unless logged_in?

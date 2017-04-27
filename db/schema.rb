@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170426215518) do
+=======
+ActiveRecord::Schema.define(version: 20170426211902) do
+>>>>>>> 08575995fd1e14a533db6ea29b0cdef41131b871
 
   create_table "activities", force: :cascade do |t|
     t.text     "name"
@@ -29,6 +33,15 @@ ActiveRecord::Schema.define(version: 20170426215518) do
     t.text     "comment"
     t.index ["activity_id"], name: "index_chains_on_activity_id"
     t.index ["procedure_id"], name: "index_chains_on_procedure_id"
+  end
+
+  create_table "docs", force: :cascade do |t|
+    t.text     "description"
+    t.string   "file_name"
+    t.string   "short_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "owner_id"
   end
 
   create_table "horse_activities", force: :cascade do |t|

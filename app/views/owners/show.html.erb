@@ -57,7 +57,7 @@
     <body>
 
     <div class="container">
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Send mail</button>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Send Mail</button>
 
       <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
@@ -95,7 +95,43 @@
     </div>
 
     </body>
-    </html>
-
+    <%=link_to "Back to customers list", owners_path %>
   </tl>
+  
 </tbody>
+<!-------------------show documents in a table-------------------------></>
+
+<table>
+<!-------------------the headings of the table-------------------------></>
+  <tr>
+    <td id ="firstColumn">
+       <b>Documents: </b>
+    </td>
+    <td id = "secondColumn">
+      <%=@owner.docs.length.to_s%>
+    </td>
+    <td id = "thirdColumn">
+       <%= button_to "Add Document", owner_add_document_path(@owner), :method => :get %>
+    </td>
+  </tr>
+  <!----------------links to documents and other details ----------------------------></>
+  <%@owner.docs.each do |d|%> 
+    <tr>
+      <td>
+      </td>
+      <td>
+        <%= link_to d.short_name, doc_show_path(d)%>
+      </td>
+      <td>
+        <p>
+          <%= link_to "Delete", doc_destroy_path(d.id), :confirm => "Are you sure?"%>
+        </p>
+      </td>
+      <td>
+        <%= d.description %>
+      </td>
+    </tr>
+  <%end%>
+  
+  <!--------------------------------------------></>
+</table>

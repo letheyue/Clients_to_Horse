@@ -74,8 +74,23 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  
+  resources :owners do
+    get :add_document
+  end
+  
+  resources :docs do
+    get :download_file
+    get :show
+    get :destroy
+    get :redirect_to_owner
+  end
 
+<<<<<<< HEAD
   resources :users, :horses, :owners, :horse_activities, :chains, :procedures, :activities, :pdf_generators
+=======
+  resources :users, :horses, :owners, :horse_activities, :chains, :procedures, :activities, :docs
+>>>>>>> 08575995fd1e14a533db6ea29b0cdef41131b871
 
   resource :calendars, only: [:show], controller: :calendars
 
