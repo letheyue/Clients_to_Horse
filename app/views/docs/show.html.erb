@@ -17,10 +17,14 @@
     <p>
       <%= address %>
     </p>
+    <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=<%address.to_s%>' width='100%' height='780'></iframe>
+    <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=<%address%>' width='100%' height='780'></iframe>
     
-    <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=<%address.to_s %>' width='1366px' height='623px' frameborder='0'></iframe>
     
-    <iframe src="http://docs.google.com/gview?url=<%address.to_s %>&embedded=true"></iframe>
+    <iframe src="http://docs.google.com/gview?url=<%address.to_s%>&embedded=true" width='100%' height='780'></iframe>
+        
+    
+    <iframe src="http://docs.google.com/gview?url=<%address%>&embedded=true" width='100%' height='780'></iframe>
 
     
   <%else %>
