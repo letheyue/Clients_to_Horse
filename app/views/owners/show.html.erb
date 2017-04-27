@@ -85,10 +85,8 @@
   </tl>
   
 </tbody>
-<!-------------------show documents in a table-------------------------></>
 
 <table>
-<!-------------------the headings of the table-------------------------></>
   <tr>
     <td id ="firstColumn">
        <b>Documents: </b>
@@ -100,8 +98,7 @@
        <%= button_to "Add Document", owner_add_document_path(@owner), :method => :get %>
     </td>
   </tr>
-  <!----------------links to documents and other details ----------------------------></>
-  <%@owner.docs.each do |d|%> 
+  <%@owner.docs.each do |d|%>
     <tr>
       <td>
       </td>
@@ -118,6 +115,5 @@
       </td>
     </tr>
   <%end%>
-  
-  <!--------------------------------------------></>
+
 </table>
