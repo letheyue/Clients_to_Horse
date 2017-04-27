@@ -39,6 +39,9 @@ gem 'jbuilder', '2.4.1'
 
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'pdfkit'
+gem 'render_anywhere'
+gem 'wkhtmltopdf-binary'
 
 gem 'calendar_helper', '0.2.3'
 

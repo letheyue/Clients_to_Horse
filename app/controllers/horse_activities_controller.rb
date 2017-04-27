@@ -29,7 +29,7 @@ class HorseActivitiesController < ApplicationController
             @quantity = params[:activity][i][:quantity]
             @comment = params[:activity][i][:comment]
             @reminder_order = params[:activity][i][:reminder_order]
-            HorseActivity.create(horse_id: @horse_id, status: 1, activity_id: @aid, procedure_id: @pid, date: @start_date + @oid.to_i.days, price: @price.to_i*@quantity.to_i, comment: @comment, reminder_date: @start_date + @oid.to_i.days - @reminder_order.to_i.days)
+            HorseActivity.create(horse_id: @horse_id, status: 1, activity_id: @aid, procedure_id: @pid, date: @start_date + @oid.to_i.days, price: @price.to_f*@quantity.to_f, comment: @comment, reminder_date: @start_date + @oid.to_i.days - @reminder_order.to_i.days)
         end
         redirect_to horse_path(Horse.find(@horse_id))
     end
@@ -61,8 +61,8 @@ class HorseActivitiesController < ApplicationController
                 @procedurename = @activity.procedure.name
                 @activity.update_attribute(:status, 2)
                 @balance = @owner.balance
-                @new_balance = @balance.to_i + @activity.price.to_i
-                @new_payment = OwnerPayment.create(owner_id: @owner.id, amount: @activity.price,balance: @new_balance, billing_type: 1,  comment: "charged for #{@horse.name} : #{@procedurename} , #{@activityname}  completed")
+                @new_balance = @balance + @activity.price
+                @new_payment = OwnerPayment.create(owner_id: @owner.id, amount: @activity.price,balance: @new_balance, billing_type: 1, horse_name: @horse.name, procedure_name: @activityname  )
                 #@new_payment.update_attribute(:created_at, @activity.date)
                 @owner.update_attribute(:balance, @new_balance)
             end
