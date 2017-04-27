@@ -12,13 +12,13 @@ class InvoicePdf
   end
  
   def filename
-    "Invoice_#{@owner}_#{Time.now.to_date}.pdf"
+    "Invoice_#{@owner.name}_#{Time.now.to_date}.pdf"
   end
  
   private
     attr_reader :owner_payment
  
     def as_html
-      render template: "owners/invoice_pdf", layout: "invoice_pdf", locals: { log: @invoice, }
+      render template: "owners/invoice_pdf", layout: "invoice_pdf", locals: { log: @invoice, owner: @owner}
     end
 end
