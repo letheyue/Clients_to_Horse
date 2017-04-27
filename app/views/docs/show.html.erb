@@ -13,7 +13,9 @@
   
     <iframe src=<%= @doc.file_name.url %> width="100%" height="780"> </iframe>
   <%elsif %w{docx docm dotm dotx xlsx xlsb xls xlsm pptx ppsx ppt pps pptm potm ppam potx ppsm}.include? (extension) %>
-    <iframe src='https://view.officeapps.live.com/op/view.aspx?src=<%=@doc.file_name.url %>' width="100%" height="780" > </iframe>
+    <%= address = <%=request.remote_ip %> + <%=@doc.file_name.url %>>
+    
+    <iframe src='https://view.officeapps.live.com/op/view.aspx?src=<%=request.remote_ip %> + <%=@doc.file_name.url %>' width="100%" height="780" > </iframe>
   <%else %>
   <p><b>No Preview Is Available</b></p>
 <%end%>
