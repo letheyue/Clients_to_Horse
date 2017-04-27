@@ -12,18 +12,18 @@ Owner:
 	fax_number :text
 	email :text
 	comments :text
-	balances :integer
+	balances :float
 	
 Owner_Payment:
 	owner_id :integer
-	amount :integer
+	amount :float
 	comment :text
-	balance :integer
+	balance :float
 	billing_type :integer // 1 for charged activities, 2 for customer payments
 	
 Activity:
 	name :text
-	price :integer // initial price per unit
+	price :float // initial price per unit
 	comment :text
 	
 Procedure:

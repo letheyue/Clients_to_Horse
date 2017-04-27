@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426211902) do
+ActiveRecord::Schema.define(version: 20170426215518) do
 
   create_table "activities", force: :cascade do |t|
     t.text     "name"
-    t.integer  "price"
+    t.float    "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "comment"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170426211902) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.datetime "date"
-    t.integer  "price"
+    t.float    "price"
     t.text     "comment"
     t.integer  "procedure_id"
     t.integer  "reminder_order"
@@ -68,14 +68,21 @@ ActiveRecord::Schema.define(version: 20170426211902) do
     t.index ["owner_id"], name: "index_horses_on_owner_id"
   end
 
+  create_table "invoice_pdfs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "owner_payments", force: :cascade do |t|
     t.integer  "owner_id"
-    t.integer  "amount"
+    t.float    "amount"
     t.text     "comment"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "balance"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.float    "balance"
     t.integer  "billing_type"
+    t.text     "horse_name"
+    t.text     "procedure_name"
     t.index ["owner_id"], name: "index_owner_payments_on_owner_id"
   end
 
@@ -88,7 +95,7 @@ ActiveRecord::Schema.define(version: 20170426211902) do
     t.text     "comments"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "balance"
+    t.float    "balance"
   end
 
   create_table "procedures", force: :cascade do |t|

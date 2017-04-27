@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get '/destroy_from_horse', to:'horse_activities#destroy_from_horse'
   
   post '/make_payment', to:'owners#make_payment'
+  post '/make_credit', to:'owners#make_credit'
   
   get 'destroy_log', to:'owners#destroy_log'
   
@@ -58,7 +59,9 @@ Rails.application.routes.draw do
   get '/edit_smtp_mail', to: 'password_resets#edit_smtp_mail'
 
   patch '/update_smtp_mail', to: 'password_resets#update_smtp_mail'
-
+  
+  get 'download_invoice', to:'downloads#show'
+ 
 
   resources :horses do
     collection do
@@ -83,7 +86,9 @@ Rails.application.routes.draw do
     get :redirect_to_owner
   end
 
-  resources :users, :horses, :owners, :horse_activities, :chains, :procedures, :activities, :docs
+  resources :users, :horses, :owners, :horse_activities, :chains, :procedures, :activities, :pdf_generators, :docs
+
+
 
   resource :calendars, only: [:show], controller: :calendars
 

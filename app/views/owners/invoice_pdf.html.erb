@@ -1,0 +1,33 @@
+<div class="header", align ="center">Invoice</div>
+<div class = "center">
+<table id="downloads", align="center">
+     <thead>
+         <tr>
+             <th>Date</th>
+             <th>Horse</th>
+             <th>Procedure</th>
+             <th>Price</th>
+             <th>Comment</th>
+        </tr>     
+    </thead>
+    <tbody>
+        <% count = 0%>
+        <% log.each do |log| %>
+            <tr>
+                <td><%= log.created_at.to_date %></td>
+                <td><%= log.horse_name %></td>
+                <td><%= log.procedure_name %></td>
+                <td><%= "$#{log.amount}" %></td>
+                <td><%= log.comment %></td>
+                <%count = count + log.amount %>
+            </tr>
+        <% end %>
+    </tbody>    
+</table> 
+<div>
+    <div class="summary">
+         Total Due:  
+        <%= "$#{count}" %>
+    </div>
+</div>
+<div/>

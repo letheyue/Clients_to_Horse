@@ -6,14 +6,16 @@
         <%= link_to ">>", payment_log_path(:id => @owner.id, :type => 3, :select_time => @time + 1.months)%>
     </div>
     <%= link_to "All History", payment_log_path(:id => @owner.id, :type => 0), class:"btn btn-default"%>
-    <%= link_to "Charged Activities", payment_log_path(:id => @owner.id, :type => 1, :select_time => @time ), class:"btn btn-default"%>
-    <%= link_to "Customer Payments", payment_log_path(:id => @owner.id, :type => 2, :select_time => @time ), class:"btn btn-default"%>
+    <%= link_to "Credits", payment_log_path(:id => @owner.id, :type => 1, :select_time => @time ), class:"btn btn-default"%>
+    <%= link_to "Payments", payment_log_path(:id => @owner.id, :type => 2, :select_time => @time ), class:"btn btn-default"%>
 </div> 
 <table id="horse_activities">
      <thead>
          <tr>
              <th>Date</th>
-             <th>Amount</th>
+             <th>Horse</th>
+             <th>Procedure</th>
+             <th>Price</th>
              <th>Balance</th>
              <th>Comment</th>
         </tr>     
@@ -22,8 +24,10 @@
         <% @log.each do |log| %>
             <tr>
                 <td><%= log.created_at.to_date %></td>
-                <td><%= log.amount %></td>
-                <td><%= log.balance %></td>
+                <td><%= log.horse_name %></td>
+                <td><%= log.procedure_name %></td>
+                <td><%= "$#{log.amount}" %></td>
+                <td><%= "$#{log.balance}" %></td>
                 <td><%= log.comment %></td>
                 <td><%= link_to "delete", destroy_log_path( :id => log.id, :owner_id => @owner.id), :method => :get, :data =>{:confirm => 'Are you sure?'}, class: "btn btn-default"%></td>
             </tr>
@@ -33,13 +37,45 @@
 <div>
     <div>
          Total Balance:  
-        <%= @owner.balance %>
+        <%= "$#{@owner.balance}" %>
     </div>
     <%if !@monthlybalance.nil?%>
         <div>
             Monthly Balance :     
-            <%= @monthlybalance %>
+            <%= "$#{@monthlybalance}" %>
         </div>
     <%end%>
 </div>
+<div>
+<%= link_to "Generate Invoice",
+  download_invoice_path(:id => @owner.id, :type => 1, :select_time => @time, format: "pdf"),
+  target: "_blank",
+   :style => "width:150px; float left", :class => "btn btn-default"%>
+</div>
+<div>
+    New Credit
+        <%= form_tag('/make_credit')  do %>
+          amount
+            <%= text_field_tag 'amount', nil, :style => "width:100px" %>
+          comment
+            <%= text_field_tag 'comment', nil,  :style => "width:200px" %>
+            <%= submit_tag "Add new credit",  :style => "width:150px; float left", :class => "btn btn-default"%>
+            <%= hidden_field_tag "owner_id", @owner.id  %>
+        <%end%>
+      <!--<input type="button" value="send mail" onClick="window.open('http://www.gmail.com')" style = "width:150px; float:left">-->
+</div>
+
+    <div>
+      New Payment
+        <%= form_tag('/make_payment')  do %>
+          amount
+            <%= text_field_tag 'amount', nil, :style => "width:100px" %>
+          comment
+            <%= text_field_tag 'comment', nil,  :style => "width:200px" %>
+            <%= submit_tag "Make a payment",  :style => "width:150px; float left", :class => "btn btn-default"%>
+            <%= hidden_field_tag "owner_id", @owner.id  %>
+        <%end%>
+      <!--<input type="button" value="send mail" onClick="window.open('http://www.gmail.com')" style = "width:150px; float:left">-->
+    </div>
+
 <%= link_to "Back to customer detail", owner_path(@owner)%>

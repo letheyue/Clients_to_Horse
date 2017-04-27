@@ -1,0 +1,52 @@
+// Place all the styles related to the horse_activities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.center {
+    position: auto;
+    left: 50%;
+    top: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+}
+
+.header {
+    color: brown;
+    text-align: center;
+}
+
+.summary{
+  text-align: center;
+  font-weight: bold;
+}
+
+table#downloads {
+  border-collapse: collapse;
+  width: 50%;
+  border-bottom: 2px solid brown;
+
+}
+table#downloads th {
+  color: white;
+  background-color: brown ;
+}
+table#downloads th, table#downloads td {
+  padding: 4px;
+  border-bottom: 1px solid brown;
+  text-align: left;
+}
+table#downloads th.hilite{
+  background-color: yellow;
+}
+#notice #warning {
+  background: rosybrown;
+  margin: 1em 0;
+  padding: 4px;
+}
+form label {
+  display: block;
+  line-height: 25px;
+  font-weight: bold;
+  color: black;
+}

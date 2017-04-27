@@ -69,10 +69,19 @@ class OwnersController < ApplicationController
   def make_payment
     @owner = Owner.find(params[:owner_id])
     @current_balance = @owner.balance
-    @paid = @current_balance.to_i - params[:amount].to_i 
+    @paid = @current_balance - params[:amount].to_f 
     @owner.update_attribute(:balance, @paid)
-    OwnerPayment.create(owner_id: @owner.id, amount: -params[:amount].to_i, balance: @paid, billing_type: 2, comment: params[:comment] )
+    OwnerPayment.create(owner_id: @owner.id, amount: -params[:amount].to_f, balance: @paid, billing_type: 2, comment: params[:comment] )
     redirect_to owner_path(@owner)
+  end
+  
+    def make_credit
+    @owner = Owner.find(params[:owner_id])
+    @current_balance = @owner.balance
+    @paid = @current_balance + params[:amount].to_f 
+    @owner.update_attribute(:balance, @paid)
+    OwnerPayment.create(owner_id: @owner.id, amount: params[:amount].to_f, balance: @paid, billing_type: 1, comment: params[:comment] )
+    redirect_to payment_log_path(:id => @owner.id)
   end
   
   def payment_log
