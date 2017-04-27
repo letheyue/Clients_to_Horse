@@ -94,7 +94,7 @@ Rails.application.routes.draw do
 
   resource :calendars, only: [:show], controller: :calendars
 
-  resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :password_resets, only: [:edit, :update]
 
 
 
