@@ -22,11 +22,14 @@ class DocsController < ApplicationController
   end
   
   def download_file
-    @doc = Doc.find_by(params[:id])
-
-    send_file(Doc.find_by(params[:id]).file_name.path,
-        :filename =>File.basename(Doc.find_by(params[:id]).file_name.path),
-        :type => Doc.find_by(params[:id]).file_name.content_type,
+    doc = Doc.find(params[:doc_id])
+    address = doc.file_name.file.path
+    puts("ADDRESS: ")
+    puts(doc.file_name.file.path)
+    
+    send_file(doc.file_name.file.path,
+        :filename =>doc.short_name,
+        :type => doc.file_name.content_type,
         :disposition => 'attachment',
        :url_based_filename => true)
   end
@@ -38,7 +41,10 @@ class DocsController < ApplicationController
   def destroy
     doc = Doc.find(params[:doc_id])
     owner = Owner.find doc.owner_id
+    # remove and destroy the file
     doc.remove_file_name
+    doc.destroy;
+    #clean up the database
     Doc.delete doc
     owner.docs.delete doc
     owner.save 

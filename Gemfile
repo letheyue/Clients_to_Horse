@@ -37,7 +37,7 @@ gem 'jbuilder', '2.4.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 
 gem 'calendar_helper', '0.2.3'

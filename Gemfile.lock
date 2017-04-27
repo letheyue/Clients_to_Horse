@@ -315,7 +315,7 @@ DEPENDENCIES
   bootstrap-sass (= 3.3.6)
   byebug (= 9.0.0)
   calendar_helper (= 0.2.3)
-  carrierwave
+  carrierwave (~> 1.0)
   coffee-rails (= 4.2.1)
   cucumber-rails
   cucumber-rails-training-wheels
