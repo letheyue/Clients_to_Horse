@@ -86,11 +86,9 @@ Rails.application.routes.draw do
     get :redirect_to_owner
   end
 
-<<<<<<< HEAD
-  resources :users, :horses, :owners, :horse_activities, :chains, :procedures, :activities, :pdf_generators
-=======
-  resources :users, :horses, :owners, :horse_activities, :chains, :procedures, :activities, :docs
->>>>>>> 08575995fd1e14a533db6ea29b0cdef41131b871
+  resources :users, :horses, :owners, :horse_activities, :chains, :procedures, :activities, :pdf_generators, :docs
+
+
 
   resource :calendars, only: [:show], controller: :calendars
 
