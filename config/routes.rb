@@ -67,12 +67,14 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    get :generate_document
   end
 
   resources :owners do
     collection do
       get :search
     end
+    
   end
   
   resources :owners do
@@ -84,6 +86,7 @@ Rails.application.routes.draw do
     get :show
     get :destroy
     get :redirect_to_owner
+    
   end
 
   resources :users, :horses, :owners, :horse_activities, :chains, :procedures, :activities, :pdf_generators, :docs

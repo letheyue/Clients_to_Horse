@@ -75,7 +75,7 @@ class OwnersController < ApplicationController
     redirect_to owner_path(@owner)
   end
   
-    def make_credit
+  def make_credit
     @owner = Owner.find(params[:owner_id])
     @current_balance = @owner.balance
     @paid = @current_balance + params[:amount].to_f 
@@ -129,6 +129,7 @@ class OwnersController < ApplicationController
   end
   
   def add_document
+    @horse_of_owner = nil;
     @owner = Owner.find(params[:owner_id])
     @doc = Doc.new()
     @doc.owner_id = @owner.id;

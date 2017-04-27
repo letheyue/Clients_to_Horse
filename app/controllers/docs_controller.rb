@@ -5,11 +5,12 @@ class DocsController < ApplicationController
   def create
     doc = Doc.new(doc_params)
     owner = Owner.find doc_params[:owner_id]
-
+    
     if doc_params[:file_name].to_s.empty?
       flash[:notice] = "Invalid name for the document"
     else
         doc.short_name = "#{doc_params[:file_name].original_filename}"
+        doc.owner_horse_id = doc_params[:owner_horse_id].to_i
         if owner.docs.where(short_name: doc.short_name).present?
             flash[:notice] = "A document with the same name is attached to this owner!"
         elsif
@@ -57,9 +58,10 @@ class DocsController < ApplicationController
     redirect_to owner_path(owner)
   end
   
+  
   private 
   def doc_params
-  params.require(:doc).permit(:file_name, :owner_id, :description)
+  params.require(:doc).permit(:file_name, :owner_id, :description, :owner_horse_id)
   end
   
 
