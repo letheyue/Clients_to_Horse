@@ -101,6 +101,21 @@ Scenario: check daily activities through calendar
   Then I would see the notice message
   When I log out
   Then I could not enter the calendar page
+
+#9
+Scenario: doc function of each owner
+  Given I step into the owner's page
+  When I click the link "Add Document"
+  And I choose a file and write a description and click "Update"
+  Then I could see the document in the owner's page 
+  And I click this document
+  Then I could do some procedures about this document
+  When I add the same file to the owner
+  Then I could see "A document with the same name is attached to this owner!"
+  When I click the "delete" button
+  Then the number turns to zero
   
+  
+
 
   

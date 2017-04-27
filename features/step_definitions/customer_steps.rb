@@ -515,3 +515,69 @@ Then(/^I could not enter the calendar page$/) do
       assert page.has_content?("Please log in.")
     end
 end
+##################################################################
+# Scenario9
+Given(/^I step into the owner's page$/) do
+    click_link('Profile')
+    click_link('Customers List')
+    click_link('test1')
+end
+When(/^I click the link "Add Document"$/) do
+    click_button('Add Document')
+end
+Then(/^I choose a file and write a description and click "Update"$/) do
+    attach_file(:doc_file_name, File.join('app','assets','images','homepage1.png'))
+    fill_in('doc_description', :with =>'this is the test file')
+    click_button('Upload')
+end
+Then(/^I could see the document in the owner's page$/) do
+    if page.respond_to? :should
+      page.should have_content("Documents:	1")
+    else
+      assert page.has_content?("Documents:	1")
+    end
+    if page.respond_to? :should
+      page.should have_content("this is the test file")
+    else
+      assert page.has_content?("this is the test file")
+    end
+end
+Then(/^I click this document$/) do
+    click_link('homepage1.png')
+    if page.respond_to? :should
+      page.should have_content("File Name: homepage1.png")
+    else
+      assert page.has_content?("File Name: homepage1.png")
+    end
+end
+Then(/^I could do some procedures about this document$/) do
+    click_link("Back to Owner's Page")
+    if page.respond_to? :should
+      page.should have_content("Details about Customer")
+    else
+      assert page.has_content?("Details about Customer")
+    end
+end
+When(/^I add the same file to the owner$/) do
+    click_button('Add Document')
+    attach_file(:doc_file_name, File.join('app','assets','images','homepage1.png'))
+    click_button('Upload')
+end
+Then(/^I could see "A document with the same name is attached to this owner!"$/) do
+    if page.respond_to? :should
+      page.should have_content("A document with the same name is attached to this owner!")
+    else
+      assert page.has_content?("A document with the same name is attached to this owner!")
+    end
+end
+When(/^I click the "delete" button$/) do
+    click_link('Delete')
+end
+
+Then(/^the number turns to zero$/) do
+    if page.respond_to? :should
+      page.should have_content("Documents:	0")
+    else
+      assert page.has_content?("Documents:	0")
+    end
+end
