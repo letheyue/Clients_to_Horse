@@ -23,16 +23,13 @@
     </p>
     <p>Option 1</p>
     <p>
-      <iframe  src='http://view.officeapps.live.com/op/embed.aspx?src=<%=address%>' width='100%' height='780'></iframe>
+      <iframe  src=<%=url_address%> width='100%' height='780'></iframe>
     </p>
     <p>Option 2</p>
     <p>
-      <iframe  src=<%="http://view.officeapps.live.com/op/embed.aspx?src=#{address}"%> width='100%' height='780'></iframe>
+      <iframe  src=<%= url_address %> width='100%' height='780'></iframe>
     </p>
-    <p>Option 3</p>
-    <p>
-      <iframe src=<%="http://view.officeapps.live.com/op/embed.aspx?src=#{address}"%> width='100%' height='780' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>
-    </p>
+
     <p>
       <%= link_to "mirosoft", url_address%>
     </p>
