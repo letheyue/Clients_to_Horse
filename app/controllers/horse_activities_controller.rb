@@ -21,15 +21,17 @@ class HorseActivitiesController < ApplicationController
     def create
         @start_date = Date.civil(params[:date][:year].to_i, params[:date][:month].to_i, params[:date][:day].to_i)
         @horse_id = params[:horse_id]
-        params[:activity].each do |i|
-            @pid = params[:procedure_id]
-            @aid = params[:activity][i][:activity_id]
-            @oid = params[:activity][i][:order]
-            @price = params[:activity][i][:price]
-            @quantity = params[:activity][i][:quantity]
-            @comment = params[:activity][i][:comment]
-            @reminder_order = params[:activity][i][:reminder_order]
-            HorseActivity.create(horse_id: @horse_id, status: 1, activity_id: @aid, procedure_id: @pid, date: @start_date + @oid.to_i.days, price: @price.to_f*@quantity.to_f, comment: @comment, reminder_date: @start_date + @oid.to_i.days - @reminder_order.to_i.days)
+        if !params[:activity].blank?
+            params[:activity].each do |i|
+                @pid = params[:procedure_id]
+                @aid = params[:activity][i][:activity_id]
+                @oid = params[:activity][i][:order]
+                @price = params[:activity][i][:price]
+                @quantity = params[:activity][i][:quantity]
+                @comment = params[:activity][i][:comment]
+                @reminder_order = params[:activity][i][:reminder_order]
+                HorseActivity.create(horse_id: @horse_id, status: 1, activity_id: @aid, procedure_id: @pid, date: @start_date + @oid.to_i.days, price: @price.to_f*@quantity.to_f, comment: @comment, reminder_date: @start_date + @oid.to_i.days - @reminder_order.to_i.days)
+            end
         end
         redirect_to horse_path(Horse.find(@horse_id))
     end
