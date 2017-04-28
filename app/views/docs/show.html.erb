@@ -13,20 +13,24 @@
   
     <iframe src=<%= @doc.file_name.url %> width="100%" height="780"> </iframe>
   <%elsif %w{docx docm dotm dotx xlsx xlsb xls xlsm pptx ppsx ppt pps pptm potm ppam potx ppsm}.include? (extension) %>
-    <% file_address = "#{request.protocol}#{request.host_with_port}" + @doc.file_name.url %>
-    <% address = "mirosoft", "https://view.officeapps.live.com/op/embed.aspx?src=#{file_address}" %>
-    <p>
-      <%= file_address %>
-    </p>
+    <% address = "#{request.protocol}#{request.host_with_port}" + @doc.file_name.url %>
     <p>
       <%= address %>
     </p>
-    <iframe  src='http://view.officeapps.live.com/op/embed.aspx?src=<%address%>' width='100%' height='780'></iframe>
-    <iframe  src=<%"http://view.officeapps.live.com/op/embed.aspx?src=#{address}"%> 
-      width='100%' height='780'></iframe>
-    
+    <p>Option 1</p>
     <p>
-      <%= link_to "mirosoft", address.to_s%>
+      <iframe  src='http://view.officeapps.live.com/op/embed.aspx?src=<%address%>' width='100%' height='780'></iframe>
+    </p>
+    <p>Option 2</p>
+    <p>
+      <iframe  src=<%"http://view.officeapps.live.com/op/embed.aspx?src=#{address}"%> width='100%' height='780'></iframe>
+    </p>
+    <p>Option 3</p>
+    <p>
+      <iframe src=<%"http://view.officeapps.live.com/op/embed.aspx?src=#{address}"%> width='100%' height='780' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>
+    </p>
+    <p>
+      <%= link_to "mirosoft", "https://view.officeapps.live.com/op/embed.aspx?src=#{address}"%>
     </p>
 
    
