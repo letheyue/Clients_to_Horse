@@ -1,36 +1,76 @@
-<!-- log: log.amount, log.owner, log. , owner.name, owner.horse, owner.address-->
-<!--Time.now-->
+<!-- log: log.amount, log.owner, log. , owner.name, owner.horse, owner.address--><!--Time.now--><head>
+  <style type="text/css">
+    .normal {font-style:normal; line-height: 20%; font-size: 80%}
+    .exp{ font-style:italic; font-weight:bold; line-height: 70%; font-size: 80%}
+    .header {font-size: 200%; font-weight:bold}
+    .paraheader{text-indent:1.5cm; line-height: 20%}
+    .paragraph{text-indent: 2.97cm; line-height: 20%}
+  </style>
+</head>
+
+<div>
+  <p class="exp">  Texas Agricultural Experiment Station</p>
+  <p class="normal">Equine Embryo Laboratory</p>
+  <p class="normal">Department of Veterinary Physiology and Pharmacology</p>
+  <p class="normal">Texas A&M University</p>
+  <p class="normal">332 VMA Building</p>
+  <p class="normal">College Station, TX 77843-4466</p>
+  <p class="normal">Phone(979)458-3894</p>
+</div>
+
 
 <div class="header", align ="center">Invoice</div>
-<div class = "center">
-<table id="downloads", align="center">
-     <thead>
-         <tr>
-             <th>Date</th>
-             <th>Horse</th>
-             <th>Procedure</th>
-             <th>Price</th>
-             <th>Comment</th>
-        </tr>     
+<div>
+  <p class="paraheader"><b>Bill To:</b>    <%= "#{owner.name}"%></p>
+  <p class="paragraph"><%= "#{owner.email}"%></p>
+  <p class="paragraph"><%= "#{owner.address}"%></p>
+  <p class="paraheader"> <b>DATE: </b><%= "#{Time.new.month}/" "#{Time.new.day}/" "#{Time.new.year}" %></p>
+
+</div>
+
+
+<div class = "col-md-12">
+  <table id="downloads", align="center">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Horse</th>
+      <th>Procedure</th>
+      <th>Price</th>
+      <th>Comment</th>
+    </tr>
     </thead>
     <tbody>
-        <% count = 0%>
-        <% log.each do |log| %>
-            <tr>
-                <td><%= log.created_at.to_date %></td>
-                <td><%= log.horse_name %></td>
-                <td><%= log.procedure_name %></td>
-                <td><%= "$#{log.amount}" %></td>
-                <td><%= log.comment %></td>
-                <%count = count + log.amount %>
-            </tr>
-        <% end %>
-    </tbody>    
-</table> 
-<div>
+    <% count = 0%>
+    <% log.each do |log| %>
+        <tr>
+          <td><%= log.created_at.to_date %></td>
+          <td><%= log.horse_name %></td>
+          <td><%= log.procedure_name %></td>
+          <td><%= "$#{log.amount}" %></td>
+          <td><%= log.comment %></td>
+          <%count = count + log.amount %>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div>
     <div class="summary">
-         Total Due:  
-        <%= "$#{count}" %>
+      Total Due:
+      <%= "$#{count}" %>
     </div>
+  </div>
 </div>
+
+
+<div>
+  <p class="exp">  Please make check payable to: Texas AgriLife</p>
+  <p class="normal">Send to:</p>
+  <p class="normal">c/o Ms. Melissa Stokes</p>
+  <p class="normal">Veterinary Physiology and Pharmacology</p>
+  <p class="normal">TAMU 4466</p>
+  <p class="normal">College Station, TX 77843-4466</p>
+  <p class="normal">(979)845-7077 office</p>
+  <p class="normal">(979)845-0967 fax</p>
+  <p class="normal">mstokes@cvm.tamu.edu</p>
 </div>
