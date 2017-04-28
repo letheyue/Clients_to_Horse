@@ -94,7 +94,7 @@
 
 <table>
 <!-------------------the headings of the table-------------------------></>
-<% docs = @owner.docs.where(:owner_horse_id => @horse.id ) %>
+<% docs = @owner.docs.where(:owner_horse_id => @horse.id ).order("date ASC") %>
   <tr>
     <td id ="firstColumn">
        <b>Documents: </b>
@@ -110,6 +110,9 @@
   <% docs.each do |d|%> 
     <tr>
       <td>
+        <i>
+          <%= d.created_at.to_formatted_s(:iso8601)  %>
+        </i>
       </td>
       <td>
         <%= link_to d.short_name, doc_show_path(d)%>
@@ -122,6 +125,7 @@
       <td>
         <%= d.description %>
       </td>
+
     </tr>
   <%end%>
   
