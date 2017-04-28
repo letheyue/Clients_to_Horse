@@ -92,7 +92,7 @@
        <b>Documents: </b>
     </td>
     <td id = "secondColumn">
-      <%=@owner.docs.length.to_s%>
+      <%=@owner.docs.length.to_s%> 
     </td>
     <td id = "thirdColumn">
        <%= button_to "Add Document", owner_add_document_path(@owner), :method => :get %>
@@ -101,13 +101,16 @@
   <%@owner.docs.each do |d|%>
     <tr>
       <td>
+        <i>
+          <%= d.created_at.to_formatted_s(:iso8601)  %>
+        </i>
       </td>
       <td>
         <%= link_to d.short_name, doc_show_path(d)%>
       </td>
       <td>
         <p>
-          <%= link_to "Delete", doc_destroy_path(d.id), :confirm => "Are you sure?"%>
+          <%= link_to "Delete", doc_destroy_path(d.id), data: { confirm: 'Are you sure?'} %>
         </p>
       </td>
       <td>

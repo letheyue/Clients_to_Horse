@@ -42,7 +42,7 @@ gem 'mini_magick'
 gem 'pdfkit'
 gem 'render_anywhere'
 gem 'wkhtmltopdf-binary'
-
+gem 'sweetalert-rails'
 gem 'calendar_helper', '0.2.3'
 
 gem 'kaminari', '1.0.1'
