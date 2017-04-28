@@ -118,7 +118,9 @@
   <%@owner.docs.each do |d|%> 
     <tr>
       <td>
-        <%= d.created_at.to_formatted_s(:iso8601)  %>
+        <i>
+          <%= d.created_at.to_formatted_s(:iso8601)  %>
+        </i>
       </td>
       <td>
         <%= link_to d.short_name, doc_show_path(d)%>
