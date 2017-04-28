@@ -6,6 +6,9 @@
       <%= gravatar_for @user %>
         <%= @user.name %>
       <div>
+        <%= link_to "edit user information", edit_user_path(@user) %>
+      </div>
+      <div>
         <%= link_to "change password", edit_password_reset_path(@user) %>
       </div>
       <div>

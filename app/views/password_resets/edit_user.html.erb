@@ -1,0 +1,20 @@
+<% provide(:title, 'Edit user information') %>
+<h1>Edit user information</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_tag update_user_path(:id => @user.id) do %>
+        <%= hidden_field_tag :smtp_mail, @user.smtp_mail %>
+        <%= hidden_field_tag :smtp_mail_password, @user.smtp_mail_password %>
+        <%= hidden_field_tag :password, @user.password %>
+        <%= hidden_field_tag :password_confirmation, @user.password_confirmation %>
+
+        <%= label :user, :email, "User's email" %>
+        <%= text_field_tag  'email', @user.email %>
+
+        <%= label :user,:name, "User's name" %>
+        <%= text_field_tag  'name', @user.name %>
+
+        <%= submit_tag "Update", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

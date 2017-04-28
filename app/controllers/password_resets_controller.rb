@@ -42,10 +42,28 @@ class PasswordResetsController < ApplicationController
     redirect_to @user
   end
 
+  def edit_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+    @user = User.find(params[:id])
+  end
+
+  def update_user
+    @user = User.find(params[:id])
+    @name = params[:name]
+    @email = params[:email]
+    @user.update_attribute(:name , @name)
+    @user.update_attribute(:email , @email)
+    flash[:success] = "#{@user.name}'s information has been reset."
+    redirect_to @user
+  end
+
 
   private
   def user_params
-    params.require(:user).permit(:password, :password_confirmation, :smtp_mail, :smtp_mail_password)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :smtp_mail, :smtp_mail_password)
   end
 
   def get_user

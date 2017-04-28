@@ -63,6 +63,12 @@ Rails.application.routes.draw do
   get 'download_invoice', to: 'downloads#show'
   
   post 'send_invoice', to: 'downloads#mail_pdf'
+
+  post '/update_user', to: 'password_resets#update_user'
+
+  get '/edit_user', to: 'password_resets#edit_user'
+
+  patch '/update_user', to: 'password_resets#update_user'
  
 
   resources :horses do
