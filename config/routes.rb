@@ -60,7 +60,9 @@ Rails.application.routes.draw do
 
   patch '/update_smtp_mail', to: 'password_resets#update_smtp_mail'
   
-  get 'download_invoice', to:'downloads#show'
+  get 'download_invoice', to: 'downloads#show'
+  
+  post 'send_invoice', to: 'downloads#mail_pdf'
  
 
   resources :horses do
@@ -92,10 +94,9 @@ Rails.application.routes.draw do
   resources :users, :horses, :owners, :horse_activities, :chains, :procedures, :activities, :pdf_generators, :docs
 
 
-
   resource :calendars, only: [:show], controller: :calendars
 
-  resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :password_resets, only: [:edit, :update]
 
 
 

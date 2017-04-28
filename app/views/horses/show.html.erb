@@ -90,10 +90,9 @@
 </div>
 </tbody>
 
-<!-------------------show documents in a table-------------------------></>
 
 <table>
-<!-------------------the headings of the table-------------------------></>
+
 <% docs = @owner.docs.where(:owner_horse_id => @horse.id ) %>
   <tr>
     <td id ="firstColumn">
@@ -106,7 +105,7 @@
        <%= button_to "Add Document", horse_generate_document_path(@horse.id), :method => :get %>
     </td>
   </tr>
-  <!----------------links to documents and other details ----------------------------></>
+
   <% docs.each do |d|%> 
     <tr>
       <td>
@@ -128,6 +127,5 @@
 
     </tr>
   <%end%>
-  
-  <!--------------------------------------------></>
+
 </table>

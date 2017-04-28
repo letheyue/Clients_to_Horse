@@ -1,21 +1,11 @@
 class PasswordResetsController < ApplicationController
   before_action :get_user, only: [:edit, :update]
 
-  def new
-    # @user = User.new
-  end
-
-  def create
-    @user = User.find_by(email: params[:password_reset][:email].downcase)
-    if @user
-      redirect_to edit_password_reset_path(@user)
-    else
-      flash.now[:danger] = "Email address not found"
-      render 'new'
-    end
-  end
-
   def edit
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
     @user = User.find(params[:id])
   end
 

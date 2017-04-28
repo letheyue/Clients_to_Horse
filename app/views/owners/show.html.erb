@@ -35,27 +35,13 @@
     Balance
     <li>
       <div>
-        <%= "#{@owner.balance} USD"%>
+        <%= "$#{@owner.balance} "%>
         <div>
           <%=link_to "Billing Summary", payment_log_path(:id => @owner.id, :type => 3) %>
         </div>
       </div>
     </li>
-    <div>
-      New Payment
-        <%= form_tag('/make_payment')  do %>
-          amount
-            <%= text_field_tag 'amount', nil, :style => "width:100px" %>
-          comment
-            <%= text_field_tag 'comment', nil,  :style => "width:200px" %>
-            <%= submit_tag "Make a payment",  :style => "width:150px; float left", :class => "btn btn-default"%>
-            <%= hidden_field_tag "owner_id", @owner.id  %>
-        <%end%>
-      <!--<input type="button" value="send mail" onClick="window.open('http://www.gmail.com')" style = "width:150px; float:left">-->
-    </div>
-
     <body>
-
     <div class="container">
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Send Mail</button>
 
@@ -99,10 +85,8 @@
   </tl>
   
 </tbody>
-<!-------------------show documents in a table-------------------------></>
 
 <table>
-<!-------------------the headings of the table-------------------------></>
   <tr>
     <td id ="firstColumn">
        <b>Documents: </b>
@@ -114,8 +98,7 @@
        <%= button_to "Add Document", owner_add_document_path(@owner), :method => :get %>
     </td>
   </tr>
-  <!----------------links to documents and other details ----------------------------></>
-  <%@owner.docs.each do |d|%> 
+  <%@owner.docs.each do |d|%>
     <tr>
       <td>
         <i>
@@ -135,6 +118,5 @@
       </td>
     </tr>
   <%end%>
-  
-  <!--------------------------------------------></>
+
 </table>
