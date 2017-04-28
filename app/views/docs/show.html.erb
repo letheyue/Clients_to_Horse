@@ -14,19 +14,19 @@
     <iframe src=<%= @doc.file_name.url %> width="100%" height="780"> </iframe>
   <%elsif %w{docx docm dotm dotx xlsx xlsb xls xlsm pptx ppsx ppt pps pptm potm ppam potx ppsm}.include? (extension) %>
     <% file_address = "#{request.protocol}#{request.host_with_port}" + @doc.file_name.url %>
+    <% address = "mirosoft", "https://view.officeapps.live.com/op/embed.aspx?src=#{file_address}" %>
     <p>
-      <%= address = "mirosoft", "https://view.officeapps.live.com/op/embed.aspx?src=#{file_address}" %>
+      <%= file_address %>
+    </p>
+    <p>
+      <%= address %>
     </p>
     <iframe  src='http://view.officeapps.live.com/op/embed.aspx?src=<%address%>' width='100%' height='780'></iframe>
     <iframe  src=<%"http://view.officeapps.live.com/op/embed.aspx?src=#{address}"%> 
       width='100%' height='780'></iframe>
     
-    
-    <iframe src=<%"http://view.officeapps.live.com/op/embed.aspx?src=#{address}"%> 
-      width='1366px' height='623px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>
-
     <p>
-      <%= link_to "mirosoft", address%>
+      <%= link_to "mirosoft", address.to_s%>
     </p>
 
    
