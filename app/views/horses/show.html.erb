@@ -119,7 +119,7 @@
       </td>
       <td>
         <p>
-          <%= link_to "Delete", doc_destroy_path(d.id), :confirm => "Are you sure?"%>
+          <%= link_to "Delete", doc_destroy_path(d.id), data: { confirm: 'Are you sure?'}%>
         </p>
       </td>
       <td>
