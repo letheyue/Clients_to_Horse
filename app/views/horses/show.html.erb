@@ -94,7 +94,7 @@
 
 <table>
 <!-------------------the headings of the table-------------------------></>
-<% docs = @owner.docs.where(:owner_horse_id => @horse.id ).order("date ASC") %>
+<% docs = @owner.docs.where(:owner_horse_id => @horse.id ) %>
   <tr>
     <td id ="firstColumn">
        <b>Documents: </b>
