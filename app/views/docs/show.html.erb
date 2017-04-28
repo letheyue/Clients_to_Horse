@@ -1,31 +1,46 @@
 
-
-<h2><%="File Name: " + @doc.short_name.to_s%></h2>
-    <p>Description:</p> 
-    <p><%=@doc.description%></p>
+<h2>
+  File Name: <i><%=@doc.short_name.to_s %></i>
+</h2>
+    <p>
+      Description:
+    </p> 
+    <p>
+      <%=@doc.description%>
+    </p>
 <br/>
 <% file = @doc.file_name.url %>
 <% extension = @doc.file_name.file.extension.downcase %>
 
 <% if %w{jpg png jpg gif bmp}.include?(extension) %>
+    <div>
       <iframe src=<%= @doc.file_name.url %> width="100%" height="780"> </iframe>
+    </div>
   <%elsif extension == "pdf" %>
-  
-    <iframe src=<%= @doc.file_name.url %> width="100%" height="780"> </iframe>
+    <div>
+      <iframe src=<%= @doc.file_name.url %> width="100%" height="780"> </iframe>
+    </div>
   <%elsif %w{docx docm dotm dotx xlsx xlsb xls xlsm pptx ppsx ppt pps pptm potm ppam potx ppsm}.include? (extension) %>
+  
     <% address = "#{request.protocol}#{request.host_with_port}" + @doc.file_name.url %>
     <% url_address = "https://view.officeapps.live.com/op/embed.aspx?src=#{address}" %>
-    <p>
+    <div>
       <iframe  src=<%=url_address%> width='100%' height='780'></iframe>
-    </p>
-
+    <div>
   <%else %>
-  <p><b>No Preview Is Available</b></p>
+    <p>
+      <b>
+        No Preview Is Available!
+      </b>
+    </p>
 <%end%>
 <br/>
 <br/>
-<%= link_to "Download", doc_download_file_path(@doc)%>
+<div>
+  <%= link_to "Download", doc_download_file_path(@doc)%>
+</div>
 <br/>
 <br/>
-<%=link_to "Back to Owner's Page", doc_redirect_to_owner_path(@doc)%>
-
+<div>
+  <%=link_to "Back to Owner's Page", doc_redirect_to_owner_path(@doc)%>
+</div>
