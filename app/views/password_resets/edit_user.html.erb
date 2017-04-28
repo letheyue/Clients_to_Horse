@@ -9,7 +9,7 @@
         <%= hidden_field_tag :password_confirmation, @user.password_confirmation %>
 
         <%= label :user, :email, "User's email" %>
-        <%= text_field_tag  'email', @user.email %>
+        <%= email_field_tag  'email', @user.email %>
 
         <%= label :user,:name, "User's name" %>
         <%= text_field_tag  'name', @user.name %>
