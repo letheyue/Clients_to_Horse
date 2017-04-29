@@ -21,5 +21,18 @@ Scenario: without log in visiting page
    Then I will see "Please log in."
    When I want to enter the procedure database 
    Then I am going to see "Please log in."
+   When I want to enter the chain database
+   Then I can see "Please log in."
+   When I want to reset the user's information
+   Then I am able to see "Please log in."
+   When I want to see the calendar
+   Then I see "Please log in."
+   When I want to see the horse activity
+   Then I can look "Please log in."
+   When I want to upload or download files
+   Then I could look "Please log in."
+   When I want to generate the invoice file
+   Then I will look "Please log in."
+
 
 

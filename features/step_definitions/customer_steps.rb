@@ -332,12 +332,13 @@ end
 Then(/^I could see "100 USD" in its owner billing$/) do
     click_link('Bruce Wayne')
     if page.respond_to? :should
-      page.should have_content('100 USD')
+      page.should have_content('$100.0')
     else
-      assert page.has_content?('100 USD')
+      assert page.has_content?('$100.0')
     end
 end
 When(/^the owner pay "100 USD"$/) do
+    click_link('Billing Summary')
     fill_in('amount', :with =>'100')
     fill_in('comment', :with =>'pay')
     click_button('Make a payment')

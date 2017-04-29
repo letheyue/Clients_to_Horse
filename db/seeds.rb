@@ -44,4 +44,3 @@ horse1_activities = HorseActivity.create([{:activity_id => activity1.id, :proced
 horse2_activities = HorseActivity.create([{:activity_id => activity2.id, :procedure_id => procedure_2.id, :horse_id => horse2.id, :date => DateTime.new(2017, 4, 23), :status => 1, :price => 120}, {:activity_id => activity3.id, :procedure_id => procedure_2.id, :horse_id => horse2.id, :date => DateTime.new(2017, 4, 25), :status => 1, :comment => "keep cold", :price => 100}])
 horse3_activities = HorseActivity.create([{:activity_id => activity1.id, :procedure_id => procedure_3.id, :horse_id => horse3.id, :date => DateTime.new(2017, 4, 24), :status => 2, :price => 50}, {:activity_id => activity3.id,  :procedure_id => procedure_3.id, :horse_id => horse3.id, :date => DateTime.new(2017, 4, 25), :status => 2, :price => 120}])
 
-invoice_number = InvoicePdf.create({:invoice_number => '10000'})
