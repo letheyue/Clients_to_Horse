@@ -6,8 +6,8 @@
         <%= link_to ">>", payment_log_path(:id => @owner.id, :type => 3, :select_time => @time + 1.months)%>
     </div>
     <%= link_to "All History", payment_log_path(:id => @owner.id, :type => 0), class:"btn btn-default"%>
-    <%= link_to "Credits", payment_log_path(:id => @owner.id, :type => 1, :select_time => @time ), class:"btn btn-default"%>
-    <%= link_to "Payments", payment_log_path(:id => @owner.id, :type => 2, :select_time => @time ), class:"btn btn-default"%>
+    <%= link_to "Expense", payment_log_path(:id => @owner.id, :type => 1, :select_time => @time ), class:"btn btn-default"%>
+    <%= link_to "Credit", payment_log_path(:id => @owner.id, :type => 2, :select_time => @time ), class:"btn btn-default"%>
 </div> 
 <table id="horse_activities">
      <thead>
@@ -95,26 +95,26 @@
 </body>
 
 <div>
-    New Credit
+    New Expense
         <%= form_tag('/make_credit')  do %>
           amount
             <%= text_field_tag 'amount', nil, :style => "width:100px" %>
           comment
             <%= text_field_tag 'comment', nil,  :style => "width:200px" %>
-            <%= submit_tag "Add new credit",  :style => "width:150px; float left", :class => "btn btn-default"%>
+            <%= submit_tag "Add new expense",  :style => "width:150px; float left", :class => "btn btn-default"%>
             <%= hidden_field_tag "owner_id", @owner.id  %>
         <%end%>
       <!--<input type="button" value="send mail" onClick="window.open('http://www.gmail.com')" style = "width:150px; float:left">-->
 </div>
 
     <div>
-      New Payment
+      New Credit
         <%= form_tag('/make_payment')  do %>
           amount
             <%= text_field_tag 'amount', nil, :style => "width:100px" %>
           comment
             <%= text_field_tag 'comment', nil,  :style => "width:200px" %>
-            <%= submit_tag "Make a payment",  :style => "width:150px; float left", :class => "btn btn-default"%>
+            <%= submit_tag "Make a credit",  :style => "width:150px; float left", :class => "btn btn-default"%>
             <%= hidden_field_tag "owner_id", @owner.id  %>
         <%end%>
       <!--<input type="button" value="send mail" onClick="window.open('http://www.gmail.com')" style = "width:150px; float:left">-->

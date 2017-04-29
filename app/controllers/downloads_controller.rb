@@ -12,7 +12,7 @@ class DownloadsController < ApplicationController
     @content = params[:content]
     @subject = params[:subject]
     @user ||= User.find_by(id: session[:user_id])
-    invoice = OwnerPayment.where(:owner_id => params[:id], :billing_type => 1, :created_at => params[:select_time].to_date.beginning_of_month..(params[:select_time].to_date+1.month).beginning_of_month)
+    invoice = OwnerPayment.where(:owner_id => params[:id], :created_at => params[:select_time].to_date.beginning_of_month..(params[:select_time].to_date+1.month).beginning_of_month)
     invoice_pdf = InvoicePdf.new(invoice, @owner)
     UserMailer.send_invoice(@owner, @subject, @content, @user,invoice_pdf.to_pdf).deliver
     redirect_to payment_log_path(:id => @owner.id)
@@ -22,7 +22,7 @@ class DownloadsController < ApplicationController
  
   def invoice_pdf
     owner = Owner.find params[:id]
-    invoice = OwnerPayment.where(:owner_id => params[:id], :billing_type => 1, :created_at => params[:select_time].to_date.beginning_of_month..(params[:select_time].to_date+1.month).beginning_of_month)
+    invoice = OwnerPayment.where(:owner_id => params[:id], :created_at => params[:select_time].to_date.beginning_of_month..(params[:select_time].to_date+1.month).beginning_of_month)
     InvoicePdf.new(invoice, owner)
   end
 

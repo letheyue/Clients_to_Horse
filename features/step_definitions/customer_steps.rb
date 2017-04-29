@@ -339,19 +339,18 @@ Then(/^I could see "100 USD" in its owner billing$/) do
 end
 When(/^the owner pay "100 USD"$/) do
     click_link('Billing Summary')
-    fill_in('amount', :with =>'100')
-    fill_in('comment', :with =>'pay')
-    click_button('Make a payment')
+    fill_in('amount', :with =>'100',match: :first)
+    fill_in('comment', :with =>'pay',match: :first)
+    click_button('Make a credit')
 end
 Then(/^the billing should be "0 USD"$/) do
     if page.respond_to? :should
-      page.should have_content('0 USD')
+      page.should have_content('$0.0')
     else
-      assert page.has_content?('0 USD')
+      assert page.has_content?('$0.0')
     end
 end
 Then(/^I could check my month balance in "Billing Summary"$/) do
-    click_link('Billing Summary')
     if page.respond_to? :should
       page.should have_content('Monthly Balance : 0')
     else
