@@ -1,4 +1,6 @@
 class DocsController < ApplicationController
+  before_action :logged_in_user
+
   def new
     @doc = Doc.new
   end
@@ -49,13 +51,19 @@ class DocsController < ApplicationController
     owner = Owner.find doc.owner_id
     redirect_to owner_path(owner)
   end
-  
-  
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
   private 
   def doc_params
   params.require(:doc).permit(:file_name, :owner_id, :description, :owner_horse_id)
   end
-  
+
 
     
 end

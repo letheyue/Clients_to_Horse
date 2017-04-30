@@ -11,7 +11,7 @@
         <%= text_field_tag  'smtp_mail', @user.smtp_mail %>
 
         <%= label :user, :smtp_mail_password, "email server password" %>
-        <%= text_field_tag  'smtp_mail_password', @user.smtp_mail_password %>
+        <%= password_field_tag  'smtp_mail_password', @user.smtp_mail_password %>
 
         <%= submit_tag "Update", class: "btn btn-primary" %>
     <% end %>

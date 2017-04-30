@@ -80,5 +80,84 @@ Then(/^I am going to see "Please log in."$/) do
       assert page.has_content?("Please log in.")
     end
 end
+When(/^I want to enter the chain database$/) do
+  visit root_path
+  visit edit_chain_path(:id => '1')
+end
+Then(/^I can see "Please log in."$/) do
+  if page.respond_to? :should
+    page.should have_content("Please log in.")
+  else
+    assert page.has_content?("Please log in.")
+  end
+end
+When(/^I want to reset the user's information$/) do
+  visit root_path
+  visit edit_user_path(:id => '1')
+end
+Then(/^I am able to see "Please log in."$/) do
+  if page.respond_to? :should
+    page.should have_content("Please log in.")
+  else
+    assert page.has_content?("Please log in.")
+  end
+  visit edit_password_reset_path(:id => '1')
+  if page.respond_to? :should
+    page.should have_content("Please log in.")
+  else
+    assert page.has_content?("Please log in.")
+  end
+  visit edit_smtp_mail_path(:id => '1')
+  if page.respond_to? :should
+    page.should have_content("Please log in.")
+  else
+    assert page.has_content?("Please log in.")
+  end
+end
+When(/^I want to see the calendar$/) do
+  visit root_path
+  visit calendars_show_path
+end
+Then(/^I see "Please log in."$/) do
+  if page.respond_to? :should
+    page.should have_content("Please log in.")
+  else
+    assert page.has_content?("Please log in.")
+  end
+end
+When(/^I want to see the horse activity$/) do
+  visit root_path
+  visit horse_activities_path
+end
+Then(/^I can look "Please log in."$/) do
+  if page.respond_to? :should
+    page.should have_content("Please log in.")
+  else
+    assert page.has_content?("Please log in.")
+  end
+end
+When(/^I want to upload or download files$/) do
+  visit root_path
+  visit owner_add_document_path(:owner_id => '1')
+end
+Then(/^I could look "Please log in."$/) do
+  if page.respond_to? :should
+    page.should have_content("Please log in.")
+  else
+    assert page.has_content?("Please log in.")
+  end
+end
+When(/^I want to generate the invoice file$/) do
+  visit root_path
+  visit download_invoice_path
+end
+Then(/^I will look "Please log in."$/) do
+  if page.respond_to? :should
+    page.should have_content("Please log in.")
+  else
+    assert page.has_content?("Please log in.")
+  end
+end
+
 
 
