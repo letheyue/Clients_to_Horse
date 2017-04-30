@@ -46,11 +46,6 @@ Horse_Activity:
 	reminder_order :integer
 	reminder_date :datetime
 
-Send_Mail:
-    subject :text
-    comment :text
-    owner_id :integer
-
 User:
     name :string
     email :string
@@ -60,5 +55,13 @@ User:
     smtp_mail_password :text
     reset_digest :string
     reset_sent_at :datetime
+
+Doc：
+    description :text
+    file_name :string
+    short_name :string
+    owner_horse_id :integer
+    owner_id :integer
+
 	
 	
