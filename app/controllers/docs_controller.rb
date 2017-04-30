@@ -24,15 +24,7 @@ class DocsController < ApplicationController
   
   def download_file
     doc = Doc.find(params[:doc_id])
-    address = doc.file_name.file.path
-    puts("ADDRESS: ")
-    puts(doc.file_name.file.path)
-    
-    send_file(doc.file_name.file.path,
-        :filename =>doc.short_name,
-        :type => doc.file_name.content_type,
-        :disposition => 'attachment',
-       :url_based_filename => true)
+    send_file(doc.file_name.file.path)
   end
   
   def show
