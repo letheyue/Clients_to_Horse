@@ -39,7 +39,7 @@ class OwnersController < ApplicationController
     @owner = Owner.create!(owner_params)
     @owner.update_attribute(:balance, 0)
     flash[:notice] = "#{@owner.name} was successfully created."
-    redirect_to owners_path
+    redirect_to owner_path(@owner)
 
   end
 

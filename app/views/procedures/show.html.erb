@@ -6,16 +6,22 @@
     <thead>
     <tr>
       <th>Activity name</th>
+      <th>Activity price</th>
       <th>Activity order</th>
       <th>comment</th>
 
     </tr>
     </thead>
     <tbody>
+    <% count = 0 %>
     <% @activities.each do |activity| %>
+      <% count = count + activity.activity.price%>
         <tr>
           <td>
             <%= activity.activity.name%>
+          </td>
+          <td>
+            <%= "$#{activity.activity.price}"%>
           </td>
           <td>
             <%= activity.activity_order %>
@@ -25,7 +31,9 @@
           </td>
         </tr>
     <% end %>
+    Total price: <%= "$#{count}"%>
     </tbody>
   </table>
 </tl>
+<%= button_to "Edit", edit_chain_path(@procedure), :method => :get , class: "btn btn-default"%>
 </html>

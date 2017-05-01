@@ -17,7 +17,7 @@ class ProceduresController < ApplicationController
   def create
       @procedure = Procedure.create!(procedure_params)
       # flash[:notice] = "#{Procedure.find(@chain.procedure_id).name} was successfully created."
-      redirect_to procedures_path
+      redirect_to procedure_path(@procedure)
   end
 
   def destroy

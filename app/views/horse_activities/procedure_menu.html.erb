@@ -10,7 +10,7 @@
     <% @procedures.each do |procedure| %>
       <tr>
         <td>
-          <%= procedure.name %>
+          <%= link_to "#{procedure.name}", edit_chain_path(procedure), :method => :get  %>
         </td>        
         <td>
           <%= link_to "Add", activity_menu_path(:procedure_id => procedure.id, :horse_id => @horse.id), class: "btn btn-default" %>
@@ -22,3 +22,4 @@
 <div>
   <%= link_to "Back to horse information", horse_path(:id => @horse.id) %>
 </div>
+<%= button_to 'New procedures', new_procedure_path, :method => :get , class: "btn btn-default"%>
