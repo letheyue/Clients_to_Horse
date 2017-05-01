@@ -95,6 +95,18 @@
 </body>
 
 <div>
+  New Credit
+  <%= form_tag('/make_payment')  do %>
+      amount
+      <%= text_field_tag 'amount', nil, :style => "width:100px" %>
+      comment
+      <%= text_field_tag 'comment', nil,  :style => "width:200px" %>
+      <%= submit_tag "Make a credit",  :style => "width:150px; float left", :class => "btn btn-default"%>
+      <%= hidden_field_tag "owner_id", @owner.id  %>
+  <%end%>
+</div>
+
+<div>
     New Expense
         <%= form_tag('/make_credit')  do %>
           amount
@@ -104,20 +116,7 @@
             <%= submit_tag "Add new expense",  :style => "width:150px; float left", :class => "btn btn-default"%>
             <%= hidden_field_tag "owner_id", @owner.id  %>
         <%end%>
-      <!--<input type="button" value="send mail" onClick="window.open('http://www.gmail.com')" style = "width:150px; float:left">-->
 </div>
 
-    <div>
-      New Credit
-        <%= form_tag('/make_payment')  do %>
-          amount
-            <%= text_field_tag 'amount', nil, :style => "width:100px" %>
-          comment
-            <%= text_field_tag 'comment', nil,  :style => "width:200px" %>
-            <%= submit_tag "Make a credit",  :style => "width:150px; float left", :class => "btn btn-default"%>
-            <%= hidden_field_tag "owner_id", @owner.id  %>
-        <%end%>
-      <!--<input type="button" value="send mail" onClick="window.open('http://www.gmail.com')" style = "width:150px; float:left">-->
-    </div>
 
 <%= link_to "Back to customer detail", owner_path(@owner)%>
