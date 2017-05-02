@@ -34,5 +34,14 @@ Scenario: without log in visiting page
    When I want to generate the invoice file
    Then I will look "Please log in."
 
-
-
+Scenario: reset the user's information/password/email
+   Given I enter the profile page 
+   When I click edit user information
+   Then I change the user's name to a new one 
+   Then I could see the new name in the profile page
+   When I click change password
+   Then I fill in the new password
+   Then I could see text Password has been reset.
+   When I click change smtp mail address
+   Then I fill in the new email address 
+   Then I could see Smtp mail has been reset.

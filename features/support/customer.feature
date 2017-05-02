@@ -78,13 +78,16 @@ Scenario: check each horse's owner and complete activities and pay the bill
   When the owner pay "100 USD" 
   Then the billing should be "0 USD"
   And I could check my month balance in "Billing Summary"
+  When I click Send Invoice
+  And I fill in subject with invoice and press send
+  Then I come back to the billing summary page 
   When I want to send email
   Then I would see the owner's email address
   When I complete the content and send it
   And I could delete the payment history
   Then I add a procedure for this horse
-  Then I could see the attached procedure
-  When I delete the first activity
+  # Then I could see the attached procedure
+  # When I delete the first activity
  
 # 8 
 Scenario: check daily activities through calendar
@@ -114,6 +117,10 @@ Scenario: doc function of each owner
   Then I could see "A document with the same name is attached to this owner!"
   When I click the "delete" button
   Then the number turns to zero
+  When I enter the detail information of horse curry
+  Then I click the Add Document 
+  When I fill in nothing and press Upload
+  Then I could see Invalid name for the document
   
   
 

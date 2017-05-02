@@ -158,6 +158,56 @@ Then(/^I will look "Please log in."$/) do
     assert page.has_content?("Please log in.")
   end
 end
-
-
-
+##################################################################
+# Scenario3
+Given(/^I enter the profile page$/) do
+  visit root_path
+  click_link('Log in')
+  fill_in('Email', :with => "test@sample.com")
+  fill_in('Password', :with => "123456")
+  click_button('Log in')
+end
+When(/^I click edit user information$/) do
+  click_link('edit user information')  
+end
+Then(/^I change the user's name to a new one$/) do
+  fill_in("name", :with => "admin_1")
+  click_button('Update')
+end
+Then(/^I could see the new name in the profile page$/) do
+  if page.respond_to? :should
+    page.should have_content("admin_1's information has been reset.")
+  else
+    assert page.has_content?("admin_1's information has been reset.")
+  end
+end
+When(/^I click change password$/) do
+  click_link('change password')
+end
+Then(/^I fill in the new password$/) do
+  fill_in("user[password]", :with =>"1234567")
+  fill_in("user[password_confirmation]", :with =>"1234567")
+  click_button('Update')
+end
+Then(/^I could see text Password has been reset.$/) do
+  if page.respond_to? :should
+    page.should have_content("Password has been reset.")
+  else
+    assert page.has_content?("Password has been reset.")
+  end
+end
+When(/^I click change smtp mail address$/) do
+  click_link('change smtp mail address')
+end
+Then(/^I fill in the new email address$/) do
+  fill_in("smtp_mail", :with =>"test@gmail.com")
+  fill_in("smtp_mail_password", :with =>"1234567")
+  click_button('Update')
+end
+Then(/^I could see Smtp mail has been reset.$/) do
+  if page.respond_to? :should
+    page.should have_content("Smtp mail has been reset.")
+  else
+    assert page.has_content?("Smtp mail has been reset.")
+  end
+end

@@ -352,33 +352,47 @@ Then(/^the billing should be "0 USD"$/) do
 end
 Then(/^I could check my month balance in "Billing Summary"$/) do
     if page.respond_to? :should
-      page.should have_content('Monthly Balance : 0')
+      page.should have_content('Total Balance')
     else
-      assert page.has_content?('Monthly Balance : 0')
+      assert page.has_content?('Total Balance')
     end
-    click_link('Charged Activities')
+    click_link('Expense')
     if page.respond_to? :should
-      page.should have_content('100')
+      page.should have_content('$100.0')
     else
-      assert page.has_content?('100')
+      assert page.has_content?('$100.0')
     end
-    click_link('Customer Payments')
+    click_link('Credit')
     if page.respond_to? :should
-      page.should have_content('-100')
+      page.should have_content('$-100.0')
     else
-      assert page.has_content?('-100')
+      assert page.has_content?('$-100.0')
     end
     click_link('<<')
     if page.respond_to? :should
-      page.should have_content('Monthly Balance : 0')
+      page.should have_content('Monthly Balance : $0.0')
     else
-      assert page.has_content?('Monthly Balance : 0')
+      assert page.has_content?('Monthly Balance : $0.0')
     end
     click_link('>>')
     if page.respond_to? :should
-      page.should have_content('Total Balance: 0')
+      page.should have_content('Total Balance: $0.0')
     else
-      assert page.has_content?('Total Balance: 0')
+      assert page.has_content?('Total Balance: $0.0')
+    end
+end
+When(/^I click Send Invoice$/) do 
+    click_button('Send Invoice')
+end
+Then(/^I fill in subject with invoice and press send$/) do
+    fill_in('subject', :with =>"invoice")
+    click_button('Send')
+end 
+Then(/^I come back to the billing summary page$/) do
+    if page.respond_to? :should
+      page.should have_content("To: Bruce Wayne <batman@gmail.com>")
+    else
+      assert page.has_content?("To: Bruce Wayne <batman@gmail.com>")
     end
 end
 When(/^I want to send email$/) do 
@@ -387,14 +401,13 @@ When(/^I want to send email$/) do
 end
 Then(/^I would see the owner's email address$/) do
     if page.respond_to? :should
-      page.should have_content("To: Bruce Wayne <batman@gmail.com>")
+      page.should have_content("Billing Summary")
     else
-      assert page.has_content?("To: Bruce Wayne <batman@gmail.com>")
+      assert page.has_content?("Billing Summary")
     end
 end
 When(/^I complete the content and send it$/) do
     fill_in('subject', :with =>'test')
-    fill_in('comment', :with =>'just a test')
     click_button('Send')
     if page.respond_to? :should
       page.should have_content("Details about Customer")
@@ -434,22 +447,22 @@ Then(/^I add a procedure for this horse$/) do
      select('20', :from => 'date_day')
  end
 
-Then(/^I could see the attached procedure$/) do
-     click_button('Add Procedure')
-     if page.respond_to? :should
-       page.should have_content('In-Vivo Oocytes')
-     else
-       assert page.has_content?('In-Vivo Oocytes')
-     end
-end
-When(/^I delete the first activity$/) do
-     click_button('delete', match: :first)
-     if page.respond_to? :should
-       page.should have_content('activities were successfully deleted.')
-     else
-       assert page.has_content?('activities were successfully deleted.')
-     end
-end
+# Then(/^I could see the attached procedure$/) do
+#     click_button('Add Procedure')
+#     if page.respond_to? :should
+#       page.should have_content('In-Vivo Oocytes')
+#     else
+#       assert page.has_content?('In-Vivo Oocytes')
+#     end
+# end
+# When(/^I delete the first activity$/) do
+#     click_button('delete', match: :first)
+#     if page.respond_to? :should
+#       page.should have_content('activities were successfully deleted.')
+#     else
+#       assert page.has_content?('activities were successfully deleted.')
+#     end
+# end
 ##################################################################
 # Scenario8
 Given(/^I enter the calendar page$/) do
@@ -579,5 +592,22 @@ Then(/^the number turns to zero$/) do
       page.should have_content("Documents:	0")
     else
       assert page.has_content?("Documents:	0")
+    end
+end
+When(/^I enter the detail information of horse curry$/) do
+    visit horses_path
+    click_link('Curry')
+end
+Then(/^I click the Add Document$/) do
+    click_button('Add Document')
+end
+When(/^I fill in nothing and press Upload$/) do
+    click_button('Upload')
+end
+Then(/^I could see Invalid name for the document$/) do
+    if page.respond_to? :should
+      page.should have_content("Invalid name for the document")
+    else
+      assert page.has_content?("Invalid name for the document")
     end
 end
