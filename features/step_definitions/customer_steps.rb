@@ -31,6 +31,7 @@ Then(/^I could see "test_owner was successfully created."$/) do
 end
 
 When(/^I follow the "Delete" button$/) do
+  click_link('Back to customers list')
   click_button('Delete', match: :first)
 end
 Then(/^I could see "Customer 'test_owner' deleted."$/) do
@@ -220,6 +221,7 @@ end
 Then(/^I fill in the "Name" with "test_procedure"$/) do
     fill_in('Name', :with => "test_procedure")
     click_button('Add')
+    click_link('Back to procedures list')
     click_link('test_procedure')
   if page.respond_to? :should
     page.should have_content('Details about test_procedure')

@@ -1,16 +1,16 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/activities_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/activities_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/application_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/application_helper.rb": [
         1,
         1,
-        185,
-        185,
-        139,
+        195,
+        195,
+        149,
         null,
         46,
         null,
@@ -19,7 +19,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/calendars_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/calendars_helper.rb": [
         1,
         1,
         7,
@@ -39,39 +39,39 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/chains_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/chains_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/downloads_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/downloads_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/horse_activities_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/horse_activities_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/horses_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/horses_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/mails_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/mails_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/owners_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/owners_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/password_resets_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/password_resets_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/procedures_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/procedures_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/sessions_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/sessions_helper.rb": [
         1,
         null,
         1,
@@ -84,8 +84,8 @@
         0,
         null,
         1,
-        521,
-        462,
+        551,
+        492,
         59,
         0,
         0,
@@ -97,7 +97,7 @@
         null,
         null,
         1,
-        381,
+        401,
         null,
         null,
         null,
@@ -120,11 +120,11 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/static_pages_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/static_pages_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/helpers/users_helper.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/helpers/users_helper.rb": [
         1,
         null,
         1,
@@ -135,7 +135,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/owner.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/owner.rb": [
         1,
         1,
         1,
@@ -145,12 +145,12 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/application_record.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/horse.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/horse.rb": [
         1,
         1,
         1,
@@ -164,7 +164,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/user.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/user.rb": [
         1,
         1,
         41,
@@ -213,31 +213,31 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/activity.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/activity.rb": [
         1,
         1,
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/procedure.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/procedure.rb": [
         1,
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/chain.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/horse_activity.rb": [
-        1,
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/chain.rb": [
         1,
         1,
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/static_pages_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/horse_activity.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/static_pages_controller.rb": [
         1,
         null,
         1,
@@ -254,7 +254,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/application_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/application_controller.rb": [
         1,
         1,
         1,
@@ -265,7 +265,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/sessions_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/sessions_controller.rb": [
         1,
         1,
         null,
@@ -296,7 +296,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/users_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/users_controller.rb": [
         1,
         1,
         null,
@@ -336,7 +336,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/owners_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/owners_controller.rb": [
         1,
         1,
         null,
@@ -345,18 +345,18 @@
         null,
         null,
         1,
-        13,
-        13,
-        13,
+        22,
+        22,
+        22,
         null,
-        13,
-        13,
+        22,
+        22,
         13,
         13,
         8,
         null,
         null,
-        13,
+        22,
         null,
         null,
         1,
@@ -432,9 +432,9 @@
         9,
         9,
         1,
-        null,
+        8,
         1,
-        null,
+        7,
         4,
         4,
         4,
@@ -461,7 +461,7 @@
         null,
         null,
         1,
-        90,
+        99,
         2,
         2,
         null,
@@ -475,7 +475,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/doc.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/doc.rb": [
         1,
         1,
         1,
@@ -495,7 +495,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/uploaders/doc_uploader.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/uploaders/doc_uploader.rb": [
         1,
         null,
         null,
@@ -548,7 +548,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/horses_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/horses_controller.rb": [
         1,
         1,
         null,
@@ -625,7 +625,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/activities_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/activities_controller.rb": [
         1,
         1,
         null,
@@ -683,7 +683,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/procedures_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/procedures_controller.rb": [
         1,
         1,
         null,
@@ -718,12 +718,12 @@
         null,
         null,
         1,
-        1,
-        1,
+        2,
+        2,
         null,
         null,
         1,
-        10,
+        11,
         1,
         1,
         null,
@@ -731,7 +731,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/chains_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/chains_controller.rb": [
         1,
         1,
         null,
@@ -769,7 +769,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/horse_activities_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/horse_activities_controller.rb": [
         1,
         1,
         null,
@@ -874,14 +874,14 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/owner_payment.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/owner_payment.rb": [
         1,
         1,
         null,
         1,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/downloads_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/downloads_controller.rb": [
         1,
         1,
         null,
@@ -927,7 +927,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/invoice_pdf.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/invoice_pdf.rb": [
         1,
         1,
         null,
@@ -953,7 +953,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/mailers/user_mailer.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/mailers/user_mailer.rb": [
         1,
         null,
         null,
@@ -982,7 +982,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/mails_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/mails_controller.rb": [
         1,
         null,
         1,
@@ -998,7 +998,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/calendars_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/calendars_controller.rb": [
         1,
         1,
         null,
@@ -1009,19 +1009,6 @@
         6,
         6,
         6,
-        null,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         null,
         null,
         null,
@@ -1034,7 +1021,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/lib/calendar.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/lib/calendar.rb": [
         1,
         1,
         1,
@@ -1079,7 +1066,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/docs_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/docs_controller.rb": [
         1,
         1,
         null,
@@ -1098,7 +1085,7 @@
         2,
         1,
         null,
-        null,
+        1,
         1,
         1,
         null,
@@ -1150,7 +1137,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/controllers/password_resets_controller.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/controllers/password_resets_controller.rb": [
         1,
         1,
         null,
@@ -1228,34 +1215,34 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/jobs/application_job.rb": [
-        0,
-        0
-      ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/models/calendar.rb": [
-        0,
-        0,
-        0
-      ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/mailers/application_mailer.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/channels/application_cable/channel.rb": [
         0,
         0,
         0,
         0
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/channels/application_cable/connection.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/channels/application_cable/connection.rb": [
         0,
         0,
         0,
         0
       ],
-      "/home/ubuntu/workspace/Clients_to_Horse/app/channels/application_cable/channel.rb": [
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/jobs/application_job.rb": [
         0,
+        0
+      ],
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/letheyue/Documents/在TAMU的日子/学习/17 Spring/CSCE606/project/spurs/Clients_to_Horse_reminder/app/models/calendar.rb": [
         0,
         0,
         0
       ]
     },
-    "timestamp": 1493683653
+    "timestamp": 1493702076
   }
 }
