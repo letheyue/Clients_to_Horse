@@ -147,7 +147,3 @@ chains = [
 chains.each do |chain|
     Chain.create(chain)
 end
-horse1_activities = HorseActivity.create([{:activity_id => activity1.id, :procedure_id => procedure_1.id,  :horse_id => horse1.id, :date => DateTime.new(2017, 6, 22), :status => 1, :price => 100,  :comment => "member to check embryo"}, {:activity_id => activity2.id, :procedure_id => procedure_1.id, :horse_id => horse1.id, :date => DateTime.new(2017, 7, 22), :status => 1, :price => 50}])
-horse2_activities = HorseActivity.create([{:activity_id => activity2.id, :procedure_id => procedure_2.id, :horse_id => horse2.id, :date => DateTime.new(2017, 5, 23), :status => 1, :price => 120}, {:activity_id => activity3.id, :procedure_id => procedure_2.id, :horse_id => horse2.id, :date => DateTime.new(2017, 5, 25), :status => 1, :comment => "keep cold", :price => 100}])
-horse3_activities = HorseActivity.create([{:activity_id => activity1.id, :procedure_id => procedure_3.id, :horse_id => horse3.id, :date => DateTime.new(2017, 5, 24), :status => 2, :price => 50}, {:activity_id => activity3.id,  :procedure_id => procedure_3.id, :horse_id => horse3.id, :date => DateTime.new(2017, 5, 25), :status => 2, :price => 120}])
-
