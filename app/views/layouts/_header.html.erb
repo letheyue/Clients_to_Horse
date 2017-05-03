@@ -7,18 +7,19 @@
         <% if logged_in? %>
             <li><% link_to "Users", '#' %></li>
             <li><%= link_to "Profile", current_user %></li>
-            <li class="dropdown">
-              <a herf="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
-              </a>
-            <ul class="dropdown-menu">
-              <!--<li><%= link_to "Settings", '#'%></li>-->
-                <li><%= link_to "Horse", horses_path, method: "get"%></li>
-                <li><%= link_to "Customer", owners_path, method: "get" %></li>
-                <li><%= link_to "Procedure", procedures_path, method: "get"%></li>
-                <li><%= link_to "Activity", activities_path, method: 'get'%></li>
-            </ul>
-            </li>
+            <li><%= link_to "Horse", horses_path, method: "get"%></li>
+            <li><%= link_to "Customer", owners_path, method: "get" %></li>
+            <!--<li class="dropdown">-->
+              <!--<a herf="#" class="dropdown-toggle" data-toggle="dropdown">-->
+                <!--Account <b class="caret"></b>-->
+              <!--</a>-->
+            <!--<ul class="dropdown-menu">-->
+              <!--&lt;!&ndash;<li><%= link_to "Settings", '#'%></li>&ndash;&gt;-->
+
+                <!--<li><%= link_to "Procedure", procedures_path, method: "get"%></li>-->
+                <!--<li><%= link_to "Activity", activities_path, method: 'get'%></li>-->
+            <!--</ul>-->
+            <!--</li>-->
               <!--<li><%= link_to "Log out", logout_path, method: "delete"%></li>-->
             <!--</ul>-->
             <li><%= link_to "Calendar", calendars_show_path, method: "get"%></li>
