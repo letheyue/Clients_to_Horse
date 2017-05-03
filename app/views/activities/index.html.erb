@@ -23,10 +23,10 @@
           <%= activity.comment %>
         </td>
         <td>
-          <%= button_to "Edit #{activity.name}", edit_activity_path(activity), :method => :get %>
+          <%= button_to "Edit", edit_activity_path(activity), :method => :get %>
         </td>
         <td>
-          <%= button_to "Delete #{activity.name}", activity_path(activity), :method => :delete,:data =>{:confirm => 'Are you sure?'} %>
+          <%= button_to "Delete", activity_path(activity), :method => :delete,:data =>{:confirm => 'Are you sure?'} %>
         </td>
       </tr>
   <% end %>
