@@ -8,7 +8,7 @@ class HorseActivitiesController < ApplicationController
     end
     
     def procedure_menu
-        @procedures = Procedure.all.page params[:page]
+        @procedures = Procedure.all.order("name ASc").page params[:page]
         @horse = Horse.find params[:horse_id]
     end
     

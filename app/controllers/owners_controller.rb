@@ -8,7 +8,7 @@ class OwnersController < ApplicationController
   def show
     id = params[:id] # retrieve owner ID from URI route
     @owner = Owner.find(id) # look up owner by unique ID
-    @horses = Horse.where(:owner_id => @owner.id).page params[:page]
+    @horses = Horse.where(:owner_id => @owner.id).all.order("name ASC").page params[:page]
     # will render app/views/owners/show.<extension> by default
     sum = 0
     @horses.each do |horse|

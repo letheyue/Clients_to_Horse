@@ -30,7 +30,7 @@ class DocsController < ApplicationController
   end
   
   def show
-    @doc = Doc.find(params[:doc_id])
+    @doc = Doc.find(params[:doc_id]).all.order("name ASC")
   end
   
   def destroy
