@@ -22,11 +22,17 @@ class ProceduresController < ApplicationController
 
   def destroy
     @procedure = Procedure.find(params[:id])
+    @chain = Chain.where(:procedure_id => :id)
     @activities = HorseActivity.where("procedure_id = ?", @procedure.id)
     @activities.each do |activity|
       activity.destroy
     end
     @procedure.destroy
+
+    @chain.each do |chain|
+      chain.destroy
+    end
+
     flash[:notice] = "Procedure '#{@procedure.name}' deleted."
     redirect_to procedures_path
   end
