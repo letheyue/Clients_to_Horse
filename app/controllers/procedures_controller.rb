@@ -22,7 +22,7 @@ class ProceduresController < ApplicationController
 
   def destroy
     @procedure = Procedure.find(params[:id])
-    @chain = Chain.where(:procedure_id => :id)
+    @chain = Chain.where("procedure_id = ?", @procedure.id)
     @activities = HorseActivity.where("procedure_id = ?", @procedure.id)
     @activities.each do |activity|
       activity.destroy
