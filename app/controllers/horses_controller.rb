@@ -14,12 +14,12 @@ class HorsesController < ApplicationController
   end
 
   def index
-    @horses = Horse.all.order("created_at DESC")
+    @horses = Horse.all.order("name ASC")
     @owners = Owner.all
     if params[:search]
       @horses = Horse.search(params[:search]).order("created_at DESC")
     else
-      @horses = Horse.all.order("created_at DESC")
+      @horses = Horse.all.order("name ASC")
     end
   end
   

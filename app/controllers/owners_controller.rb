@@ -21,16 +21,16 @@ class OwnersController < ApplicationController
   end
 
   def index
-    @owners = Owner.all.order("created_at DESC").page params[:page]
+    @owners = Owner.all.order("name ASC").page params[:page]
     @horses = Horse.all
     if params[:search]
-      @owners = Owner.search(params[:search]).order("created_at DESC").page params[:page]
+      @owners = Owner.search(params[:search]).order("name ASC").page params[:page]
     else
-      @owners = Owner.all.order("created_at DESC").page params[:page]
+      @owners = Owner.all.order("name ASC").page params[:page]
     end
   end
-  
-  
+
+
   def new
     # default: render 'new' template
   end
@@ -69,21 +69,21 @@ class OwnersController < ApplicationController
   def make_payment
     @owner = Owner.find(params[:owner_id])
     @current_balance = @owner.balance
-    @paid = @current_balance - params[:amount].to_f 
+    @paid = @current_balance - params[:amount].to_f
     @owner.update_attribute(:balance, @paid)
     OwnerPayment.create(owner_id: @owner.id, amount: -params[:amount].to_f, balance: @paid, billing_type: 2, comment: params[:comment] )
     redirect_to payment_log_path(:id => @owner.id)
   end
-  
+
     def make_credit
     @owner = Owner.find(params[:owner_id])
     @current_balance = @owner.balance
-    @paid = @current_balance + params[:amount].to_f 
+    @paid = @current_balance + params[:amount].to_f
     @owner.update_attribute(:balance, @paid)
     OwnerPayment.create(owner_id: @owner.id, amount: params[:amount].to_f, balance: @paid, billing_type: 1, comment: params[:comment] )
     redirect_to payment_log_path(:id => @owner.id)
   end
-  
+
   def payment_log
     if params[:select_time].blank?
       @time = Time.now.to_date

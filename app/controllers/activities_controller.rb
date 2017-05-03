@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
   end
 
   def index
-    @activities = Activity.all.order("created_at DESC").page params[:page]
+    @activities = Activity.all.order("name ASC").page params[:page]
   end
 
   def new

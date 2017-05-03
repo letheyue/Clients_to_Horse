@@ -6,7 +6,7 @@ class ProceduresController < ApplicationController
   end
 
   def index
-    @procedures = Procedure.all.order("created_at DESC").page params[:page]
+    @procedures = Procedure.all.order("name ASC").page params[:page]
     @chains = Chain.all
   end
 
