@@ -24,4 +24,5 @@
   <% end %>
   </tbody>
 </table>
+<div align="center"><%= paginate @procedures %></div>
 <%= button_to 'New procedures', new_procedure_path, :method => :get ,class: "btn btn-default"%>
