@@ -26,7 +26,9 @@ class HorsesController < ApplicationController
   
   def new
     # default: render 'new' template
-    @owners = Owner.all
+    if !params[:select_owner].blank?
+      @owners = Owner.find params[:select_owner]
+    end
   end
 
   def create

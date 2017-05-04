@@ -120,4 +120,4 @@
   <%end%>
 
 </table>
-<%= button_to 'New Horse', new_horse_path, :method => :get , class: "btn btn-default"%>
+<%= link_to 'New Horse', new_horse_path(:select_owner => @owner.id) , class: "btn btn-default"%>

@@ -9,7 +9,7 @@
   <%= label :horse, :breed, 'Breed' %>
   <%= text_field :horse, 'breed' %>
   <%= label :horse, :owner_id, 'Owner' %>
-  <%= collection_select(:horse, :owner_id, Owner.all, :id, :name) %>
+  <%= collection_select(:horse, :owner_id, Owner.all, :id, :name, {:selected => @owners.id}) %>
   <%= submit_tag 'Save' , class: "btn btn-default"%>
 <% end %>
 <%= button_to 'New Owner', new_owner_path, :method => :get , class: "btn btn-default"%>
