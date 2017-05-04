@@ -5,8 +5,8 @@ class Horse < ApplicationRecord
   paginates_per 10
 
   def self.search(search)
-    search = search.gsub(/\-/, '')
-    where("name LIKE ?  OR age LIKE ? OR sex LIKE ? OR breed LIKE ?", "%#{search}%" , "%#{search}%", "%#{search}%","%#{search}%")
+    search = search.downcase.gsub(/\-/, '')
+    where("lower(name) LIKE ?  OR lower(age) LIKE ? OR lower(sex) LIKE ? OR lower(breed) LIKE ?", "%#{search}%" , "%#{search}%", "%#{search}%","%#{search}%")
   end
 end 
  
