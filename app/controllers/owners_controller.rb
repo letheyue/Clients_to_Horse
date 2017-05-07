@@ -61,7 +61,11 @@ class OwnersController < ApplicationController
     flash[:notice] = "Customer '#{@owner.name}' deleted."
     @horses = Horse.where(:owner_id => @owner.id)
     @horses.each do |horse|
-        horse.destroy
+      @activities = HorseActivity.where(:horse_id => horse.id)
+      @activities.each do |activity|
+        activity.destroy
+      end
+      horse.destroy
     end
     redirect_to owners_path
   end

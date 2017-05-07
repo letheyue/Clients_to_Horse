@@ -28,6 +28,8 @@ class HorsesController < ApplicationController
     # default: render 'new' template
     if !params[:select_owner].blank?
       @owners = Owner.find params[:select_owner]
+    else
+      @owners = Owner.first
     end
   end
 
@@ -53,6 +55,10 @@ class HorsesController < ApplicationController
 
   def destroy
     @horse = Horse.find(params[:id])
+    @activities = HorseActivity.where(:horse_id => :id)
+    @activities.each do |activity|
+      activity.destroy
+    end
     @horse.destroy
     flash[:notice] = "Horse #{@horse.name} deleted."
     redirect_to horses_path
