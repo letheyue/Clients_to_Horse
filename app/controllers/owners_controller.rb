@@ -57,8 +57,7 @@ class OwnersController < ApplicationController
 
   def destroy
     @owner = Owner.find(params[:id])
-    @owner.destroy
-    flash[:notice] = "Customer '#{@owner.name}' deleted."
+
     @horses = Horse.where(:owner_id => @owner.id)
     @horses.each do |horse|
       @activities = HorseActivity.where("horse_id = ?", horse.id)
@@ -67,6 +66,8 @@ class OwnersController < ApplicationController
       end
       horse.destroy
     end
+    @owner.destroy
+    flash[:notice] = "Customer '#{@owner.name}' deleted."
     redirect_to owners_path
   end
 
