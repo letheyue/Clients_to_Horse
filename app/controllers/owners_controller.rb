@@ -66,6 +66,10 @@ class OwnersController < ApplicationController
       end
       horse.destroy
     end
+    @otherlogs = OwnerPayment.where("owner_id = ?", @owner.id)
+    @otherlogs.each do |log|
+      log.destroy
+    end
     @owner.destroy
     flash[:notice] = "Customer '#{@owner.name}' deleted."
     redirect_to owners_path
