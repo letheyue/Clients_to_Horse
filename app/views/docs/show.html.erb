@@ -42,5 +42,11 @@
 <br/>
 <br/>
 <div>
-  <%=link_to "Back to Owner's Page", doc_redirect_to_owner_path(@doc)%>
+  <%if Horse.exists? params[:horse_sender]%>
+    <% @horse = Horse.find(params[:horse_sender])%>
+    <%=puts @horse.name %>
+    <%=link_to "Back to Horse's Page", horse_path(@horse.id)%>
+  <%else%>
+    <%=link_to "Back to Owner's Page", owner_path(@doc.owner)%>
+  <%end%>
 </div>

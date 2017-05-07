@@ -4,10 +4,10 @@ class DocsController < ApplicationController
   def new
     @doc = Doc.new
   end
+  
   def create
     doc = Doc.new(doc_params)
     owner = Owner.find doc_params[:owner_id]
-    
     if doc_params[:file_name].to_s.empty?
       flash[:notice] = "Invalid name for the document"
     else
@@ -21,7 +21,11 @@ class DocsController < ApplicationController
             flash[:notice] = "#{doc.file_name} was successfully uploaded and added to #{owner.name}. The owner has #{owner.docs.length} files now."
         end
     end
-    redirect_to owner_path(owner)
+    if Horse.exists?(doc_params[:owner_horse_id])
+        redirect_to horse_path(doc_params[:owner_horse_id])
+      else
+        redirect_to owner_path(owner)
+    end
   end
   
   def download_file
