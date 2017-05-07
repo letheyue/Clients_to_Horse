@@ -7,9 +7,9 @@ Background: Log in and create/delete a new owner
   Given I'm on the profile page
   And I enter the Customer database
   And I create a new owner
-  Then I could see "test_owner was successfully created."
+  Then I could see "a_test_owner was successfully created."
   When I follow the "Delete" button
-  Then I could see "Customer 'test_owner' deleted."
+  Then I could see "Customer 'a_test_owner' deleted."
 # 1
 Scenario: view the detail information of owner
   When I follow the "test1" link
@@ -44,19 +44,19 @@ Scenario: create/edit/delete a new activity
   And I follow the "New Activity" link
   When I fill in the new activity's information
   Then I see this new activity
-  Then I click the "Edit ICSI"
+  Then I click the "Edit Additional embryo vitrified concurrently"
   Then I change the comment
   And I click "Update Activity Info"
-  Then I see "ICSI was successfully updated."
-  When I click the "Delete ICSI"
-  Then I could see "Activity 'ICSI' deleted."
+  Then I see "Additional embryo vitrified concurrently was successfully updated."
+  When I click the "Delete Additional embryo vitrified concurrently"
+  Then I could see "Activity 'Additional embryo vitrified concurrently' deleted."
 # 5
 Scenario: create/delete a new procedure 
   Given I follow the "Procedures" link
   And I follow the "New procedures" link
-  And I fill in the "Name" with "test_procedure"
+  And I fill in the "Name" with "aatest_procedure"
   When I click "Delete" fo the new procedure
-  Then I could see "Procedure 'test_procedure' deleted."
+  Then I could see "Procedure 'aatest_procedure' deleted."
 # 6
 Scenario: add/edit/delete activities to a new procedure
   Then I click the "Edit" link of the first procedure
@@ -70,12 +70,12 @@ Scenario: add/edit/delete activities to a new procedure
 Scenario: check each horse's owner and complete activities and pay the bill 
   Given I come to the horse database and choose the first horse
   And I follow the link in the Owner field to check its owner
-  When I click the "Hurry" and make the first activity done
+  When I click the "Curry" and make the first activity done
   Then I could see "activities were successfully updated."
-  Then I follow the "Completed Activities" link and I could see "ICSI"
+  Then I follow the "Completed Activities" link and I could see "Day 5 Cleavage Check"
   Then I could go back to the horse page
-  Then I could see "100 USD" in its owner billing
-  When the owner pay "100 USD" 
+  Then I could see "50 USD" in its owner billing
+  When the owner pay "50 USD"
   Then the billing should be "0 USD"
   And I could check my month balance in "Billing Summary"
   When I click Send Invoice
@@ -94,14 +94,9 @@ Scenario: check daily activities through calendar
   Given I enter the calendar page
   When I choose the day of "19th"
   And I could see "Nothing to do"
-  When I choose the day of "23th"
+  When I choose the day of "22th"
   And I could click the first activity
   Then I could see "done"
-  When I choose the day of "25th"
-  And I click the "edit" and change the comment
-  Then I could see the new comment
-  When I delete today's first activity
-  Then I would see the notice message
   When I log out
   Then I could not enter the calendar page
 

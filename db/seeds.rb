@@ -147,3 +147,5 @@ chains = [
 chains.each do |chain|
     Chain.create(chain)
 end
+
+horse1_activities = HorseActivity.create([{:activity_id => activity1.id, :procedure_id => procedure_1.id,  :horse_id => horse1.id, :date => DateTime.new(2017, 4, 22), :status => 1, :price => 100,  :comment => "member to check embryo"}, {:activity_id => activity2.id, :procedure_id => procedure_1.id, :horse_id => horse4.id, :date => DateTime.new(2017, 5, 22), :status => 1, :price => 50}])

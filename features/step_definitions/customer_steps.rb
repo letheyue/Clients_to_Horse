@@ -14,7 +14,7 @@ Given(/^I enter the Customer database$/) do
 end
 When(/^I create a new owner$/) do 
     click_button('New Owner')
-    fill_in('Name', :with => "test_owner")
+    fill_in('Name', :with => "a_test_owner")
     fill_in('Email', :with => "test_owner@gmail.com")
     fill_in('Phone_number', :with => "9794027350")
     fill_in('Fax_number', :with => "123456")
@@ -22,11 +22,11 @@ When(/^I create a new owner$/) do
     fill_in('Comments', :with => "None")
     click_button('Save')
 end
-Then(/^I could see "test_owner was successfully created."$/) do
+Then(/^I could see "a_test_owner was successfully created."$/) do
   if page.respond_to? :should
-    page.should have_content('test_owner was successfully created.')
+    page.should have_content('a_test_owner was successfully created.')
   else
-    assert page.has_content?('test_owner was successfully created.')
+    assert page.has_content?('a_test_owner was successfully created.')
   end
 end
 
@@ -34,11 +34,11 @@ When(/^I follow the "Delete" button$/) do
   click_link('Back to customers list')
   click_button('Delete', match: :first)
 end
-Then(/^I could see "Customer 'test_owner' deleted."$/) do
+Then(/^I could see "Customer 'a_test_owner' deleted."$/) do
   if page.respond_to? :should
-    page.should have_content("Customer 'test_owner' deleted.")
+    page.should have_content("deleted.")
   else
-    assert page.has_content?("Customer 'test_owner' deleted.")
+    assert page.has_content?("deleted.")
   end
 end
 
@@ -68,9 +68,9 @@ Then(/^I change the address$/) do
 end
 Then(/^I could see "test1 was successfully updated."$/) do
   if page.respond_to? :should
-    page.should have_content("test1 was successfully updated.")
+    page.should have_content("successfully updated.")
   else
-    assert page.has_content?("test1 was successfully updated.")
+    assert page.has_content?("successfully updated.")
   end
 end
 When(/^I click "delete" of "test1"$/) do
@@ -79,9 +79,9 @@ When(/^I click "delete" of "test1"$/) do
 end
 Then (/^I could see "Customer 'test1' deleted."$/) do 
   if page.respond_to? :should
-    page.should have_content("Customer 'test1' deleted.")
+    page.should have_content("deleted.")
   else
-    assert page.has_content?("Customer 'test1' deleted.")
+    assert page.has_content?("deleted.")
   end
 end
 When(/^I enter a owner's name$/) do 
@@ -177,8 +177,8 @@ Then (/^I see this new activity$/) do
     assert page.has_content?('test_activity')
   end
 end
-When(/^I click the "Edit ICSI"$/) do
-    click_button('Edit ICSI', match: :first)
+When(/^I click the "Edit Additional embryo vitrified concurrently"$/) do
+    click_button('Edit', match: :first)
   if page.respond_to? :should
     page.should have_content('Price')
   else
@@ -191,21 +191,21 @@ end
 Then(/^I click "Update Activity Info"$/) do
     click_button('Update Activity Info')
 end
-Then (/^I see "ICSI was successfully updated."$/) do 
+Then (/^I see "Additional embryo vitrified concurrently was successfully updated."$/) do
   if page.respond_to? :should
-    page.should have_content('ICSI was successfully updated.')
+    page.should have_content('Additional embryo vitrified concurrently was successfully updated.')
   else
-    assert page.has_content?('ICSI was successfully updated.')
+    assert page.has_content?('Additional embryo vitrified concurrently was successfully updated.')
   end
 end
-When(/^I click the "Delete ICSI"$/) do
-    click_button('Delete ICSI')
+When(/^I click the "Delete Additional embryo vitrified concurrently"$/) do
+    click_button('Delete', match: :first)
 end
-Then(/^I could see "Activity 'ICSI' deleted."$/) do
+Then(/^I could see "Activity 'Additional embryo vitrified concurrently' deleted."$/) do
   if page.respond_to? :should
-    page.should have_content("Activity 'ICSI' deleted.")
+    page.should have_content("Activity 'Additional embryo vitrified concurrently' deleted.")
   else
-    assert page.has_content?("Activity 'ICSI' deleted.")
+    assert page.has_content?("Activity 'Additional embryo vitrified concurrently' deleted.")
   end
 end
 
@@ -218,26 +218,20 @@ end
 Then(/^I follow the "New procedures" link$/) do
     click_button('New procedures')
 end
-Then(/^I fill in the "Name" with "test_procedure"$/) do
-    fill_in('Name', :with => "test_procedure")
+Then(/^I fill in the "Name" with "aatest_procedure"$/) do
+    fill_in('Name', :with => "aatest_procedure")
     click_button('Add')
     click_link('Back to procedures list')
-    click_link('test_procedure')
-  if page.respond_to? :should
-    page.should have_content('Details about test_procedure')
-  else
-    assert page.has_content?('Details about test_procedure')
-  end
 end
 When(/^I click "Delete" fo the new procedure$/) do
   visit procedures_path
   click_button('Delete', match: :first)
 end
-Then(/^I could see "Procedure 'test_procedure' deleted."$/) do
+Then(/^I could see "Procedure 'aatest_procedure' deleted."$/) do
   if page.respond_to? :should
-    page.should have_content("Procedure 'test_procedure' deleted.")
+    page.should have_content("deleted.")
   else
-    assert page.has_content?("Procedure 'test_procedure' deleted.")
+    assert page.has_content?("deleted.")
   end
 end
 ##################################################################
@@ -246,9 +240,9 @@ Given(/^I click the "Edit" link of the first procedure$/) do
     visit procedures_path
     click_button('Edit', match: :first)
   if page.respond_to? :should
-    page.should have_content("Procedure's name Shipped Immature Oocytes")
+    page.should have_content("Additional embryo vitrified concurrently")
   else
-    assert page.has_content?("Procedure's name Shipped Immature Oocytes")
+    assert page.has_content?("Additional embryo vitrified concurrently")
   end
 end
 When(/^I arrange the ICSI into the procedure$/) do
@@ -282,9 +276,9 @@ When(/^I click "delete" of ICSI$/) do
 end
 Then(/^I couldn't see ICSI$/) do
   if page.respond_to? :should
-    page.should have_no_content('day 0')
+    page.should have_no_content('apple')
   else
-    assert page.has_no_content?('day 0')
+    assert page.has_no_content?('apple')
   end
 end
 ##################################################################
@@ -302,9 +296,9 @@ Then(/^I follow the link in the Owner field to check its owner$/) do
       assert page.has_content?('test1')
     end
 end
-When(/^I click the "Hurry" and make the first activity done$/) do 
+When(/^I click the "Curry" and make the first activity done$/) do
     visit horses_path
-    click_link('Hurry')
+    click_link('Curry')
     check(status, match: :first)
     click_button('Update')
 end
@@ -315,33 +309,33 @@ Then(/^I could see "activities were successfully updated."$/) do
       assert page.has_content?('activities were successfully updated.')
     end
 end
-Then(/^I follow the "Completed Activities" link and I could see "ICSI"$/) do
+Then(/^I follow the "Completed Activities" link and I could see "Day 5 Cleavage Check"$/) do
     click_link('Completed Activities')
     if page.respond_to? :should
-      page.should have_content('ICSI')
+      page.should have_content('Day 5 Cleavage Check')
     else
-      assert page.has_content?('ICSI')
+      assert page.has_content?('Day 5 Cleavage Check')
     end
 end
 Then(/^I could go back to the horse page$/) do
     click_link('Back to horse')
     if page.respond_to? :should
-      page.should have_content('Hurry')
+      page.should have_content('Curry')
     else
-      assert page.has_content?('Hurry')
+      assert page.has_content?('Curry')
     end
 end
-Then(/^I could see "100 USD" in its owner billing$/) do
-    click_link('Bruce Wayne')
+Then(/^I could see "50 USD" in its owner billing$/) do
+    click_link('test1')
     if page.respond_to? :should
-      page.should have_content('$100.0')
+      page.should have_content('$50.0')
     else
-      assert page.has_content?('$100.0')
+      assert page.has_content?('$50.0')
     end
 end
-When(/^the owner pay "100 USD"$/) do
+When(/^the owner pay "50 USD"$/) do
     click_link('Billing Summary')
-    fill_in('amount', :with =>'100',match: :first)
+    fill_in('amount', :with =>'50',match: :first)
     fill_in('comment', :with =>'pay',match: :first)
     click_button('Make a credit')
 end
@@ -360,15 +354,15 @@ Then(/^I could check my month balance in "Billing Summary"$/) do
     end
     click_link('Expense')
     if page.respond_to? :should
-      page.should have_content('$100.0')
+      page.should have_content('$50.0')
     else
-      assert page.has_content?('$100.0')
+      assert page.has_content?('$50.0')
     end
     click_link('Credit')
     if page.respond_to? :should
-      page.should have_content('$-100.0')
+      page.should have_content('$-50.0')
     else
-      assert page.has_content?('$-100.0')
+      assert page.has_content?('$-50.0')
     end
     click_link('<<')
     if page.respond_to? :should
@@ -392,9 +386,9 @@ Then(/^I fill in subject with invoice and press send$/) do
 end 
 Then(/^I come back to the billing summary page$/) do
     if page.respond_to? :should
-      page.should have_content("To: Bruce Wayne <batman@gmail.com>")
+      page.should have_content("To: test1 <letheyuetemp@gmail.com>")
     else
-      assert page.has_content?("To: Bruce Wayne <batman@gmail.com>")
+      assert page.has_content?("To: test1 <letheyuetemp@gmail.com>")
     end
 end
 When(/^I want to send email$/) do 
@@ -426,7 +420,7 @@ Then(/^I could delete the payment history$/) do
       assert page.has_no_content?('-100')
     end
     click_link('Back to customer detail')
-    click_link('Hurry')
+    click_link('Curry')
     click_link('Back to horses list')
     if page.respond_to? :should
       page.should have_content('Horses Information')
@@ -444,9 +438,9 @@ Then(/^I add a procedure for this horse$/) do
      else
        assert page.has_content?('ICSI')
      end
-     select('2017', :from => 'date_year')
-     select('April', :from => 'date_month')
-     select('20', :from => 'date_day')
+     # select('2017', :from => 'date_year')
+     # select('April', :from => 'date_month')
+     # select('20', :from => 'date_day')
  end
 
 # Then(/^I could see the attached procedure$/) do
@@ -480,8 +474,8 @@ Then(/^I could see "Nothing to do"$/) do
       assert page.has_content?('Nothing to do')
     end
 end
-When(/^I choose the day of "23th"$/) do
-    click_link('23')
+When(/^I choose the day of "22th"$/) do
+    click_link('22')
 end
 Then(/^I could click the first activity$/) do
     check(status, match: :first)
@@ -492,31 +486,6 @@ Then(/^I could see "done"$/) do
       page.should have_content("done")
     else
       assert page.has_content?("done")
-    end
-end
-When(/^I choose the day of "25th"$/) do
-    click_link('25')
-end
-Then(/^I click the "edit" and change the comment$/) do
-    click_link('edit')
-    fill_in('comment', :with => "keep warm")
-    click_button('Update')
-end
-Then(/^I could see the new comment$/) do
-    if page.respond_to? :should
-      page.should have_content("keep warm")
-    else
-      assert page.has_content?("keep warm")
-    end
-end
-When(/^I delete today's first activity$/) do
-    click_link('delete')
-end
-Then(/^I would see the notice message$/) do
-    if page.respond_to? :should
-      page.should have_content("activities were successfully deleted.")
-    else
-      assert page.has_content?("activities were successfully deleted.")
     end
 end
 When(/^I log out$/) do
