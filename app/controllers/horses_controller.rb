@@ -55,7 +55,7 @@ class HorsesController < ApplicationController
 
   def destroy
     @horse = Horse.find(params[:id])
-    @activities = HorseActivity.where(:horse_id => :id)
+    @activities = HorseActivity.where("horse_id = ?", @horse.id)
     @activities.each do |activity|
       activity.destroy
     end
